@@ -12,5 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('login.index');
+    return view('dashboard.index');
 });
+
+Route::get('login', [
+    'uses' => 'LoginController@getLogin',
+    'as'   => 'login.get'
+]);
+
+Route::post('login', [
+    'uses' => 'LoginController@postLogin',
+    'as'   => 'login.post'
+]);
