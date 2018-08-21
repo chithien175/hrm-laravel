@@ -12,8 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('dashboard.index');
+    return route('dashboard.get');
 });
+
+Route::get('dashboard', [
+    'uses' => 'DashboardController@getDashboard',
+    'as'   => 'dashboard.get'
+]);
 
 Route::get('login', [
     'uses' => 'LoginController@getLogin',
