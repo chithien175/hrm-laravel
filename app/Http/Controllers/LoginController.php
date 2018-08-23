@@ -9,6 +9,9 @@ use Auth;
 class LoginController extends Controller
 {
     public function getLogin(){
+        if (Auth::check()) {
+            return redirect()->route('dashboard');
+        }
         return view('login.index');
     }
 
@@ -29,5 +32,10 @@ class LoginController extends Controller
         }else{
             return redirect()->back()->with('status', 'Đăng nhập thất bại');
         }
+    }
+
+    public function getLogout(){
+        Auth::logout();
+        return redirect()->route('login');
     }
 }

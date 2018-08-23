@@ -7,6 +7,7 @@
     @include('partials.head')
 
     @include('partials.style')
+    
     <!-- END HEAD -->
 
     <body class="login">

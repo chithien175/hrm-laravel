@@ -10,7 +10,19 @@
     <!-- END HEAD -->
 
     <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
-        @yield('content')
+        <div class="page-wrapper">
+            @include('partials.header')
+
+            <!-- BEGIN CONTAINER -->
+            <div class="page-container">
+                @include('partials.sidebar')
+                
+                @yield('content')
+            </div>
+            <!-- END CONTAINER -->
+            
+            @include('partials.footer')
+        </div>
 
         @include('partials.script')
 
