@@ -7,9 +7,14 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use Image;
 
 class UserController extends Controller
 {
+    public function __construct(){
+        $this->middleware(['auth', 'only_active_user','can:superadmin']);
+    }
+
     public function index(){
         $users = User::all();
 
@@ -21,15 +26,16 @@ class UserController extends Controller
     }
 
     public function store(Request $request){
+        
         $request->validate([
             'name'     => 'required',
             'email'    => 'required|email|unique:users',
             'password' => 'required|min:6|max:32'
         ],[
-            'name.required'    => 'Bạn chưa nhập "Họ tên"',
+            'name.required'     => 'Bạn chưa nhập "Họ tên"',
             'email.required'    => 'Bạn chưa nhập "Email"',
             'email.email'       => '"Email" không đúng định dạng',
-            'email.unique'       => '"Email" người dùng đã tồn tại',
+            'email.unique'      => '"Email" người dùng đã tồn tại',
             'password.required' => 'Bạn chưa nhập "Mật khẩu"',
             'password.min'      => '"Mật khẩu" phải ít nhất 6 ký tự',
             'password.max'      => '"Mật khẩu" không quá 32 ký tự'
@@ -60,6 +66,7 @@ class UserController extends Controller
     }
 
     public function update(Request $request){
+        // dd($request->all());
         $request->validate([
             'name'     => 'required',
             'email'    => 'required|email|unique:users,email,'.$request->id,
@@ -75,10 +82,20 @@ class UserController extends Controller
         $user = User::findOrFail($request->id);
         $user->name = $request->name;
         $user->email = $request->email;
-        if(!empty($request->id)){
+        if(!empty($request->password)){
             $user->password = Hash::make($request->password);
         }
         $user->role = $request->role;
+        $user->active = $request->active;
+
+        // Handle the user upload of avatar
+    	if($request->hasFile('avatar')){
+    		$avatar = $request->file('avatar');
+    		$filename = time() . '_user'.$user->id.'_avatar.'. $avatar->getClientOriginalExtension();
+    		Image::make($avatar)->resize(300, 300)->save( public_path('/uploads/avatars/' . $filename ) );
+
+    		$user->avatar = $filename;
+    	}
 
         try{
             $user->save();
@@ -95,8 +112,8 @@ class UserController extends Controller
 
         $user = User::findOrFail($id);
 
-        if($user->role == 'administrator'){
-            return redirect()->route('user.index')->with('status_danger', 'Bạn không được xóa "Administrator"!');
+        if($user->role == 'superadmin'){
+            return redirect()->route('user.index')->with('status_danger', 'Bạn không được xóa "Super Admin"!');
         }else{
             try{
                 $user->delete();

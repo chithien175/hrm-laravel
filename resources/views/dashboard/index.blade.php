@@ -32,7 +32,7 @@
                         <div class="number">
                             <span data-counter="counterup" data-value="1349">0</span>
                         </div>
-                        <div class="desc"> Người Dùng </div>
+                        <div class="desc"> Nhân Sự </div>
                     </div>
                 </a>
             </div>
@@ -44,7 +44,7 @@
                     <div class="details">
                         <div class="number">
                             <span data-counter="counterup" data-value="10">0</span> </div>
-                        <div class="desc"> Nhân Sự </div>
+                        <div class="desc"> None </div>
                     </div>
                 </a>
             </div>

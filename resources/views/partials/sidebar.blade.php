@@ -56,6 +56,7 @@
                     <span class="title">Quản Lý Nhân Sự</span>
                 </a>
             </li>
+            @can('superadmin')
             <li class="heading">
                 <h3 class="uppercase">Quản trị nâng cao</h3>
             </li>
@@ -65,6 +66,7 @@
                     <span class="title">Quản Lý Người Dùng</span>
                 </a>
             </li>
+            @endcan
             <li class="heading">
                 <h3 class="uppercase">Cấu Hình Ứng Dụng</h3>
             </li>

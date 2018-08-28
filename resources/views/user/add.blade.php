@@ -2,7 +2,7 @@
 
 @section('style')
     <link href="{{ asset('assets/global/plugins/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
-    <!-- <link href="{{ asset('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') }}" rel="stylesheet" type="text/css" /> -->
+    
 @endsection()
 
 @section('content')
@@ -40,20 +40,19 @@
             @endforeach
         </div>
         @endif
-        <div class="row">
-            <div class="col-md-6">
-                <!-- BEGIN VALIDATION STATES-->
-                <div class="portlet light portlet-fit portlet-form bordered">
-                    <div class="portlet-body">
-                        <!-- BEGIN FORM-->
-                        <form action="{{ route('user.add.post') }}" method="post" id="form_sample_3">
-                            @csrf
-                            
+        <!-- BEGIN FORM-->
+        <form action="{{ route('user.add.post') }}" method="post" id="form_sample_3">
+            @csrf
+            <div class="row">
+                <div class="col-md-8">
+                    <!-- BEGIN VALIDATION STATES-->
+                    <div class="portlet light portlet-fit portlet-form bordered">
+                        <div class="portlet-body">
                             <div class="form-body">
                                 <div class="form-group form-md-line-input form-md-floating-label">
                                     <div class="input-group">
                                         <input type="text" class="form-control" name="name" value="{{ old('name') }}">
-                                        <label for="form_control_1">Họ tên <span data-toggle="tooltip">(*)</span></label>
+                                        <label for="form_control_1">Họ tên <span>(*)</span></label>
                                         <span class="input-group-addon">
                                             <i class="fa fa-user"></i>
                                         </span>
@@ -80,9 +79,9 @@
                                 </div>
                                 <div class="form-group form-md-line-input form-md-floating-label">
                                     <select class="form-control" name="role">
-                                        <option value="administrator">Administrator</option>
+                                        <option value="superadmin">Super Admin</option>
                                         <option value="admin">Admin</option>
-                                        <option value="manager">Manager</option>
+                                        <option value="user">User</option>
                                     </select>
                                     <label for="form_control_1">Quyền</label>
                                 </div>
@@ -97,13 +96,13 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
-                        <!-- END FORM-->
+                        </div>
                     </div>
+                    <!-- END VALIDATION STATES-->
                 </div>
-                <!-- END VALIDATION STATES-->
             </div>
-        </div>
+        </form>
+        <!-- END FORM-->
         <div class="clearfix"></div>
         <!-- END DASHBOARD STATS 1-->
     </div>
@@ -114,9 +113,5 @@
 @endsection
 
 @section('script')
-<script>
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-    })
-</script>
+    
 @endsection

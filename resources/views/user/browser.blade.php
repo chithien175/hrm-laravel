@@ -77,6 +77,7 @@
                                     <th> Họ Tên </th>
                                     <th> Email </th>
                                     <th> Quyền </th>
+                                    <th> Trạng thái</th>
                                     <th> Sửa</th>
                                     <th> Xóa</th>
                                 </tr>
@@ -89,7 +90,23 @@
                                         <td> {{ $stt }} </td>
                                         <td> {{ $v->name }} </td>
                                         <td> {{ $v->email }} </td>
-                                        <td style="text-transform: uppercase;"> {{ $v->role }} </td>
+                                        <td style="text-transform: uppercase;"
+                                            class="<?php 
+                                            if($v->role == 'superadmin')
+                                            echo 'font-yellow-crusta'; 
+                                            if($v->role == 'admin')
+                                            echo 'font-purple-seance';
+                                            if($v->role == 'user')
+                                            echo 'font-blue';
+                                            ?>"> {{ $v->role }} </td>
+                                        <td class="<?php 
+                                            if($v->active)
+                                            echo 'font-green-jungle'; 
+                                            if(!$v->active)
+                                            echo 'font-red';
+                                            ?>">
+                                            {{ ($v->active)?'Đang hoạt động':'Khóa' }}
+                                        </td>
                                         <td>
                                             <a class="edit" href="{{ route('user.edit.get', $v->id) }}"> Sửa </a>
                                         </td>

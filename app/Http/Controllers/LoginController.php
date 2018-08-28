@@ -29,11 +29,13 @@ class LoginController extends Controller
         ]);
         $remember = $request->has('remember') ? true : false;
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password], $remember)){
+            
             Log::info('Email: '.$request->email.' đăng nhập thành công');
-            return redirect('/');
+            return redirect()->route('dashboard');
+            
         }else{
             Log::error('Email: '.$request->email.' đăng nhập thất bại');
-            return redirect()->back()->with('status_error', 'Đăng nhập thất bại, vui lòng thử lại!');
+            return redirect()->route('login')->with('status_error', 'Đăng nhập thất bại, vui lòng thử lại!');
         }
     }
 
