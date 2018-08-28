@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 use Auth;
 
@@ -28,9 +29,11 @@ class LoginController extends Controller
         ]);
         $remember = $request->has('remember') ? true : false;
         if(Auth::attempt(['email' => $request->email, 'password' => $request->password], $remember)){
+            Log::info('Email: '.$request->email.' đăng nhập thành công');
             return redirect('/');
         }else{
-            return redirect()->back()->with('status', 'Đăng nhập thất bại');
+            Log::error('Email: '.$request->email.' đăng nhập thất bại');
+            return redirect()->back()->with('status_error', 'Đăng nhập thất bại, vui lòng thử lại!');
         }
     }
 

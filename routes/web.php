@@ -52,8 +52,28 @@ Route::get('dashboard', [
 // User Routes...
 Route::prefix('users')->group(function () {
     Route::get('/', [
-        'uses' => 'UserController@listUser',
-        'as'   => 'user.list'
+        'uses' => 'UserController@index',
+        'as'   => 'user.index'
+    ])->middleware('auth');
+    Route::get('/add', [
+        'uses' => 'UserController@create',
+        'as'   => 'user.add.get'
+    ])->middleware('auth');
+    Route::post('/add', [
+        'uses' => 'UserController@store',
+        'as'   => 'user.add.post'
+    ])->middleware('auth');
+    Route::get('/edit/{id}', [
+        'uses' => 'UserController@edit',
+        'as'   => 'user.edit.get'
+    ])->middleware('auth');
+    Route::post('/edit', [
+        'uses' => 'UserController@update',
+        'as'   => 'user.edit.post'
+    ])->middleware('auth');
+    Route::get('/delete/{id}', [
+        'uses' => 'UserController@destroy',
+        'as'   => 'user.delete.get'
     ])->middleware('auth');
 });
 

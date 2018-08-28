@@ -51,49 +51,19 @@
                 <h3 class="uppercase">Quản trị cơ bản</h3>
             </li>
             <li class="nav-item">
-                <a href="javascript:;" class="nav-link nav-toggle">
-                    <i class="icon-users"></i>
+                <a href="#" class="nav-link nav-toggle">
+                    <i class="fa fa-users"></i>
                     <span class="title">Quản Lý Nhân Sự</span>
-                    <span class="arrow"></span>
                 </a>
-                <ul class="sub-menu">
-                    <li class="nav-item  ">
-                        <a href="ui_metronic_grid.html" class="nav-link ">
-                        <i class="icon-plus"></i>
-                            <span class="title">Thêm mới</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link ">
-                            <i class="icon-list"></i>
-                            <span class="title">Danh sách</span>
-                        </a>
-                    </li>
-                </ul>
             </li>
             <li class="heading">
                 <h3 class="uppercase">Quản trị nâng cao</h3>
             </li>
-            <li class="nav-item {{ Route::current()->action['prefix'] == '/users' ? 'active open' : '' }}">
-                <a href="javascript:;" class="nav-link nav-toggle">
+            <li class="nav-item {{ Route::getCurrentRoute()->getPrefix() == '/users' ? 'active open' : '' }}">
+                <a href="{{ route('user.index') }}" class="nav-link nav-toggle">
                     <i class="icon-users"></i>
                     <span class="title">Quản Lý Người Dùng</span>
-                    <span class="arrow"></span>
                 </a>
-                <ul class="sub-menu">
-                    <li class="nav-item">
-                        <a href="ui_metronic_grid.html" class="nav-link ">
-                        <i class="icon-plus"></i>
-                            <span class="title">Thêm mới</span>
-                        </a>
-                    </li>
-                    <li class="nav-item {{ Route::currentRouteName() == 'user.list' ? 'active open' : '' }}">
-                        <a href="{{ route('user.list') }}" class="nav-link ">
-                            <i class="icon-list"></i>
-                            <span class="title">Danh sách</span>
-                        </a>
-                    </li>
-                </ul>
             </li>
             <li class="heading">
                 <h3 class="uppercase">Cấu Hình Ứng Dụng</h3>

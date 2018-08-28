@@ -32,7 +32,7 @@
                         <div class="number">
                             <span data-counter="counterup" data-value="1349">0</span>
                         </div>
-                        <div class="desc"> Tổng Nhân Sự </div>
+                        <div class="desc"> Người Dùng </div>
                     </div>
                 </a>
             </div>
@@ -44,7 +44,7 @@
                     <div class="details">
                         <div class="number">
                             <span data-counter="counterup" data-value="10">0</span> </div>
-                        <div class="desc"> NS Chờ Duyệt </div>
+                        <div class="desc"> Nhân Sự </div>
                     </div>
                 </a>
             </div>
@@ -57,7 +57,7 @@
                         <div class="number">
                             <span data-counter="counterup" data-value="549">0</span>
                         </div>
-                        <div class="desc"> NS Đang Làm </div>
+                        <div class="desc"> None </div>
                     </div>
                 </a>
             </div>
@@ -69,7 +69,7 @@
                     <div class="details">
                         <div class="number">
                             <span data-counter="counterup" data-value="89"></span> </div>
-                        <div class="desc"> NS Thôi Việc </div>
+                        <div class="desc"> None </div>
                     </div>
                 </a>
             </div>
