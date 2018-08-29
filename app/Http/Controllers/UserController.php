@@ -73,10 +73,10 @@ class UserController extends Controller
             'password' => 'max:32' 
         ],[
             'name.required'    => 'Bạn chưa nhập "Họ tên"',
-            'email.required'    => 'Bạn chưa nhập "Email"',
-            'email.email'       => '"Email" không đúng định dạng',
-            'email.unique'       => '"Email" người dùng đã tồn tại',
-            'password.max'      => '"Mật khẩu" không quá 32 ký tự'
+            'email.required'   => 'Bạn chưa nhập "Email"',
+            'email.email'      => '"Email" không đúng định dạng',
+            'email.unique'     => '"Email" người dùng đã tồn tại',
+            'password.max'     => '"Mật khẩu" không quá 32 ký tự'
         ]);
 
         $user = User::findOrFail($request->id);
