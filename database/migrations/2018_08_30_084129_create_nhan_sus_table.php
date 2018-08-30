@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePhongBansTable extends Migration
+class CreateNhanSusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class CreatePhongBansTable extends Migration
      */
     public function up()
     {
-        Schema::create('phong_bans', function (Blueprint $table) {
+        Schema::create('nhan_sus', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('ten');
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ class CreatePhongBansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('phong_bans');
+        Schema::dropIfExists('nhan_sus');
     }
 }

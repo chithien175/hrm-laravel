@@ -15,7 +15,7 @@ class CreateBoPhansTable extends Migration
     {
         Schema::create('bo_phans', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('ten');
             $table->integer('phongban_id');
             $table->timestamps();
         });
