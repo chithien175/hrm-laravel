@@ -58,6 +58,3 @@ Route::prefix('users')->group(function () {
     Route::post('/edit', ['uses'=>'UserController@update','as'=>'user.edit.post']);
     Route::get('/delete/{id}', ['uses'=>'UserController@destroy','as'=>'user.delete.get']);
 });
-
-
-

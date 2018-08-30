@@ -53,7 +53,7 @@
             <li class="nav-item">
                 <a href="#" class="nav-link nav-toggle">
                     <i class="fa fa-users"></i>
-                    <span class="title">Quản Lý Nhân Sự</span>
+                    <span class="title">QL Nhân Sự</span>
                 </a>
             </li>
             @can('superadmin')
@@ -63,7 +63,7 @@
             <li class="nav-item {{ Route::getCurrentRoute()->getPrefix() == '/users' ? 'active open' : '' }}">
                 <a href="{{ route('user.index') }}" class="nav-link nav-toggle">
                     <i class="icon-users"></i>
-                    <span class="title">Quản Lý Người Dùng</span>
+                    <span class="title">QL Người Dùng</span>
                 </a>
             </li>
             @endcan

@@ -97,7 +97,7 @@
                             <div class="form-actions">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <button type="submit" class="btn dark">Cập nhật</button>
+                                        <button type="submit" class="btn dark"><i class="fa fa-save"></i> Lưu</button>
                                     </div>
                                 </div>
                             </div>
