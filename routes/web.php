@@ -63,8 +63,10 @@ Route::prefix('users')->group(function () {
 Route::prefix('staffs')->group(function () {
     Route::get('/', ['uses'=>'NhanSuController@index','as'=>'nhan_su.index']);
     Route::get('/add', ['uses'=>'NhanSuController@create','as'=>'nhan_su.add.get']);
+    Route::post('/add', ['uses'=>'NhanSuController@store','as'=>'nhan_su.add.post']);
 });
 
+// Ajax Routes...
 Route::prefix('ajax')->group(function () {
     Route::post('/dsBoPhanTheoPhongBan', ['uses'=>'BoPhanController@dsBoPhanTheoPhongBan','as'=>'dsBoPhanTheoPhongBan']);
 });

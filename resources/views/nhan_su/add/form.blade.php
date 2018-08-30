@@ -1,4 +1,4 @@
-<form action="#" method="post" id="form_sample_2" class="form-horizontal">
+<form action="{{ route('nhan_su.add.post') }}" method="post" id="form_sample_2" class="form-horizontal">
     @csrf
     <div class="tab-content">
         <!-- BEGIN TAB 1-->
@@ -12,8 +12,8 @@
                             </label>
                             <div class="col-md-7">
                                 <div class="input-icon right">
-                                    <i class="fa"></i>
-                                    <input type="text" class="form-control" name="ma_nv" /> </div>
+                                    <i class="fa fa-key"></i>
+                                    <input type="text" class="form-control" name="ma_nv" value="{{ old('ma_nv') }}" /> </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -22,8 +22,8 @@
                             </label>
                             <div class="col-md-7">
                                 <div class="input-icon right">
-                                    <i class="fa"></i>
-                                    <input type="text" class="form-control" name="ho_ten" /> </div>
+                                    <i class="fa fa-user"></i>
+                                    <input type="text" class="form-control" name="ho_ten" value="{{ old('ho_ten') }}" /> </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -32,7 +32,7 @@
                             </label>
                             <div class="col-md-7">
                                 <div class="input-icon right">
-                                    <i class="fa"></i>
+                                    <i class="fa fa-home"></i>
                                     <input type="text" class="form-control" name="dia_chi_thuong_tru" /> </div>
                             </div>
                         </div>
@@ -42,7 +42,7 @@
                             </label>
                             <div class="col-md-7">
                                 <div class="input-icon right">
-                                    <i class="fa"></i>
+                                    <i class="fa fa-home"></i>
                                     <input type="text" class="form-control" name="dia_chi_lien_lac" /> </div>
                             </div>
                         </div>
@@ -52,17 +52,15 @@
                             </label>
                             <div class="col-md-7">
                                 <div class="input-icon right">
-                                    <i class="fa"></i>
+                                    <i class="fa fa-phone"></i>
                                     <input type="text" class="form-control" name="dien_thoai" /> </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-4">Email
-                                <span class="required"> * </span>
-                            </label>
+                            <label class="control-label col-md-4">Email</label>
                             <div class="col-md-7">
                                 <div class="input-icon right">
-                                    <i class="fa"></i>
+                                    <i class="fa fa-envelope"></i>
                                     <input type="text" class="form-control" name="email" /> </div>
                             </div>
                         </div>
@@ -171,7 +169,7 @@
                             <div class="col-md-7">
                                 <div class="input-icon right">
                                     <i class="fa"></i>
-                                    <input type="text" class="form-control" name="truong_tot_nghiep" /> </div>
+                                    <input type="text" class="form-control" name="nam_tot_nghiep" /> </div>
                             </div>
                         </div>
                     </div>
@@ -193,7 +191,7 @@
                                     <i class="fa fa"></i>
                                     <select class="form-control" name="phongban_id">
                                         <option value="0">-------- Chọn Phòng / Ban --------</option>
-                                        @if($ds_phong_ban)
+                                        @if($ds_phong_ban->count()>0)
                                             @foreach($ds_phong_ban as $v)
                                             <option value="{{ $v->id }}">{{ $v->ten }}</option>
                                             @endforeach
@@ -230,22 +228,14 @@
             <div class="form-body">
                     <div class="form-group">
                         <div class="input-group col-md-12">
+                            @if($ds_ho_so->count()>0)
                             <div class="icheck-inline">
+                                @foreach($ds_ho_so as $v)
                                 <label class="col-md-3" style="margin: 0 0 10px 0;">
-                                    <input data-checkbox="icheckbox_minimal-blue" type="checkbox" class="icheck"> Checkbox 1 </label>
-                                <label class="col-md-3" style="margin: 0 0 10px 0;">
-                                    <input data-checkbox="icheckbox_minimal-blue" type="checkbox" checked class="icheck"> Checkbox 2 </label>
-                                <label class="col-md-3" style="margin: 0 0 10px 0;">
-                                    <input data-checkbox="icheckbox_minimal-blue" type="checkbox" class="icheck"> Checkbox 3 </label>
-                                <label class="col-md-3" style="margin: 0 0 10px 0;">
-                                    <input data-checkbox="icheckbox_minimal-blue" type="checkbox" class="icheck"> Checkbox 4 </label>
-                                <label class="col-md-3" style="margin: 0 0 10px 0;">
-                                    <input data-checkbox="icheckbox_minimal-blue" type="checkbox" class="icheck"> Checkbox 4 </label>
-                                <label class="col-md-3" style="margin: 0 0 10px 0;">
-                                    <input data-checkbox="icheckbox_minimal-blue" type="checkbox" class="icheck"> Checkbox 4 </label>
-                                <label class="col-md-3" style="margin: 0 0 10px 0;">
-                                    <input data-checkbox="icheckbox_minimal-blue" type="checkbox" class="icheck"> Checkbox 4 </label>
+                                    <input type="checkbox" name="hoso_id[]" value="{{ $v->id }}" data-checkbox="icheckbox_minimal-blue" type="checkbox" class="icheck"> {{ $v->ten }} </label>
+                                @endforeach
                             </div>
+                            @endif
                         </div>
                     </div>
                 </div>

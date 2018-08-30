@@ -15,6 +15,7 @@ class CreateHoSosTable extends Migration
     {
         Schema::create('ho_sos', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('ten');
             $table->timestamps();
         });
     }
