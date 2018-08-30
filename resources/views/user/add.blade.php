@@ -52,7 +52,7 @@
                                 <div class="form-group form-md-line-input form-md-floating-label">
                                     <div class="input-group">
                                         <input type="text" class="form-control" name="name" value="{{ old('name') }}">
-                                        <label for="form_control_1">Họ tên <span>(*)</span></label>
+                                        <label for="form_control_1">Họ tên <span class="required"> * </span></label>
                                         <span class="input-group-addon">
                                             <i class="fa fa-user"></i>
                                         </span>
@@ -61,7 +61,7 @@
                                 <div class="form-group form-md-line-input form-md-floating-label">
                                     <div class="input-group">
                                         <input type="text" class="form-control" name="email" value="{{ old('email') }}">
-                                        <label for="form_control_1">Email (*)</label>
+                                        <label for="form_control_1">Email <span class="required"> * </span></label>
                                         <span class="input-group-addon">
                                             <i class="fa fa-envelope"></i>
                                         </span>
@@ -70,7 +70,7 @@
                                 <div class="form-group form-md-line-input form-md-floating-label">
                                     <div class="input-group">
                                         <input type="password" class="form-control" name="password" value="{{ old('password') }}">
-                                        <label for="form_control_1">Mật khẩu (*)</label>
+                                        <label for="form_control_1">Mật khẩu <span class="required"> * </span></label>
                                         <!-- <span id="name-error" class="help-block help-block-error">Để trống để giữ nguyên.</span> -->
                                         <span class="input-group-addon">
                                             <i class="fa fa-key"></i>

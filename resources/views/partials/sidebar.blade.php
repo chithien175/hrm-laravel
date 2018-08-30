@@ -48,27 +48,27 @@
                 </a>
             </li>
             <li class="heading">
-                <h3 class="uppercase">Quản trị cơ bản</h3>
+                <h3 class="uppercase">Cơ bản</h3>
             </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link nav-toggle">
+            <li class="nav-item {{ Route::getCurrentRoute()->getPrefix() == '/staffs' ? 'active open' : '' }}"">
+                <a href="{{ route('nhan_su.index') }}" class="nav-link nav-toggle">
                     <i class="fa fa-users"></i>
-                    <span class="title">QL Nhân Sự</span>
+                    <span class="title">Nhân Sự Công Ty</span>
                 </a>
             </li>
             @can('superadmin')
             <li class="heading">
-                <h3 class="uppercase">Quản trị nâng cao</h3>
+                <h3 class="uppercase">Nâng cao</h3>
             </li>
             <li class="nav-item {{ Route::getCurrentRoute()->getPrefix() == '/users' ? 'active open' : '' }}">
                 <a href="{{ route('user.index') }}" class="nav-link nav-toggle">
                     <i class="icon-users"></i>
-                    <span class="title">QL Người Dùng</span>
+                    <span class="title">Người Dùng Phần Mềm</span>
                 </a>
             </li>
             @endcan
             <li class="heading">
-                <h3 class="uppercase">Cấu Hình Ứng Dụng</h3>
+                <h3 class="uppercase">Cấu Hình</h3>
             </li>
             <li class="nav-item  ">
                 <a href="#" class="nav-link nav-toggle">

@@ -58,3 +58,13 @@ Route::prefix('users')->group(function () {
     Route::post('/edit', ['uses'=>'UserController@update','as'=>'user.edit.post']);
     Route::get('/delete/{id}', ['uses'=>'UserController@destroy','as'=>'user.delete.get']);
 });
+
+// Nhân Sự Routes...
+Route::prefix('staffs')->group(function () {
+    Route::get('/', ['uses'=>'NhanSuController@index','as'=>'nhan_su.index']);
+    Route::get('/add', ['uses'=>'NhanSuController@create','as'=>'nhan_su.add.get']);
+});
+
+Route::prefix('ajax')->group(function () {
+    Route::post('/dsBoPhanTheoPhongBan', ['uses'=>'BoPhanController@dsBoPhanTheoPhongBan','as'=>'dsBoPhanTheoPhongBan']);
+});

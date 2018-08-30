@@ -45,7 +45,22 @@
             @csrf
             <input type="hidden" name="id" value="{{ $user->id }}">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-4 text-center col-md-push-8">
+                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                        <div class="fileinput-new thumbnail" style="width: 200px; height: 200px;">
+                            <img src="<?php if(!empty($user->avatar))echo asset('uploads/avatars').'/'.$user->avatar; else echo 'http://www.placehold.it/200x200/EFEFEF/AAAAAA&amp;text=no+image'; ?>" alt="" />
+                        </div>
+                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 200px;"> </div>
+                        <div>
+                            <span class="btn default btn-file">
+                                <span class="fileinput-new"> Chọn ảnh </span>
+                                <span class="fileinput-exists"> Thay đổi </span>
+                                <input type="file" name="avatar"> </span>
+                            <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Hủy </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8 col-md-pull-4">
                     <!-- BEGIN VALIDATION STATES-->
                     <div class="portlet light portlet-fit portlet-form bordered">
                         <div class="portlet-body">
@@ -53,7 +68,7 @@
                                 <div class="form-group form-md-line-input form-md-floating-label">
                                     <div class="input-group">
                                         <input type="text" class="form-control" name="name" value="{{ $user->name }}">
-                                        <label for="form_control_1">Họ tên (*)</label>
+                                        <label for="form_control_1">Họ tên <span class="required"> * </span></label>
                                         <span class="input-group-addon">
                                             <i class="fa fa-user"></i>
                                         </span>
@@ -62,7 +77,7 @@
                                 <div class="form-group form-md-line-input form-md-floating-label">
                                     <div class="input-group">
                                         <input type="text" class="form-control" name="email" value="{{ $user->email }}">
-                                        <label for="form_control_1">Email (*)</label>
+                                        <label for="form_control_1">Email <span class="required"> * </span></label>
                                         <span class="input-group-addon">
                                             <i class="fa fa-envelope"></i>
                                         </span>
@@ -105,24 +120,9 @@
                     </div>
                     <!-- END VALIDATION STATES-->
                 </div>
-                <div class="col-md-4 text-center">
-                    <div class="fileinput fileinput-new" data-provides="fileinput">
-                        <div class="fileinput-new thumbnail" style="width: 200px; height: 200px;">
-                            <img src="<?php if(!empty($user->avatar))echo asset('uploads/avatars').'/'.$user->avatar; else echo 'http://www.placehold.it/200x200/EFEFEF/AAAAAA&amp;text=no+image'; ?>" alt="" />
-                        </div>
-                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 200px;"> </div>
-                        <div>
-                            <span class="btn default btn-file">
-                                <span class="fileinput-new"> Chọn ảnh </span>
-                                <span class="fileinput-exists"> Thay đổi </span>
-                                <input type="file" name="avatar"> </span>
-                            <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> Hủy </a>
-                        </div>
-                    </div>
-                </div>
             </div>
         </form>
-                        <!-- END FORM-->
+        <!-- END FORM-->
         <div class="clearfix"></div>
         <!-- END DASHBOARD STATS 1-->
     </div>
