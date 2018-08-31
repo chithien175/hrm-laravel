@@ -6,12 +6,11 @@
         <a href="#">
             <img src="{{ asset('/images/logo.png') }}" alt="HRM - Thinh Phong Co., Ltd" /> 
         </a>
-        <h3 style="color: #ff0000;">CÔNG TY TNHH THỊNH PHONG</h3>
-        <h3 style="color: #00ff66;">PHẦN MỀM QUẢN LÝ NHÂN SỰ</h3>
+        <h3 style="color: #00ff66;">PHẦN MỀM NHÂN SỰ</h3>
     </div>
     <!-- END LOGO -->
     <!-- BEGIN LOGIN -->
-    <div class="content">
+    <div class="content" style="margin-top: 0px;">
         <!-- BEGIN LOGIN FORM -->
         <form class="login-form" action="{{ route('login.post') }}" method="post">
             @csrf()
@@ -45,7 +44,7 @@
         </form>
         <!-- END LOGIN FORM -->
     </div>
-    <div class="copyright"> 2018 © HRM - Thinh Phong. </div>
+    <div class="copyright"> 2018 © <a href="http://thinhphongnt.vn" target="_blank">Công ty TNHH Thịnh Phong.</a></div>
     
     <!--[if lt IE 9]>
     <script src="../assets/global/plugins/respond.min.js"></script>

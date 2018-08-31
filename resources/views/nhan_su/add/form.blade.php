@@ -13,7 +13,7 @@
                             <div class="col-md-7">
                                 <div class="input-icon right">
                                     <i class="fa fa-key"></i>
-                                    <input type="text" class="form-control" name="ma_nv" value="{{ old('ma_nv') }}" /> </div>
+                                    <input type="text" class="form-control" name="ma_nv" value="{{ old('ma_nv') }}" required maxlength="20" /> </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -23,7 +23,7 @@
                             <div class="col-md-7">
                                 <div class="input-icon right">
                                     <i class="fa fa-user"></i>
-                                    <input type="text" class="form-control" name="ho_ten" value="{{ old('ho_ten') }}" /> </div>
+                                    <input type="text" class="form-control" name="ho_ten" value="{{ old('ho_ten') }}" required maxlength="191" /> </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -33,27 +33,25 @@
                             <div class="col-md-7">
                                 <div class="input-icon right">
                                     <i class="fa fa-home"></i>
-                                    <input type="text" class="form-control" name="dia_chi_thuong_tru" /> </div>
+                                    <input type="text" class="form-control" name="dia_chi_thuong_tru" required maxlength="191" value="{{ old('dia_chi_thuong_tru') }}" /> </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-4">Địa chỉ liên lạc
-                                <span class="required"> * </span>
+                            <label class="control-label col-md-4">Địa chỉ liên hệ
                             </label>
                             <div class="col-md-7">
                                 <div class="input-icon right">
                                     <i class="fa fa-home"></i>
-                                    <input type="text" class="form-control" name="dia_chi_lien_lac" /> </div>
+                                    <input type="text" class="form-control" name="dia_chi_lien_he" value="{{ old('dia_chi_lien_he') }}" /> </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-4">Điện thoại
-                                <span class="required"> * </span>
                             </label>
                             <div class="col-md-7">
                                 <div class="input-icon right">
                                     <i class="fa fa-phone"></i>
-                                    <input type="text" class="form-control" name="dien_thoai" /> </div>
+                                    <input type="text" class="form-control" name="dien_thoai" value="{{ old('dien_thoai') }}" /> </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -61,7 +59,7 @@
                             <div class="col-md-7">
                                 <div class="input-icon right">
                                     <i class="fa fa-envelope"></i>
-                                    <input type="text" class="form-control" name="email" /> </div>
+                                    <input type="email" class="form-control" name="email" value="{{ old('email') }}" /> </div>
                             </div>
                         </div>
                     </div>
@@ -72,14 +70,14 @@
                             <div class="col-md-7">
                                 <div class="md-radio-inline">
                                     <div class="md-radio">
-                                        <input type="radio" id="checkbox1" name="gioi_tinh" value="1" class="md-radiobtn" checked>
+                                        <input type="radio" id="checkbox1" name="gioi_tinh" value="1" class="md-radiobtn" <?php if(old('gioi_tinh')) echo old('gioi_tinh') == '1' ? 'checked' : ''; else echo 'checked'; ?>>
                                         <label for="checkbox1">
                                             <span class="inc"></span>
                                             <span class="check"></span>
                                             <span class="box"></span> Nam </label>
                                     </div>
                                     <div class="md-radio">
-                                        <input type="radio" id="checkbox2" name="gioi_tinh" value="0" class="md-radiobtn">
+                                        <input type="radio" id="checkbox2" name="gioi_tinh" value="0" class="md-radiobtn" <?php echo old('gioi_tinh') == '1' ? 'checked' : ''; ?>>
                                         <label for="checkbox2">
                                             <span class="inc"></span>
                                             <span class="check"></span>
@@ -93,7 +91,10 @@
                                 <span class="required"> * </span>
                             </label>
                             <div class="col-md-7">
-                                <input class="form-control" name="ngay_sinh" id="ngay_sinh" type="text" placeholder="dd/mm/yyyy" />
+                                <div class="input-icon right">
+                                    <i class="fa fa-calendar"></i>
+                                    <input class="form-control" name="ngay_sinh" id="ngay_sinh" type="text" placeholder="dd/mm/yyyy" required value="{{ old('ngay_sinh') }}" />
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -102,34 +103,37 @@
                             </label>
                             <div class="col-md-7">
                                 <div class="input-icon right">
-                                    <i class="fa"></i>
-                                    <input type="text" class="form-control" name="so_cmnd" /> </div>
+                                    <i class="fa fa-info"></i>
+                                    <input type="text" class="form-control" name="so_cmnd" required value="{{ old('so_cmnd') }}" /> </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-4">Ngày cấp CMND
-                                <span class="required"> * </span>
                             </label>
                             <div class="col-md-7">
-                                <input class="form-control" name="ngay_cap_cmnd" id="ngay_cap_cmnd" type="text" placeholder="dd/mm/yyyy" />
+                                <div class="input-icon right">
+                                    <i class="fa fa-calendar"></i>
+                                    <input class="form-control" name="ngay_cap_cmnd" id="ngay_cap_cmnd" type="text" placeholder="dd/mm/yyyy" value="{{ old('ngay_cap_cmnd') }}" />
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-4">Nơi cấp CMND
-                                <span class="required"> * </span>
                             </label>
                             <div class="col-md-7">
                                 <div class="input-icon right">
-                                    <i class="fa"></i>
-                                    <input type="text" class="form-control" name="noi_cap_cmnd" /> </div>
+                                    <i class="fa fa-location-arrow"></i>
+                                    <input type="text" class="form-control" name="noi_cap_cmnd" value="{{ old('noi_cap_cmnd') }}" /> </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-4">Ngày bắt đầu làm
-                                <span class="required"> * </span>
                             </label>
                             <div class="col-md-7">
-                                <input class="form-control" name="ngay_bat_dau_lam" id="ngay_bat_dau_lam" type="text" placeholder="dd/mm/yyyy" />
+                                <div class="input-icon right">
+                                    <i class="fa fa-calendar"></i>
+                                    <input class="form-control" name="ngay_bat_dau_lam" id="ngay_bat_dau_lam" type="text" placeholder="dd/mm/yyyy" value="{{ old('ngay_bat_dau_lam') }}" />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -144,44 +148,40 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label col-md-4">Trình độ
-                                <span class="required"> * </span>
                             </label>
                             <div class="col-md-7">
                                 <div class="input-icon right">
-                                    <i class="fa"></i>
-                                    <input type="text" class="form-control" name="trinh_do" /> </div>
+                                    <i class="fa fa-graduation-cap"></i>
+                                    <input type="text" class="form-control" name="trinh_do" value="{{ old('trinh_do') }}" /> </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-4">Trường tốt nghiệp
-                                <span class="required"> * </span>
                             </label>
                             <div class="col-md-7">
                                 <div class="input-icon right">
-                                    <i class="fa"></i>
-                                    <input type="text" class="form-control" name="truong_tot_nghiep" /> </div>
+                                    <i class="fa fa-institution"></i>
+                                    <input type="text" class="form-control" name="truong_tot_nghiep" value="{{ old('truong_tot_nghiep') }}" /> </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-4">Năm tốt nghiệp
-                                <span class="required"> * </span>
                             </label>
                             <div class="col-md-7">
                                 <div class="input-icon right">
-                                    <i class="fa"></i>
-                                    <input type="text" class="form-control" name="nam_tot_nghiep" /> </div>
+                                    <i class="fa fa-calendar-check-o"></i>
+                                    <input type="text" class="form-control" name="nam_tot_nghiep" value="{{ old('nam_tot_nghiep') }}" /> </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label col-md-4">Chức danh
-                                <span class="required"> * </span>
                             </label>
                             <div class="col-md-7">
                                 <div class="input-icon right">
-                                    <i class="fa"></i>
-                                    <input type="text" class="form-control" name="chuc_danh" /> </div>
+                                    <i class="fa fa-black-tie"></i>
+                                    <input type="text" class="form-control" name="chuc_danh" value="{{ old('chuc_danh') }}" /> </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -193,7 +193,7 @@
                                         <option value="0">-------- Chọn Phòng / Ban --------</option>
                                         @if($ds_phong_ban->count()>0)
                                             @foreach($ds_phong_ban as $v)
-                                            <option value="{{ $v->id }}">{{ $v->ten }}</option>
+                                            <option value="{{ $v->id }}" <?php echo (old('phongban_id') == $v->id) ? 'selected' : ''; ?>>{{ $v->ten }}</option>
                                             @endforeach
                                         @endif
                                     </select>
@@ -245,7 +245,7 @@
     <div class="form-actions">
         <div class="row">
             <div class="col-md-12">
-                <button type="submit" class="btn green"><i class="fa fa-plus"></i> Thêm mới</button>
+                <button type="submit" class="btn dark"><i class="fa fa-save"></i> Lưu</button>
             </div>
         </div>
     </div>

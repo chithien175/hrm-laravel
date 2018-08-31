@@ -82,13 +82,13 @@
 <script>
     $(document).ready(function()
     {
-        $("#ngay_sinh").inputmask("d/m/y", {
+        $("#ngay_sinh").inputmask("d-m-y", {
             autoUnmask: true
         });
-        $("#ngay_cap_cmnd").inputmask("d/m/y", {
+        $("#ngay_cap_cmnd").inputmask("d-m-y", {
             autoUnmask: true
         });
-        $("#ngay_bat_dau_lam").inputmask("d/m/y", {
+        $("#ngay_bat_dau_lam").inputmask("d-m-y", {
             autoUnmask: true
         });
 

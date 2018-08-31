@@ -90,7 +90,7 @@
                             <div class="form-actions">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <button type="submit" class="btn dark"><i class="fa fa-plus"></i> Thêm</button>
+                                        <button type="submit" class="btn dark"><i class="fa fa-save"></i> Lưu</button>
                                         <button type="reset" class="btn default"><i class="fa fa-refresh"></i> Làm lại
                                         </button>
                                     </div>

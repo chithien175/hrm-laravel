@@ -11,9 +11,6 @@ use Image;
 
 class UserController extends Controller
 {
-    public function __construct(){
-        $this->middleware(['auth', 'only_active_user','can:superadmin']);
-    }
 
     public function index(){
         $users = User::all();

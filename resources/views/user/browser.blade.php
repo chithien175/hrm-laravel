@@ -99,13 +99,12 @@
                                             if($v->role == 'user')
                                             echo 'font-blue';
                                             ?>"> {{ $v->role }} </td>
-                                        <td class="<?php 
-                                            if($v->active)
-                                            echo 'font-green-jungle'; 
-                                            if(!$v->active)
-                                            echo 'font-red';
-                                            ?>">
-                                            {{ ($v->active)?'Đang hoạt động':'Khóa' }}
+                                        <td>
+                                            @if($v->active)
+                                                <span class="label label-sm label-success"> Đang hoạt động </span>
+                                            @else
+                                                <span class="label label-sm label-danger"> Vô hiệu hóa </span>
+                                            @endif
                                         </td>
                                         <td>
                                             <a class="edit" href="{{ route('user.edit.get', $v->id) }}"> Sửa </a>

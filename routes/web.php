@@ -62,11 +62,12 @@ Route::prefix('users')->group(function () {
 // Nhân Sự Routes...
 Route::prefix('staffs')->group(function () {
     Route::get('/', ['uses'=>'NhanSuController@index','as'=>'nhan_su.index']);
+    Route::get('/{id}', ['uses'=>'NhanSuController@read','as'=>'nhan_su.read.get']);
     Route::get('/add', ['uses'=>'NhanSuController@create','as'=>'nhan_su.add.get']);
     Route::post('/add', ['uses'=>'NhanSuController@store','as'=>'nhan_su.add.post']);
 });
 
 // Ajax Routes...
 Route::prefix('ajax')->group(function () {
-    Route::post('/dsBoPhanTheoPhongBan', ['uses'=>'BoPhanController@dsBoPhanTheoPhongBan','as'=>'dsBoPhanTheoPhongBan']);
+    Route::post('/dsBoPhanTheoPhongBan', ['uses'=>'NhanSuController@dsBoPhanTheoPhongBan','as'=>'dsBoPhanTheoPhongBan']);
 });

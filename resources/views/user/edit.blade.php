@@ -104,7 +104,7 @@
                                 <div class="form-group form-md-line-input form-md-floating-label">
                                     <select class="form-control" name="active">
                                         <option value="1" {{ ($user->active)?'selected':'' }}>Đang hoạt động</option>
-                                        <option value="0" {{ (!$user->active)?'selected':'' }}>Khóa</option>
+                                        <option value="0" {{ (!$user->active)?'selected':'' }}>Vô hiệu hóa</option>
                                     </select>
                                     <label for="form_control_1">Trạng thái</label>
                                 </div>

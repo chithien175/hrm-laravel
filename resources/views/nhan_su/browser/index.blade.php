@@ -73,9 +73,11 @@
                             <thead>
                                 <tr>
                                     <th> STT</th>
-                                    <th> Họ Tên </th>
-                                    <th> Sửa</th>
-                                    <th> Xóa</th>
+                                    <th> Mã NV</th>
+                                    <th> Họ tên </th>
+                                    <th> Số ĐT </th>
+                                    <th> Trạng thái</th>
+                                    <th> Hành động</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -84,12 +86,32 @@
                                     @foreach( $ds_nhan_su as $v )
                                     <tr>
                                         <td> {{ $stt }} </td>
+                                        <td> <a href="{{ route('nhan_su.read.get', $v->id) }}">{{ $v->ma_nv }}</a> </td>
                                         <td> {{ $v->ho_ten }} </td>
-                                        <td>
-                                            <a class="edit" href="#"> Sửa </a>
+                                        <td> {{ $v->dien_thoai }} </td>
+                                        <td> 
+                                            @if( $v->trang_thai )
+                                            <span class="label label-sm label-success"> Đang làm việc </span>
+                                            @else
+                                            <span class="label label-sm label-danger"> Đã thôi việc </span>
+                                            @endif
                                         </td>
                                         <td>
-                                            <a class="delete" href="#" onclick="return confirm('Bạn có chắc chắn muốn xóa người dùng này không?');"> Xóa </a>
+                                            <div class="btn-group" style="position: relative; margin-top: 0px;">
+                                                <button class="btn btn-xs yellow-gold dropdown-toggle" type="button" data-toggle="dropdown"> Hành động
+                                                    <i class="fa fa-angle-down"></i>
+                                                </button>
+                                                <ul class="dropdown-menu pull-left" role="menu">
+                                                    <li>
+                                                        <a href="javascript:;">
+                                                            <i class="fa fa-edit"></i> Sửa </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="delete" href="#" onclick="return confirm('Bạn có chắc chắn muốn xóa người dùng này không?');">
+                                                            <i class="fa fa-trash"></i> Xóa </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </td>
                                     </tr>
                                     @php $stt++; @endphp
@@ -149,6 +171,8 @@
             "order": [
                 // [0, "asc"]
             ] // set first column as a default sort by asc
+
+            
         });
     });
 </script>
