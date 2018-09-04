@@ -62,9 +62,13 @@ Route::prefix('users')->group(function () {
 // Nhân Sự Routes...
 Route::prefix('staffs')->group(function () {
     Route::get('/', ['uses'=>'NhanSuController@index','as'=>'nhan_su.index']);
-    Route::get('/{id}', ['uses'=>'NhanSuController@read','as'=>'nhan_su.read.get']);
+    Route::get('/read/{id}', ['uses'=>'NhanSuController@read','as'=>'nhan_su.read.get']);
     Route::get('/add', ['uses'=>'NhanSuController@create','as'=>'nhan_su.add.get']);
     Route::post('/add', ['uses'=>'NhanSuController@store','as'=>'nhan_su.add.post']);
+    Route::get('/edit/{id}', ['uses' =>'NhanSuController@edit','as'=>'nhan_su.edit.get']);
+    Route::post('/edit/{id}', ['uses'=>'NhanSuController@update','as'=>'nhan_su.edit.post']);
+    Route::get('/delete/{id}', ['uses'=>'NhanSuController@destroy','as'=>'nhan_su.delete.get']);
+    
 });
 
 // Ajax Routes...

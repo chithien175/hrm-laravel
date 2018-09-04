@@ -46,13 +46,57 @@ class NhanSuController extends Controller
         ]);
         
         try{
-            $nhan_su = NhanSu::saveNhanSu($request->all());
+            $nhan_su = NhanSu::saveNhanSu(0, $request->all());
             Log::info('Người dùng ID:'.Auth::user()->id.' đã thêm nhân sự ID:'.$nhan_su->id.'-'.$nhan_su->ho_ten);
             return redirect()->route('nhan_su.index')->with('status_success', 'Tạo mới nhân sự thành công!');
         }
         catch(\Exception $e){
             Log::error($e);
             return redirect()->route('nhan_su.index')->with('status_error', 'Xảy ra lỗi khi thêm nhân sự!');
+        }
+    }
+
+    public function edit($id){
+
+        return view('nhan_su.edit.index', [
+            'nhan_su' => NhanSu::findOrFail($id), 
+            'ds_phong_ban' => PhongBan::all(),
+            'ds_ho_so' => HoSo::all()->pluck('ten','id')
+        ]);
+    }
+
+    public function update(Request $request, $id){
+        $request->validate([
+            'ma_nv'        => 'unique:nhan_sus,ma_nv,'.$id,
+            'so_cmnd'        => 'unique:nhan_sus,so_cmnd,'.$id
+        ],[
+            'ma_nv.unique' => '"Mã nhân viên" đã tồn tại',
+            'so_cmnd.unique' => '"Số CMND" đã tồn tại'
+        ]);
+
+        try{
+            $nhan_su = NhanSu::saveNhanSu($id, $request->all());
+            Log::info('Người dùng ID:'.Auth::user()->id.' đã sửa nhân sự ID:'.$nhan_su->id.'-'.$nhan_su->ho_ten);
+            return redirect()->route('nhan_su.index')->with('status_success', 'Chỉnh sửa nhân sự thành công!');
+        }
+        catch(\Exception $e){
+            Log::error($e);
+            return redirect()->route('nhan_su.index')->with('status_error', 'Xảy ra lỗi khi sửa nhân sự!');
+        }
+        
+    }
+
+    public function destroy($id){
+        $nhan_su = NhanSu::findOrFail($id);
+        $name = $nhan_su->ho_ten;
+        try{
+            $nhan_su->delete();
+            Log::info('Người dùng ID:'.Auth::user()->id.' đã xóa nhân sự id:'.$id.'-'.$name);
+            return redirect()->route('nhan_su.index')->with('status_success', 'Xóa nhân sự thành công!');
+        }
+        catch(\Exception $e){
+            Log::error($e);
+            return redirect()->route('nhan_su.index')->with('status_error', 'Xảy ra lỗi khi xóa nhân sự!');
         }
     }
 }

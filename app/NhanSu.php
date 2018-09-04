@@ -7,6 +7,8 @@ use Carbon\Carbon;
 
 class NhanSu extends Model
 {
+    public $timestamps = true;
+
     /**
      * Get the phongban for the nhansu.
      */
@@ -23,8 +25,12 @@ class NhanSu extends Model
         return $this->belongsTo('App\BoPhan', 'bophan_id');
     }
 
-    public static function saveNhanSu($data){
-        $nhan_su = new NhanSu;
+    public static function saveNhanSu($id, $data){
+        if($id == 0){
+            $nhan_su = new NhanSu;
+        }else{
+            $nhan_su = NhanSu::findOrFail($id);
+        }
         $nhan_su->ma_nv              = $data['ma_nv'];
         $nhan_su->ho_ten             = $data['ho_ten'];
         $nhan_su->dia_chi_thuong_tru = $data['dia_chi_thuong_tru'];
@@ -47,5 +53,20 @@ class NhanSu extends Model
         // dd($nhan_su);
         $nhan_su->save();
         return $nhan_su;
+    }
+
+    public function getNgaySinhAttribute($value)
+    {
+        return Carbon::parse($value)->format('d-m-Y');
+    }
+
+    public function getNgayCapCmndAttribute($value)
+    {
+        return Carbon::parse($value)->format('d-m-Y');
+    }
+
+    public function getNgayBatDauLamAttribute($value)
+    {
+        return Carbon::parse($value)->format('d-m-Y');
     }
 }
