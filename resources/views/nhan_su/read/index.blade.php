@@ -17,16 +17,19 @@
                 <li>
                     <a href="{{ route('dashboard') }}">Bảng Điều Khiển</a>
                     <i class="fa fa-circle"></i>
-                </li>
-                <li>
-                    <span>Thông tin nhân sự: {{ $nhan_su->ho_ten }}</span>
+                    <a href="{{ route('nhan_su.index') }}">Nhân Sự Công Ty</a>
                 </li>
             </ul>
         </div>
         <!-- END PAGE BAR -->
         <!-- BEGIN PAGE TITLE-->
         <h1 class="page-title">
-            <i class="fa fa-user"></i> Thông tin nhân sự: {{ $nhan_su->ho_ten }}
+            <i class="fa fa-user"></i> {{ $nhan_su->ma_nv }} - {{ $nhan_su->ho_ten }}
+            @if( $nhan_su->trang_thai )
+            <span class="label label-md label-success"> Đang làm </span>
+            @else
+            <span class="label label-md label-danger"> Thôi việc </span>
+            @endif
         </h1>
         <!-- END PAGE TITLE-->
         <!-- END PAGE HEADER-->
@@ -69,58 +72,58 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="row">
-                                                <label class="control-label col-md-4">Mã NV:</label>
-                                                <label class="control-label col-md-7">{{ $nhan_su->ma_nv }}</label>
+                                                <label class="control-label col-md-4 col-xs-6">Mã NV:</label>
+                                                <label class="control-label col-md-7 col-xs-6">{{ $nhan_su->ma_nv }}</label>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-4">Họ tên:</label>
-                                                <label class="control-label col-md-7">{{ $nhan_su->ho_ten }}</label>
+                                            <div class="row">
+                                                <label class="control-label col-md-4 col-xs-6">Họ tên:</label>
+                                                <label class="control-label col-md-7 col-xs-6">{{ $nhan_su->ho_ten }}</label>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-4">Địa chỉ thường trú:</label>
-                                                <label class="control-label col-md-7">{{ $nhan_su->dia_chi_thuong_tru }}</label>
+                                            <div class="row">
+                                                <label class="control-label col-md-4 col-xs-6">Địa chỉ thường trú:</label>
+                                                <label class="control-label col-md-7 col-xs-6">{{ $nhan_su->dia_chi_thuong_tru }}</label>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-4">Địa chỉ liên hệ:</label>
-                                                <label class="control-label col-md-7">{{ $nhan_su->dia_chi_lien_he }}</label>
+                                            <div class="row">
+                                                <label class="control-label col-md-4 col-xs-6">Địa chỉ liên hệ:</label>
+                                                <label class="control-label col-md-7 col-xs-6">{{ $nhan_su->dia_chi_lien_he }}</label>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-4">Điện thoại:</label>
-                                                <label class="control-label col-md-7">{{ $nhan_su->dien_thoai }}</label>
+                                            <div class="row">
+                                                <label class="control-label col-md-4 col-xs-6">Điện thoại:</label>
+                                                <label class="control-label col-md-7 col-xs-6">{{ $nhan_su->dien_thoai }}</label>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-4">Email:</label>
-                                                <label class="control-label col-md-7">{{ $nhan_su->email }}</label>
+                                            <div class="row">
+                                                <label class="control-label col-md-4 col-xs-6">Email:</label>
+                                                <label class="control-label col-md-7 col-xs-6">{{ $nhan_su->email }}</label>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="control-label col-md-4">Giới tính:</label>
+                                            <div class="row">
+                                                <label class="control-label col-md-4 col-xs-6">Giới tính:</label>
                                                 @if($nhan_su->gioi_tinh)
-                                                    <label class="control-label col-md-7">Nam</label>
+                                                    <label class="control-label col-md-7 col-xs-6">Nam</label>
                                                 @else
-                                                    <label class="control-label col-md-7">Nữ</label>
+                                                    <label class="control-label col-md-7 col-xs-6">Nữ</label>
                                                 @endif
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-4">Ngày sinh:</label>
-                                                <label class="control-label col-md-7">{{ (new \Carbon\Carbon($nhan_su->ngay_sinh))->format('d-m-Y') }}</label>
+                                            <div class="row">
+                                                <label class="control-label col-md-4 col-xs-6">Ngày sinh:</label>
+                                                <label class="control-label col-md-7 col-xs-6">{{ (new \Carbon\Carbon($nhan_su->ngay_sinh))->format('d-m-Y') }}</label>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-4">Số CMND:</label>
-                                                <label class="control-label col-md-7">{{ $nhan_su->so_cmnd }}</label>
+                                            <div class="row">
+                                                <label class="control-label col-md-4 col-xs-6">Số CMND:</label>
+                                                <label class="control-label col-md-7 col-xs-6">{{ $nhan_su->so_cmnd }}</label>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-4">Ngày cấp CMND:</label>
-                                                <label class="control-label col-md-7">{{ (new \Carbon\Carbon($nhan_su->ngay_cap_cmnd))->format('d-m-Y') }}</label>
+                                            <div class="row">
+                                                <label class="control-label col-md-4 col-xs-6">Ngày cấp CMND:</label>
+                                                <label class="control-label col-md-7 col-xs-6">{{ (new \Carbon\Carbon($nhan_su->ngay_cap_cmnd))->format('d-m-Y') }}</label>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-4">Nơi cấp CMND:</label>
-                                                <label class="control-label col-md-7">{{ $nhan_su->noi_cap_cmnd }}</label>
+                                            <div class="row">
+                                                <label class="control-label col-md-4 col-xs-6">Nơi cấp CMND:</label>
+                                                <label class="control-label col-md-7 col-xs-6">{{ $nhan_su->noi_cap_cmnd }}</label>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-4">Ngày bắt đầu làm:</label>
-                                                <label class="control-label col-md-7">{{ (new \Carbon\Carbon($nhan_su->ngay_bat_dau_lam))->format('d-m-Y') }}</label>
+                                            <div class="row">
+                                                <label class="control-label col-md-4 col-xs-6">Ngày bắt đầu làm:</label>
+                                                <label class="control-label col-md-7 col-xs-6">{{ (new \Carbon\Carbon($nhan_su->ngay_bat_dau_lam))->format('d-m-Y') }}</label>
                                             </div>
                                         </div>
                                     </div>
@@ -132,31 +135,31 @@
                                 <div class="form-body">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="control-label col-md-4">Trình độ:</label>
-                                                <label class="control-label col-md-7">{{ $nhan_su->trinh_do }}</label>
+                                            <div class="row">
+                                                <label class="control-label col-md-4 col-xs-6">Trình độ:</label>
+                                                <label class="control-label col-md-7 col-xs-6">{{ $nhan_su->trinh_do }}</label>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-4">Trường tốt nghiệp:</label>
-                                                <label class="control-label col-md-7">{{ $nhan_su->truong_tot_nghiep }}</label>
+                                            <div class="row">
+                                                <label class="control-label col-md-4 col-xs-6">Trường tốt nghiệp:</label>
+                                                <label class="control-label col-md-7 col-xs-6">{{ $nhan_su->truong_tot_nghiep }}</label>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-4">Năm tốt nghiệp:</label>
-                                                <label class="control-label col-md-7">{{ $nhan_su->nam_tot_nghiep }}</label>
+                                            <div class="row">
+                                                <label class="control-label col-md-4 col-xs-6">Năm tốt nghiệp:</label>
+                                                <label class="control-label col-md-7 col-xs-6">{{ $nhan_su->nam_tot_nghiep }}</label>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="control-label col-md-4">Chức danh:</label>
-                                                <label class="control-label col-md-7">{{ $nhan_su->chuc_danh }}</label>
+                                            <div class="row">
+                                                <label class="control-label col-md-4 col-xs-6">Chức danh:</label>
+                                                <label class="control-label col-md-7 col-xs-6">{{ $nhan_su->chuc_danh }}</label>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-4">Phòng ban:</label>
-                                                <label class="control-label col-md-7">{{ $nhan_su->phongbans->ten }}</label>
+                                            <div class="row">
+                                                <label class="control-label col-md-4 col-xs-6">Phòng ban:</label>
+                                                <label class="control-label col-md-7 col-xs-6">{{ $nhan_su->phongbans->ten }}</label>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="control-label col-md-4">Bộ phận:</label>
-                                                <label class="control-label col-md-7">{{ $nhan_su->bophans->ten }}</label>
+                                            <div class="row">
+                                                <label class="control-label col-md-4 col-xs-6">Bộ phận:</label>
+                                                <label class="control-label col-md-7 col-xs-6">{{ $nhan_su->bophans->ten }}</label>
                                             </div>
                                         </div>
                                     </div>
@@ -179,13 +182,13 @@
                                             $ho_so = json_decode($nhan_su->hoso_id);
                                             $ds_ho_so = App\HoSo::all()->pluck('ten','id');
                                         @endphp
-                                        <div class="form-group">
+                                        <div class="row">
                                             <div class="input-group col-md-12">
                                                 @foreach($ds_ho_so as $k => $v)
                                                     @if(in_array($k, $ho_so))
-                                                    <label class="control-label col-md-4"><i class="glyphicon glyphicon-ok-sign font-green"></i> {{ $v }}</label>
+                                                    <label class="control-label col-md-3 col-xs-6"><i class="glyphicon glyphicon-ok-sign font-green"></i> {{ $v }}</label>
                                                     @else
-                                                    <label class="control-label col-md-4 font-grey-steel"><i class="glyphicon glyphicon-remove-sign font-yellow-casablanca"></i> {{ $v }}</label>
+                                                    <label class="control-label col-md-3 col-xs-6 font-grey-steel"><i class="glyphicon glyphicon-remove-sign font-yellow-casablanca"></i> {{ $v }}</label>
                                                     @endif
                                                 @endforeach
                                             </div>

@@ -30,6 +30,7 @@ class NhanSu extends Model
             $nhan_su = new NhanSu;
         }else{
             $nhan_su = NhanSu::findOrFail($id);
+            $nhan_su->trang_thai     = $data['trang_thai'];
         }
         $nhan_su->ma_nv              = $data['ma_nv'];
         $nhan_su->ho_ten             = $data['ho_ten'];

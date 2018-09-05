@@ -68,8 +68,8 @@
             <li class="heading">
                 <h3 class="uppercase">Cấu Hình</h3>
             </li>
-            <li class="nav-item  ">
-                <a href="#" class="nav-link nav-toggle">
+            <li class="nav-item {{ Route::getCurrentRoute()->getPrefix() == '/company' ? 'active open' : '' }}">
+                <a href="{{ route('company.index') }}" class="nav-link nav-toggle">
                     <i class="fa fa-building-o"></i>
                     <span class="title">Thông Tin Công Ty</span>
                 </a>

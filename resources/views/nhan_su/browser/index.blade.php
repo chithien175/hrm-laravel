@@ -26,6 +26,7 @@
         <!-- END PAGE BAR -->
         <!-- BEGIN PAGE TITLE-->
         <h1 class="page-title">
+            <i class="fa fa-list-ul"></i>
             Danh Sách Nhân Sự
         </h1>
 
@@ -93,9 +94,9 @@
                                         <td> {{ $v->dien_thoai }} </td>
                                         <td> 
                                             @if( $v->trang_thai )
-                                            <span class="label label-sm label-success" style="font-size: 12px;"> Đang làm việc </span>
+                                            <span class="label label-sm label-success" style="font-size: 12px;"> Đang làm </span>
                                             @else
-                                            <span class="label label-sm label-danger" style="font-size: 12px;"> Đã thôi việc </span>
+                                            <span class="label label-sm label-danger" style="font-size: 12px;"> Thôi việc </span>
                                             @endif
                                         </td>
                                         <td>

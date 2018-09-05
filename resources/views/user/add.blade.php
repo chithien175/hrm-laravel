@@ -27,6 +27,7 @@
         <!-- END PAGE BAR -->
         <!-- BEGIN PAGE TITLE-->
         <h1 class="page-title">
+            <i class="fa fa-plus"></i>
             Thêm Người Dùng
         </h1>
         <!-- END PAGE TITLE-->

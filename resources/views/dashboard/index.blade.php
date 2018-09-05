@@ -30,9 +30,9 @@
                     </div>
                     <div class="details">
                         <div class="number">
-                            <span data-counter="counterup" data-value="1349">0</span>
+                            <span data-counter="counterup" data-value="{{ getTotalOfNumberStaff(1) }}">0</span>
                         </div>
-                        <div class="desc"> Nhân Sự </div>
+                        <div class="desc"> Nhân Sự (Đang làm) </div>
                     </div>
                 </a>
             </div>

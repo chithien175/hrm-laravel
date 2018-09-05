@@ -241,7 +241,7 @@
                             @if($ds_ho_so->count()>0)
                             <div class="icheck-inline">
                                 @foreach($ds_ho_so as $v)
-                                <label class="col-md-3" style="margin: 0 0 10px 0;">
+                                <label class="col-md-3 col-xs-6" style="margin: 0 0 10px 0;">
                                     <input type="checkbox" name="hoso_id[]" value="{{ $v->id }}" data-checkbox="icheckbox_minimal-blue" type="checkbox" class="icheck"> {{ $v->ten }} </label>
                                 @endforeach
                             </div>

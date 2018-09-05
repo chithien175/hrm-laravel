@@ -17,16 +17,19 @@
                 <li>
                     <a href="{{ route('dashboard') }}">Bảng Điều Khiển</a>
                     <i class="fa fa-circle"></i>
-                </li>
-                <li>
-                    <span>Sửa Nhân Sự</span>
+                    <a href="{{ route('nhan_su.index') }}">Nhân Sự Công Ty</a>
                 </li>
             </ul>
         </div>
         <!-- END PAGE BAR -->
         <!-- BEGIN PAGE TITLE-->
         <h1 class="page-title">
-            <i class="fa fa-edit"></i> Sửa Nhân Sự
+            <i class="fa fa-edit"></i> Chỉnh sửa - {{ $nhan_su->ho_ten }}
+            @if( $nhan_su->trang_thai )
+            <span class="label label-md label-success"> Đang làm </span>
+            @else
+            <span class="label label-md label-danger"> Thôi việc </span>
+            @endif
         </h1>
         <!-- END PAGE TITLE-->
         <!-- END PAGE HEADER-->

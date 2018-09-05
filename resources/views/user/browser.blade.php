@@ -27,6 +27,7 @@
         <!-- END PAGE BAR -->
         <!-- BEGIN PAGE TITLE-->
         <h1 class="page-title">
+            <i class="fa fa-list-ul"></i>
             Danh Sách Người Dùng
         </h1>
 

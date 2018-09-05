@@ -136,6 +136,18 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-4">Trạng thái</label>
+                            <div class="col-md-7">
+                                <div class="input-icon right">
+                                    <i class="fa fa"></i>
+                                    <select class="form-control" name="trang_thai">
+                                        <option value="1" {{ ($nhan_su->trang_thai == 1) ? 'selected' : ''}}>Đang làm</option>
+                                        <option value="0" {{ ($nhan_su->trang_thai == 0) ? 'selected' : ''}}>Thôi việc</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -247,7 +259,7 @@
                             @endphp
                             <div class="icheck-inline">
                                 @foreach($ds_ho_so as $k => $v)
-                                <label class="col-md-3" style="margin: 0 0 10px 0;">
+                                <label class="col-md-3 col-xs-6" style="margin: 0 0 10px 0;">
                                     <input type="checkbox" name="hoso_id[]" value="{{ $k }}" data-checkbox="icheckbox_minimal-blue" type="checkbox" class="icheck" {{ (in_array($k, $ho_so))?"checked":"" }}> {{ $v }} </label>
                                 @endforeach
                             </div>

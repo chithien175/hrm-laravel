@@ -17,9 +17,7 @@
                 <li>
                     <a href="{{ route('dashboard') }}">Bảng Điều Khiển</a>
                     <i class="fa fa-circle"></i>
-                </li>
-                <li>
-                    <span>Thêm Nhân Sự</span>
+                    <a href="{{ route('nhan_su.index') }}">Nhân Sự Công Ty</a>
                 </li>
             </ul>
         </div>
