@@ -72,7 +72,9 @@ Route::prefix('staffs')->middleware('auth')->group(function () {
 
 // Nhân Sự Routes...
 Route::prefix('company')->middleware('auth')->group(function () {
+    Route::get('/init', ['uses'=>'CompanyController@init','as'=>'company.init']);
     Route::get('/', ['uses'=>'CompanyController@index','as'=>'company.index']);
+    Route::post('/update', ['uses'=>'CompanyController@update','as'=>'company.update']);
 });
 
 // Ajax Routes...

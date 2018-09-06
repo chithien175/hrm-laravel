@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', 'Danh sách nhân sự')
+
 @section('style')
     <link href="{{ asset('assets/global/plugins/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection()
@@ -76,6 +78,7 @@
                                     <th> STT</th>
                                     <th> Mã NV</th>
                                     <th> Họ tên </th>
+                                    <th> Vào làm</th>
                                     <th> Số ĐT </th>
                                     <th> Trạng thái</th>
                                     <th> Hành động</th>
@@ -91,6 +94,7 @@
                                             <a href="{{ route('nhan_su.read.get', $v->id) }}">{{ $v->ma_nv }}</a> 
                                         </td>
                                         <td> <a href="{{ route('nhan_su.read.get', $v->id) }}">{{ $v->ho_ten }}</a>  </td>
+                                        <td> {{ $v->ngay_bat_dau_lam }} </td>
                                         <td> {{ $v->dien_thoai }} </td>
                                         <td> 
                                             @if( $v->trang_thai )

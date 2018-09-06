@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', 'Chỉnh sửa người dùng')
+
 @section('style')
     <link href="{{ asset('assets/global/plugins/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css') }}" rel="stylesheet" type="text/css" />
@@ -113,7 +115,7 @@
                             <div class="form-actions">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <button type="submit" class="btn dark"><i class="fa fa-save"></i> Lưu</button>
+                                        <button type="submit" class="btn green"><i class="fa fa-save"></i> Lưu</button>
                                     </div>
                                 </div>
                             </div>

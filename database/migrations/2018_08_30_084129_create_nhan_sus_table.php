@@ -16,7 +16,7 @@ class CreateNhanSusTable extends Migration
         Schema::create('nhan_sus', function (Blueprint $table) {
             $table->increments('id');
             $table->string('ma_nv')->unique();
-            $table->string('ho_ten')->index();
+            $table->string('ho_ten');
             $table->boolean('gioi_tinh')->default(true);
             $table->datetime('ngay_sinh');
             $table->string('so_cmnd')->unique();

@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', 'Danh sách người dùng')
+
 @section('style')
     <link href="{{ asset('assets/global/plugins/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- <link href="{{ asset('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') }}" rel="stylesheet" type="text/css" /> -->
@@ -102,7 +104,7 @@
                                             ?>"> {{ $v->role }} </td>
                                         <td>
                                             @if($v->active)
-                                                <span class="label label-sm label-success"> Đang hoạt động </span>
+                                                <span class="label label-sm label-success"> Kích hoạt </span>
                                             @else
                                                 <span class="label label-sm label-danger"> Vô hiệu hóa </span>
                                             @endif

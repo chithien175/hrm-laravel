@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', 'Bảng điều khiển')
+
 @section('content')
 <!-- BEGIN CONTENT -->
 <div class="page-content-wrapper">
@@ -24,7 +26,7 @@
         <!-- BEGIN DASHBOARD STATS 1-->
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <a class="dashboard-stat dashboard-stat-v2 blue" href="#">
+                <a class="dashboard-stat dashboard-stat-v2 blue" href="{{ route('nhan_su.index') }}">
                     <div class="visual">
                         <i class="fa fa-comments"></i>
                     </div>
@@ -32,7 +34,7 @@
                         <div class="number">
                             <span data-counter="counterup" data-value="{{ getTotalOfNumberStaff(1) }}">0</span>
                         </div>
-                        <div class="desc"> Nhân Sự (Đang làm) </div>
+                        <div class="desc"> Nhân Sự Công Ty </div>
                     </div>
                 </a>
             </div>

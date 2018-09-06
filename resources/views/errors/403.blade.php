@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', 'Thông báo lỗi')
+
 @section('style')
    
 @endsection()

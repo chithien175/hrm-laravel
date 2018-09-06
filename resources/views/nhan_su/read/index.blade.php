@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', 'Thông tin nhân sự')
+
 @section('style')
     <!-- <link href="{{ asset('assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}" rel="stylesheet" type="text/css" /> -->
     <link href="{{ asset('assets/global/plugins/icheck/skins/all.css') }}" rel="stylesheet" type="text/css" />

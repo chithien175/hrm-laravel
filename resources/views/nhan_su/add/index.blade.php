@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', 'Thêm mới nhân sự')
+
 @section('style')
     <!-- <link href="{{ asset('assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}" rel="stylesheet" type="text/css" /> -->
     <link href="{{ asset('assets/global/plugins/icheck/skins/all.css') }}" rel="stylesheet" type="text/css" />
@@ -39,32 +41,32 @@
         @endif
         <div class="row">
             <div class="col-md-12">
-                    <div class="tabbable tabbable-tabdrop">
-                        <ul class="nav nav-pills">
-                            <li class="active">
-                                <a href="#tab1" data-toggle="tab">Thông tin cá nhân</a>
-                            </li>
-                            <li>
-                                <a href="#tab2" data-toggle="tab">Thông tin trình độ</a>
-                            </li>
-                            <li>
-                                <a href="#tab3" data-toggle="tab">Thông tin lương</a>
-                            </li>
-                            <li>
-                                <a href="#tab4" data-toggle="tab">Thông tin hợp đồng</a>
-                            </li>
-                            <li>
-                                <a href="#tab5" data-toggle="tab">Thông tin hồ sơ</a>
-                            </li>
-                        </ul>
-                        <!-- BEGIN VALIDATION STATES-->
-                        <div class="portlet light portlet-fit portlet-form bordered" id="form_wizard_1">
-                            <!-- BEGIN FORM-->
-                            @include('nhan_su.add.form')
-                            <!-- END FORM-->
-                        </div>
-                        <!-- END VALIDATION STATES-->
+                <div class="tabbable tabbable-tabdrop">
+                    <ul class="nav nav-pills">
+                        <li class="active">
+                            <a href="#tab1" data-toggle="tab">Thông tin cá nhân</a>
+                        </li>
+                        <li>
+                            <a href="#tab2" data-toggle="tab">Thông tin trình độ</a>
+                        </li>
+                        <li>
+                            <a href="#tab3" data-toggle="tab">Thông tin lương</a>
+                        </li>
+                        <li>
+                            <a href="#tab4" data-toggle="tab">Thông tin hợp đồng</a>
+                        </li>
+                        <li>
+                            <a href="#tab5" data-toggle="tab">Thông tin hồ sơ</a>
+                        </li>
+                    </ul>
+                    <!-- BEGIN VALIDATION STATES-->
+                    <div class="portlet light portlet-fit portlet-form bordered" id="form_wizard_1">
+                        <!-- BEGIN FORM-->
+                        @include('nhan_su.add.form')
+                        <!-- END FORM-->
                     </div>
+                    <!-- END VALIDATION STATES-->
+                </div>
             </div>
         </div>
         <div class="clearfix"></div>

@@ -1,5 +1,7 @@
 @extends('layouts.login')
 
+@section('title', 'Đăng nhập hệ thống')
+
 @section('content')
     <!-- BEGIN LOGO -->
     <div class="logo">

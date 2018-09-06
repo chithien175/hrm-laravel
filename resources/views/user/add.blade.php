@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', 'Thêm mới người dùng')
+
 @section('style')
     <link href="{{ asset('assets/global/plugins/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
     
@@ -91,7 +93,7 @@
                             <div class="form-actions">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <button type="submit" class="btn dark"><i class="fa fa-save"></i> Lưu</button>
+                                        <button type="submit" class="btn green"><i class="fa fa-save"></i> Lưu</button>
                                         <button type="reset" class="btn default"><i class="fa fa-refresh"></i> Làm lại
                                         </button>
                                     </div>
