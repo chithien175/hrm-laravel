@@ -80,4 +80,5 @@ Route::prefix('company')->middleware('auth')->group(function () {
 // Ajax Routes...
 Route::prefix('ajax')->middleware('auth')->group(function () {
     Route::post('/dsBoPhanTheoPhongBan', ['uses'=>'NhanSuController@dsBoPhanTheoPhongBan','as'=>'dsBoPhanTheoPhongBan']);
+    Route::post('/postThemHopDong', ['uses'=>'NhanSuController@postThemHopDong','as'=>'postThemHopDong']);
 });

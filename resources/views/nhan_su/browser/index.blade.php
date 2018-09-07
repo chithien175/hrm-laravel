@@ -47,14 +47,14 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="btn-group">
-                                        <a id="sample_editable_1_new" class="btn green" href="{{ route('nhan_su.add.get') }}"> Thêm mới
-                                            <i class="fa fa-plus"></i>
+                                        <a id="sample_editable_1_new" class="btn green" href="{{ route('nhan_su.add.get') }}"><i class="fa fa-plus"></i> Thêm mới
+                                            
                                         </a>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="btn-group pull-right">
-                                        <button class="btn green btn-outline dropdown-toggle" data-toggle="dropdown">Công cụ
+                                        <button class="btn green btn-outline dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog"></i> Công cụ
                                             <i class="fa fa-angle-down"></i>
                                         </button>
                                         <ul class="dropdown-menu pull-right">
@@ -166,13 +166,11 @@
             "order": [
                 // [0, "asc"]
             ] // set first column as a default sort by asc
-
-            
         });
     });
 </script>
 
-<script src="{{ asset('assets/global/scripts/datatable.js') }}" type="text/javascript"></script>
+<!-- <script src="{{ asset('assets/global/scripts/datatable.js') }}" type="text/javascript"></script> -->
 <script src="{{ asset('assets/global/plugins/datatables/datatables.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') }}" type="text/javascript"></script>
 @endsection

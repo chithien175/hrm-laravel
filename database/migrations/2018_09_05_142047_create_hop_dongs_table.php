@@ -19,8 +19,9 @@ class CreateHopDongsTable extends Migration
             $table->string('ma_hd')->unique();
             $table->string('ten');
             $table->integer('loaihopdong_id')->default(0);
-            $table->string('ngay_bat_dau');
-            $table->string('ngay_ket_thuc');
+            $table->datetime('ngay_ky');
+            $table->datetime('ngay_co_hieu_luc');
+            $table->datetime('ngay_het_hieu_luc');
             $table->string('luong_can_ban');
             $table->string('luong_tro_cap');
             $table->string('luong_hieu_qua');

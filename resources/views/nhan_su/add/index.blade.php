@@ -44,23 +44,23 @@
                 <div class="tabbable tabbable-tabdrop">
                     <ul class="nav nav-pills">
                         <li class="active">
-                            <a href="#tab1" data-toggle="tab">Thông tin cá nhân</a>
+                            <a href="#tab1" data-toggle="tab">Thông tin</a>
                         </li>
                         <li>
-                            <a href="#tab2" data-toggle="tab">Thông tin trình độ</a>
+                            <a href="#tab2" data-toggle="tab">Trình độ</a>
                         </li>
                         <li>
-                            <a href="#tab3" data-toggle="tab">Thông tin lương</a>
+                            <a href="#tab3" data-toggle="tab">QĐ lương</a>
                         </li>
                         <li>
-                            <a href="#tab4" data-toggle="tab">Thông tin hợp đồng</a>
+                            <a href="#tab4" data-toggle="tab">HĐLĐ</a>
                         </li>
                         <li>
-                            <a href="#tab5" data-toggle="tab">Thông tin hồ sơ</a>
+                            <a href="#tab5" data-toggle="tab">Hồ sơ</a>
                         </li>
                     </ul>
                     <!-- BEGIN VALIDATION STATES-->
-                    <div class="portlet light portlet-fit portlet-form bordered" id="form_wizard_1">
+                    <div class="portlet light portlet-fit portlet-form" id="form_wizard_1">
                         <!-- BEGIN FORM-->
                         @include('nhan_su.add.form')
                         <!-- END FORM-->
@@ -83,13 +83,13 @@
     $(document).ready(function()
     {
         $("#ngay_sinh").inputmask("d-m-y", {
-            autoUnmask: true
+            // autoUnmask: true
         });
         $("#ngay_cap_cmnd").inputmask("d-m-y", {
-            autoUnmask: true
+            // autoUnmask: true
         });
         $("#ngay_bat_dau_lam").inputmask("d-m-y", {
-            autoUnmask: true
+            // autoUnmask: true
         });
 
         var url = "{{ route('dsBoPhanTheoPhongBan') }}";

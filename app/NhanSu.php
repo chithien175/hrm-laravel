@@ -50,7 +50,10 @@ class NhanSu extends Model
         $nhan_su->chuc_danh          = $data['chuc_danh'];
         $nhan_su->phongban_id        = $data['phongban_id'];
         $nhan_su->bophan_id          = $data['bophan_id'];
-        $nhan_su->hoso_id            = json_encode($data['hoso_id']);
+        if(!empty($data['hoso_id'])){
+            $nhan_su->hoso_id        = json_encode($data['hoso_id']);
+        }
+        
         // dd($nhan_su);
         $nhan_su->save();
         return $nhan_su;

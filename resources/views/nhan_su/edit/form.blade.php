@@ -219,7 +219,7 @@
                                 <div class="input-icon right">
                                     <select class="form-control" name="bophan_id">
                                         <option value="0">-------- Chọn Bộ phận --------</option>
-                                        @foreach(App\BoPhan::getById($nhan_su->phongban_id)->get() as $v)
+                                        @foreach(App\BoPhan::getByPhongBanId($nhan_su->phongban_id)->get() as $v)
                                             <option value="{{ $v->id }}" {{ ($nhan_su->bophan_id == $v->id)?"selected":"" }}>{{ $v->ten }}</option>
                                         @endforeach
                                     </select>
@@ -242,9 +242,72 @@
 
         <!-- BEGIN TAB 4-->
         <div class="tab-pane" id="tab4">
-            <div class="alert alert-danger" style="margin-bottom: 0px;">
-                    <p> Vui lòng tạo mới nhân sự trước khi thêm hợp đồng! </p>
-            </div>
+            @if($ds_hop_dong->isNotEmpty())
+                <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                <div class="portlet light portlet-fit bordered">
+                    <div class="portlet-body">
+                        <div class="table-toolbar">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="btn-group">
+                                        <a id="sample_editable_1_new" class="btn green" data-toggle="modal" href="#modal_add_hd"><i class="fa fa-plus"></i> Tạo hợp đồng
+                                            
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table table-striped table-hover table-bordered" id="table_ds_hd">
+                            <thead>
+                                <tr>
+                                    <th> STT</th>
+                                    <th> Mã HĐ</th>
+                                    <th> Loại </th>
+                                    <th> Ngày ký</th>
+                                    <th> Từ ngày</th>
+                                    <th> Đến ngày</th>
+                                    <th> Trạng thái</th>
+                                    <th> Hành động</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if( $ds_hop_dong->count() > 0 )
+                                    @php $stt = 1; @endphp
+                                    @foreach( $ds_hop_dong as $k => $v )
+                                    <tr>
+                                        <td> {{ $stt }} </td>
+                                        <td> 
+                                            <a href="#">{{ $v->ma_hd }}</a> 
+                                        </td>
+                                        <td> {{ ($v->loaihopdong_id)?$v->loaihopdongs->ten:'' }} </td>
+                                        <td> {{ $v->ngay_ky }} </td>
+                                        <td> {{ $v->ngay_co_hieu_luc }} </td>
+                                        <td> {{ $v->ngay_het_hieu_luc }} </td>
+                                        <td> 
+                                            @if( $v->trang_thai )
+                                            <span class="label label-sm label-success" style="font-size: 12px;"> Còn hiệu lực </span>
+                                            @else
+                                            <span class="label label-sm label-danger" style="font-size: 12px;"> Hết hiệu lực </span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a data-hd-key="{{ $k }}" class="btn_edit_hd btn btn-xs yellow-gold" data-toggle="modal" href="#modal_edit_hd"> Sửa </a>
+                                            <a class="btn btn-xs red-mint" href="#" onclick="return confirm('Bạn có chắc chắn muốn xóa hợp đồng này không?');"> Xóa </a>
+                                        </td>
+                                    </tr>
+                                    @php $stt++; @endphp
+                                    @endforeach
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- END EXAMPLE TABLE PORTLET-->
+            @else
+                <div class="alert alert-danger" style="margin-bottom: 0px;">
+                    <p> Nhân viên này chưa có HĐLĐ! <a class="btn green btn-sm" data-toggle="modal" href="#modal_add_hd"><i class="fa fa-plus"></i> Tạo hợp đồng</a></p>
+                </div>
+            @endif
         </div>
         <!-- END TAB 4-->
 
@@ -254,15 +317,24 @@
                     <div class="form-group">
                         <div class="input-group col-md-12">
                             @if($ds_ho_so->count()>0)
-                            @php
-                                $ho_so = json_decode($nhan_su->hoso_id);
-                            @endphp
-                            <div class="icheck-inline">
-                                @foreach($ds_ho_so as $k => $v)
-                                <label class="col-md-3 col-xs-6" style="margin: 0 0 10px 0;">
-                                    <input type="checkbox" name="hoso_id[]" value="{{ $k }}" data-checkbox="icheckbox_minimal-blue" type="checkbox" class="icheck" {{ (in_array($k, $ho_so))?"checked":"" }}> {{ $v }} </label>
-                                @endforeach
-                            </div>
+                                @if(!empty($nhan_su->hoso_id))
+                                    @php
+                                        $ho_so = json_decode($nhan_su->hoso_id);
+                                    @endphp
+                                    <div class="icheck-inline">
+                                        @foreach($ds_ho_so as $k => $v)
+                                        <label class="col-md-3 col-xs-6" style="margin: 0 0 10px 0;">
+                                            <input type="checkbox" name="hoso_id[]" value="{{ $k }}" data-checkbox="icheckbox_minimal-blue" type="checkbox" class="icheck" {{ (in_array($k, $ho_so))?"checked":"" }}> {{ $v }} </label>
+                                        @endforeach
+                                    </div>
+                                @else
+                                    <div class="icheck-inline">
+                                        @foreach($ds_ho_so as $k => $v)
+                                        <label class="col-md-3 col-xs-6" style="margin: 0 0 10px 0;">
+                                            <input type="checkbox" name="hoso_id[]" value="{{ $k }}" data-checkbox="icheckbox_minimal-blue" type="checkbox" class="icheck"> {{ $v }} </label>
+                                        @endforeach
+                                    </div>
+                                @endif
                             @endif
                         </div>
                     </div>
@@ -280,3 +352,5 @@
     </div>
 
 </form>
+@include('hop_dong.modals.add')
+@include('hop_dong.modals.edit')

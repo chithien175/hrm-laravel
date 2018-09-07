@@ -14,7 +14,7 @@ class LoaiHopDongsTableSeeder extends Seeder
         $loaihopdongs = array(
             [
                 'id'   => 1,
-                'ten' => 'Hợp Đồng Thử Việc'
+                'ten' => 'Hợp đồng thử việc'
             ],
             [
                 'id'   => 2,

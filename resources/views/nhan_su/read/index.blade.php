@@ -3,8 +3,8 @@
 @section('title', 'Thông tin nhân sự')
 
 @section('style')
-    <!-- <link href="{{ asset('assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}" rel="stylesheet" type="text/css" /> -->
     <link href="{{ asset('assets/global/plugins/icheck/skins/all.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/global/plugins/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
 @endsection()
 
 @section('content')
@@ -28,9 +28,9 @@
         <h1 class="page-title">
             <i class="fa fa-user"></i> {{ $nhan_su->ma_nv }} - {{ $nhan_su->ho_ten }}
             @if( $nhan_su->trang_thai )
-            <span class="label label-md label-success"> Đang làm </span>
+            <span class="label label-sm bg-green-jungle"> Đang làm </span>
             @else
-            <span class="label label-md label-danger"> Thôi việc </span>
+            <span class="label label-sm label-danger"> Thôi việc </span>
             @endif
         </h1>
         <!-- END PAGE TITLE-->
@@ -49,23 +49,23 @@
                 <div class="tabbable tabbable-tabdrop">
                     <ul class="nav nav-pills">
                         <li class="active">
-                            <a href="#tab1" data-toggle="tab">Thông tin cá nhân</a>
+                            <a href="#tab1" data-toggle="tab">Thông tin</a>
                         </li>
                         <li>
-                            <a href="#tab2" data-toggle="tab">Thông tin trình độ</a>
+                            <a href="#tab2" data-toggle="tab">Trình độ</a>
                         </li>
                         <li>
-                            <a href="#tab3" data-toggle="tab">Thông tin lương</a>
+                            <a href="#tab3" data-toggle="tab">QĐ lương</a>
                         </li>
                         <li>
-                            <a href="#tab4" data-toggle="tab">Thông tin hợp đồng</a>
+                            <a href="#tab4" data-toggle="tab">HĐLĐ</a>
                         </li>
                         <li>
-                            <a href="#tab5" data-toggle="tab">Thông tin hồ sơ</a>
+                            <a href="#tab5" data-toggle="tab">Hồ sơ</a>
                         </li>
                     </ul>
                     <!-- BEGIN VALIDATION STATES-->
-                    <div class="portlet light portlet-fit portlet-form bordered" id="form_wizard_1">
+                    <div class="portlet light portlet-fit portlet-form" id="form_wizard_1">
                         <!-- BEGIN FORM-->
                         <div class="tab-content">
                             <!-- BEGIN TAB 1-->
@@ -157,26 +157,79 @@
                                             </div>
                                             <div class="row">
                                                 <label class="control-label col-md-4 col-xs-6">Phòng ban:</label>
-                                                <label class="control-label col-md-7 col-xs-6">{{ $nhan_su->phongbans->ten }}</label>
+                                                <label class="control-label col-md-7 col-xs-6">{{ ($nhan_su->phongban_id !=0)?$nhan_su->phongbans->ten:'' }}</label>
                                             </div>
                                             <div class="row">
                                                 <label class="control-label col-md-4 col-xs-6">Bộ phận:</label>
-                                                <label class="control-label col-md-7 col-xs-6">{{ $nhan_su->bophans->ten }}</label>
+                                                <label class="control-label col-md-7 col-xs-6">{{ ($nhan_su->bophan_id)?$nhan_su->bophans->ten:'' }}</label>
                                             </div>
                                         </div>
                                     </div>
                                 </div> 
                             </div>
+                            <!-- END BEGIN TAB 2-->
+                            <!-- BEGIN TAB 3-->
                             <div class="tab-pane" id="tab3">
                                 <div class="alert alert-danger" style="margin-bottom: 0px;">
                                         <p> Vui lòng tạo mới nhân sự trước khi thêm lương! </p>
                                 </div>
                             </div>
+                            <!-- END BEGIN TAB 3-->
+                            <!-- BEGIN TAB 4-->
                             <div class="tab-pane" id="tab4">
-                                <div class="alert alert-danger" style="margin-bottom: 0px;">
-                                    <p> Vui lòng tạo mới nhân sự trước khi thêm hợp đồng! </p>
+                                @if($ds_hop_dong->isNotEmpty())
+                                <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                <div class="portlet light portlet-fit bordered">
+                                    <div class="portlet-body">
+                                        <table class="table table-striped table-hover table-bordered" id="table_ds_hd">
+                                            <thead>
+                                                <tr>
+                                                    <th> STT</th>
+                                                    <th> Mã HĐ</th>
+                                                    <th> Loại </th>
+                                                    <th> Ngày ký</th>
+                                                    <th> Từ ngày</th>
+                                                    <th> Đến ngày</th>
+                                                    <th> Trạng thái</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @if( $ds_hop_dong->count() > 0 )
+                                                    @php $stt = 1; @endphp
+                                                    @foreach( $ds_hop_dong as $v )
+                                                    <tr>
+                                                        <td> {{ $stt }} </td>
+                                                        <td> 
+                                                            <a href="#">{{ $v->ma_hd }}</a> 
+                                                        </td>
+                                                        <td> {{ ($v->loaihopdong_id)?$v->loaihopdongs->ten:'' }} </td>
+                                                        <td> {{ $v->ngay_ky }} </td>
+                                                        <td> {{ $v->ngay_co_hieu_luc }} </td>
+                                                        <td> {{ $v->ngay_het_hieu_luc }} </td>
+                                                        <td> 
+                                                            @if( $v->trang_thai )
+                                                            <span class="label label-sm label-success" style="font-size: 12px;"> Còn hiệu lực </span>
+                                                            @else
+                                                            <span class="label label-sm label-danger" style="font-size: 12px;"> Hết hiệu lực </span>
+                                                            @endif
+                                                        </td>
+                                                    </tr>
+                                                    @php $stt++; @endphp
+                                                    @endforeach
+                                                @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
+                                <!-- END EXAMPLE TABLE PORTLET-->
+                                @else
+                                    <div class="alert alert-danger" style="margin-bottom: 0px;">
+                                        <p> Nhân viên này chưa có HĐLĐ!</p>
+                                    </div>
+                                @endif
                             </div>
+                            <!-- END BEGIN TAB 4-->
+                            <!-- BEGIN TAB 5-->
                             <div class="tab-pane" id="tab5">
                                 <div class="form-body">
                                     @if($nhan_su->hoso_id)
@@ -195,9 +248,22 @@
                                                 @endforeach
                                             </div>
                                         </div>
+                                    @else
+                                        @php
+                                            $ds_ho_so = App\HoSo::all()->pluck('ten','id');
+                                        @endphp
+                                        <div class="row">
+                                            <div class="input-group col-md-12">
+                                                @foreach($ds_ho_so as $k => $v)
+                                                    <label class="control-label col-md-3 col-xs-6 font-grey-steel"><i class="glyphicon glyphicon-remove-sign font-yellow-casablanca"></i> {{ $v }}</label>
+                                                   
+                                                @endforeach
+                                            </div>
+                                        </div>
                                     @endif
                                 </div>
                             </div>
+                            <!-- END BEGIN TAB 5-->
                         </div>
                         <!-- END FORM-->
                     </div>
@@ -215,5 +281,46 @@
 @endsection
 
 @section('script')
+<script>
+    $(document).ready(function(){
+        // Cấu hình bảng ds hợp đồng
+        var table = $('#table_ds_hd');
+        var oTable = table.dataTable({
+
+            "lengthMenu": [
+                [10, 20, 50, -1],
+                [10, 20, 50, "Tất cả"] // change per page values here
+            ],
+            "pageLength": 10,
+            "language": {
+                "lengthMenu": "Hiển thị _MENU_ bản ghi / trang",
+                "zeroRecords": "Không tìm thấy dữ liệu",
+                "info": "Trang hiển thị _PAGE_ / _PAGES_",
+                "infoEmpty": "Không có bản ghi nào",
+                "infoFiltered": "(chọn lọc từ _MAX_ bản ghi)",
+                "search": "Tìm kiếm",
+                "paginate": {
+                    "first":      "Đầu",
+                    "last":       "Cuối",
+                    "next":       "Sau",
+                    "previous":   "Trước"
+                },
+            },
+            "columnDefs": [{ // set default column settings
+                'orderable': true,
+                'targets': [0]
+            }, {
+                "searchable": true,
+                "targets": [0]
+            }],
+            "order": [
+                // [0, "asc"]
+            ] // set first column as a default sort by asc
+        });
+        // END Cấu hình bảng ds hợp đồng
+    });
+</script>
+<script src="{{ asset('assets/global/plugins/datatables/datatables.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/global/plugins/bootstrap-tabdrop/js/bootstrap-tabdrop.js') }}" type="text/javascript"></script>
 @endsection

@@ -48,14 +48,14 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="btn-group">
-                                        <a id="sample_editable_1_new" class="btn green" href="{{ route('user.add.get') }}"> Thêm mới
-                                            <i class="fa fa-plus"></i>
+                                        <a id="sample_editable_1_new" class="btn green" href="{{ route('user.add.get') }}"><i class="fa fa-plus"></i> Thêm mới
+                                            
                                         </a>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="btn-group pull-right">
-                                        <button class="btn green btn-outline dropdown-toggle" data-toggle="dropdown">Công cụ
+                                        <button class="btn green btn-outline dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog"></i> Công cụ
                                             <i class="fa fa-angle-down"></i>
                                         </button>
                                         <ul class="dropdown-menu pull-right">
