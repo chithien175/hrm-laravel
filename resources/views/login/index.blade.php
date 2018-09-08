@@ -32,10 +32,10 @@
             <div class="form-group">
                 <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
                 <label class="control-label visible-ie8 visible-ie9">Email</label>
-                <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" name="email" /> </div>
+                <input value="chithien175@gmail.com" class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" name="email" /> </div>
             <div class="form-group">
                 <label class="control-label visible-ie8 visible-ie9">Mật khẩu</label>
-                <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Mật khẩu" name="password" /> </div>
+                <input value="123123" class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Mật khẩu" name="password" /> </div>
             <div class="form-actions">
                 <button type="submit" class="btn green uppercase">Đăng nhập</button>
                 <label class="rememberme check mt-checkbox mt-checkbox-outline">

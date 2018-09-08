@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th9 08, 2018 lúc 08:02 AM
+-- Thời gian đã tạo: Th9 08, 2018 lúc 10:00 AM
 -- Phiên bản máy phục vụ: 5.7.19
 -- Phiên bản PHP: 7.1.20
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `bo_phans` (
   `id` int(10) UNSIGNED NOT NULL,
-  `ten` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ten` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phongban_id` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -58,15 +58,15 @@ INSERT INTO `bo_phans` (`id`, `ten`, `phongban_id`, `created_at`, `updated_at`) 
 CREATE TABLE `hop_dongs` (
   `id` int(10) UNSIGNED NOT NULL,
   `nhansu_id` int(11) NOT NULL,
-  `ma_hd` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ten` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ma_hd` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ten` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `loaihopdong_id` int(11) NOT NULL DEFAULT '0',
   `ngay_ky` datetime NOT NULL,
   `ngay_co_hieu_luc` datetime NOT NULL,
   `ngay_het_hieu_luc` datetime NOT NULL,
-  `luong_can_ban` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `luong_tro_cap` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `luong_hieu_qua` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `luong_can_ban` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `luong_tro_cap` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `luong_hieu_qua` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `trang_thai` tinyint(1) NOT NULL DEFAULT '0',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -88,7 +88,7 @@ INSERT INTO `hop_dongs` (`id`, `nhansu_id`, `ma_hd`, `ten`, `loaihopdong_id`, `n
 
 CREATE TABLE `ho_sos` (
   `id` int(10) UNSIGNED NOT NULL,
-  `ten` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ten` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -116,7 +116,7 @@ INSERT INTO `ho_sos` (`id`, `ten`, `created_at`, `updated_at`) VALUES
 
 CREATE TABLE `loai_hop_dongs` (
   `id` int(10) UNSIGNED NOT NULL,
-  `ten` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ten` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -148,14 +148,14 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(57, '2014_10_12_000000_create_users_table', 1),
-(58, '2014_10_12_100000_create_password_resets_table', 1),
-(59, '2018_08_30_075551_create_phong_bans_table', 1),
-(60, '2018_08_30_075711_create_bo_phans_table', 1),
-(61, '2018_08_30_084129_create_nhan_sus_table', 1),
-(62, '2018_08_30_162233_create_ho_sos_table', 1),
-(63, '2018_09_05_142047_create_hop_dongs_table', 1),
-(64, '2018_09_05_143038_create_loai_hop_dongs_table', 1);
+(65, '2014_10_12_000000_create_users_table', 1),
+(66, '2014_10_12_100000_create_password_resets_table', 1),
+(67, '2018_08_30_075551_create_phong_bans_table', 1),
+(68, '2018_08_30_075711_create_bo_phans_table', 1),
+(69, '2018_08_30_084129_create_nhan_sus_table', 1),
+(70, '2018_08_30_162233_create_ho_sos_table', 1),
+(71, '2018_09_05_142047_create_hop_dongs_table', 1),
+(72, '2018_09_05_143038_create_loai_hop_dongs_table', 1);
 
 -- --------------------------------------------------------
 
@@ -165,22 +165,22 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 
 CREATE TABLE `nhan_sus` (
   `id` int(10) UNSIGNED NOT NULL,
-  `ma_nv` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `ho_ten` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ma_nv` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ho_ten` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `gioi_tinh` tinyint(1) NOT NULL DEFAULT '1',
   `ngay_sinh` datetime NOT NULL,
-  `so_cmnd` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `so_cmnd` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ngay_cap_cmnd` datetime DEFAULT NULL,
-  `noi_cap_cmnd` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `dia_chi_thuong_tru` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `dia_chi_lien_he` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `dien_thoai` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `trinh_do` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `truong_tot_nghiep` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `nam_tot_nghiep` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `noi_cap_cmnd` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `dia_chi_thuong_tru` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `dia_chi_lien_he` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `dien_thoai` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `trinh_do` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `truong_tot_nghiep` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nam_tot_nghiep` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ngay_bat_dau_lam` datetime DEFAULT NULL,
-  `chuc_danh` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `chuc_danh` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `phongban_id` int(11) NOT NULL DEFAULT '0',
   `bophan_id` int(11) NOT NULL DEFAULT '0',
   `chung_chi` text COLLATE utf8mb4_unicode_ci,
@@ -204,8 +204,8 @@ INSERT INTO `nhan_sus` (`id`, `ma_nv`, `ho_ten`, `gioi_tinh`, `ngay_sinh`, `so_c
 --
 
 CREATE TABLE `password_resets` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -217,7 +217,7 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `phong_bans` (
   `id` int(10) UNSIGNED NOT NULL,
-  `ten` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ten` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -240,11 +240,11 @@ INSERT INTO `phong_bans` (`id`, `ten`, `created_at`, `updated_at`) VALUES
 
 CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `avatar` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'default-avatar.jpg',
-  `role` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'user',
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `password` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `avatar` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'default-avatar.jpg',
+  `role` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'user',
   `active` tinyint(1) NOT NULL DEFAULT '1',
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -256,9 +256,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `avatar`, `role`, `active`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Thiện Phạm', 'chithien175@gmail.com', '$2y$10$mrpwKtpEKeqv52Q0l04RIeJcflMLBAaxlo/4txeNC1CPD3wyro.qu', 'default-avatar.jpg', 'superadmin', 1, NULL, NULL, NULL),
-(2, 'Test 1', 'test1@gmail.com', '$2y$10$lDb0DTJ2aCuOtRxyIEIxBuYZBlS9P4AOkuoJGw6VTbJcqxsg3pnxS', 'default-avatar.jpg', 'admin', 1, NULL, NULL, NULL),
-(3, 'Test 2', 'test2@gmail.com', '$2y$10$c0WWtk2RWSEwCfnODUukaeX/SukADYLbSYsnZmZ7qm3excGzpzB3S', 'default-avatar.jpg', 'user', 1, NULL, NULL, NULL);
+(1, 'Thiện Phạm', 'chithien175@gmail.com', '$2y$10$nh5t/PUjaTd1WziL/eFIA.Ge/CSLUzAYm.1XuUtUDgarJs0Rsz2Ja', 'default-avatar.jpg', 'superadmin', 1, NULL, NULL, NULL),
+(2, 'Test 1', 'test1@gmail.com', '$2y$10$Ua/nTgP79OQXECh.KBN./OdKyGD8kU62KVEJAj4igihwzPe.z408i', 'default-avatar.jpg', 'admin', 1, NULL, NULL, NULL),
+(3, 'Test 2', 'test2@gmail.com', '$2y$10$.p298R.s0m8eGDkUgeM9eup0i7yAiG7FToRD2GitM5wN77QTWqH46', 'default-avatar.jpg', 'user', 1, NULL, NULL, NULL);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -354,7 +354,7 @@ ALTER TABLE `loai_hop_dongs`
 -- AUTO_INCREMENT cho bảng `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT cho bảng `nhan_sus`
