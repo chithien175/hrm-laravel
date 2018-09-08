@@ -17,5 +17,6 @@ class DatabaseSeeder extends Seeder
         $this->call(HoSosTableSeeder::class);
         $this->call(NhanSusTableSeeder::class);
         $this->call(LoaiHopDongsTableSeeder::class);
+        $this->call(HopDongsTableSeeder::class);
     }
 }

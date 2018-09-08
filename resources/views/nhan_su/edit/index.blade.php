@@ -108,13 +108,13 @@
         $("#ngay_bat_dau_lam").inputmask("d-m-y", {
             // autoUnmask: true
         });
-        $("#ngay_ky_hd").inputmask("d-m-y", {
+        $("input[name='ngay_ky']").inputmask("d-m-y", {
             // autoUnmask: true
         });
-        $("#ngay_co_hieu_luc").inputmask("d-m-y", {
+        $("input[name='ngay_co_hieu_luc']").inputmask("d-m-y", {
             // autoUnmask: true
         });
-        $("#ngay_het_hieu_luc").inputmask("d-m-y", {
+        $("input[name='ngay_het_hieu_luc']").inputmask("d-m-y", {
             // autoUnmask: true
         });
 
@@ -148,7 +148,8 @@
         // Ajax thêm hợp đồng
         $("#btn_add_hd").on('click', function(e){
             e.preventDefault();
-
+            $("#btn_add_hd").attr("disabled", "disabled");
+            $("#btn_add_hd").html('<i class="fa fa-spinner fa-spin"></i> Lưu');
             $.ajax({
                 url: '{{ route('postThemHopDong') }}',
                 method: 'POST',
@@ -167,6 +168,8 @@
                     _token: $("#form_add_hd input[name='_token']").val()
                 },
                 success: function(data) {
+                    $("#btn_add_hd").removeAttr("disabled"); 
+                    $("#btn_add_hd").html('<i class="fa fa-save"></i> Lưu');
                     if(data.status == false){
                         var errors = "";
                         $.each(data.data, function(key, value){
@@ -193,7 +196,7 @@
                     if(data.status == true){
                         $('#modal_add_hd').modal('hide');
                         swal({
-                            "title":"Thành công!", 
+                            "title":"Đã tạo!", 
                             "text":"Bạn đã tạo thành công hợp đồng!",
                             "type":"success"
                         }, function() {
@@ -273,6 +276,7 @@
                         $("#form_edit_hd input[name='luong_can_ban']").val(data.data.luong_can_ban);
                         $("#form_edit_hd input[name='luong_hieu_qua']").val(data.data.luong_hieu_qua);
                         $("#form_edit_hd input[name='luong_tro_cap']").val(data.data.luong_tro_cap);
+                        $("#form_edit_hd select[name='trang_thai']").val(data.data.trang_thai);
                         $('#modal_edit_hd').modal('show');
                     }
                 }
@@ -283,11 +287,13 @@
         // Ajax sửa hợp đồng
         $("#btn_edit_hd").on('click', function(e){
             e.preventDefault();
-
+            $("#btn_edit_hd").attr("disabled", "disabled");
+            $("#btn_edit_hd").html('<i class="fa fa-spinner fa-spin"></i> Lưu');
             $.ajax({
                 url: '{{ route('postSuaHopDong') }}',
                 method: 'POST',
                 data: {
+                    hopdong_id: $("#form_edit_hd input[name='hopdong_id']").val(),
                     nhansu_id: $("#form_edit_hd input[name='nhansu_id']").val(),
                     ma_hd: $("#form_edit_hd input[name='ma_hd']").val(),
                     ten: $("#form_edit_hd input[name='ten']").val(),
@@ -302,6 +308,8 @@
                     _token: $("#form_edit_hd input[name='_token']").val()
                 },
                 success: function(data) {
+                    $("#btn_edit_hd").removeAttr("disabled"); 
+                    $("#btn_edit_hd").html('<i class="fa fa-save"></i> Lưu');
                     if(data.status == false){
                         var errors = "";
                         $.each(data.data, function(key, value){
@@ -328,8 +336,8 @@
                     if(data.status == true){
                         $('#modal_edit_hd').modal('hide');
                         swal({
-                            "title":"Thành công!", 
-                            "text":"Bạn đã tạo thành công hợp đồng!",
+                            "title":"Đã sửa!", 
+                            "text":"Bạn đã sửa thành công hợp đồng!",
                             "type":"success"
                         }, function() {
                                 localStorage.setItem('activeTab', '#tab4');
@@ -341,6 +349,54 @@
             });
         });
         // END Ajax sửa hợp đồng
+
+        // Xử lý khi click nút xóa hợp đồng
+        $(".btn_delete_hd").on("click", function(e){
+            e.preventDefault();
+            var hd_id = $(this).data("hd-id");
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            swal({
+                title: "Xóa hợp đồng này?",
+                text: "Bạn có chắc không, nó sẽ bị xóa vĩnh viễn!",
+                type: "warning",
+                showCancelButton: true,
+                cancelButtonText: 'Không',
+                confirmButtonClass: "btn-danger",
+                confirmButtonText: "Có, xóa ngay!",
+                closeOnConfirm: false
+                },
+                function(isConfirm){
+                    if (isConfirm) {
+                        $.ajax({
+                            url: '{{ route('postXoaHopDong') }}',
+                            method: 'POST',
+                            data: {
+                                id: hd_id
+                            },
+                            success: function(data) {
+                                console.log(data);
+                                if(data.status == true){
+                                    swal({
+                                        "title":"Đã xóa!", 
+                                        "text":"Bạn đã xóa thành công hợp đồng!",
+                                        "type":"success"
+                                    }, function() {
+                                            localStorage.setItem('activeTab', '#tab4');
+                                            location.reload();
+                                        }
+                                    );
+                                }
+                            }
+                        });
+                    }   
+            });
+
+        });
+        // END Xử lý khi click nút xóa hợp đồng
     });
 </script>
 <script src="{{ asset('assets/global/plugins/datatables/datatables.min.js') }}" type="text/javascript"></script>

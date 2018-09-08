@@ -5,7 +5,7 @@
             <form action="#" id="form_edit_hd">
                 @csrf
                 <input value="" name="hopdong_id" type="hidden">
-                <input value="{{ $nhan_su->id }}" name="nhansu_id" type="hidden">
+                <input value="" name="nhansu_id" type="hidden">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                     <h4 class="modal-title"><i class="fa fa-edit"></i> Chỉnh sửa HĐLĐ</h4>
@@ -20,7 +20,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Tên hợp đồng<span class="required">*</span></label>
-                                    <input name="ten" type="text" class="form-control" required>
+                                    <input value="" name="ten" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Loại hợp đồng</label>
@@ -33,29 +33,29 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Ngày ký HĐ<span class="required">*</span></label>
-                                    <input class="form-control" name="ngay_ky" id="ngay_ky_hd" type="text" placeholder="dd-mm-yyyy" value="{{ old('ngay_ky') }}" required />
+                                    <input class="form-control" name="ngay_ky" id="ngay_ky_hd" type="text" placeholder="dd-mm-yyyy" value="" required />
                                 </div>
                                 <div class="form-group">
                                     <label>Ngày có hiệu lực<span class="required">*</span></label>
-                                    <input class="form-control" name="ngay_co_hieu_luc" id="ngay_co_hieu_luc" type="text" placeholder="dd-mm-yyyy" required />
+                                    <input class="form-control" name="ngay_co_hieu_luc" id="ngay_co_hieu_luc" type="text" placeholder="dd-mm-yyyy" value="" required />
                                 </div>
                                 <div class="form-group">
                                     <label>Ngày hết hiệu lực<span class="required">*</span></label>
-                                    <input class="form-control" name="ngay_het_hieu_luc" id="ngay_het_hieu_luc" type="text" placeholder="dd-mm-yyyy" required />
+                                    <input class="form-control" name="ngay_het_hieu_luc" id="ngay_het_hieu_luc" type="text" placeholder="dd-mm-yyyy" value="" required />
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Lương căn bản<span class="required">*</span></label>
-                                    <input name="luong_can_ban" type="text" class="form-control" required>
+                                    <input value="" name="luong_can_ban" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Hỗ trợ, trợ cấp<span class="required">*</span></label>
-                                    <input name="luong_tro_cap" type="text" class="form-control" required>
+                                    <input value="" name="luong_tro_cap" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Hiệu quả công việc<span class="required">*</span></label>
-                                    <input name="luong_hieu_qua" type="text" class="form-control" required>
+                                    <input value="" name="luong_hieu_qua" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Trạng thái</label>

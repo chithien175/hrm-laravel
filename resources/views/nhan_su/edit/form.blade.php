@@ -292,7 +292,7 @@
                                         </td>
                                         <td>
                                             <a data-hd-id="{{ $v->id }}" class="btn_edit_hd btn btn-xs yellow-gold" href="#"> Sửa </a>
-                                            <a class="btn btn-xs red-mint" href="#" onclick="return confirm('Bạn có chắc chắn muốn xóa hợp đồng này không?');"> Xóa </a>
+                                            <a class="btn_delete_hd btn btn-xs red-mint" href="#" data-hd-id="{{ $v->id }}"> Xóa </a>
                                         </td>
                                     </tr>
                                     @php $stt++; @endphp

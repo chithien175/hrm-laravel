@@ -70,7 +70,7 @@ Route::prefix('staffs')->middleware('auth')->group(function () {
     Route::get('/delete/{id}', ['uses'=>'NhanSuController@destroy','as'=>'nhan_su.delete.get']);
 });
 
-// Nhân Sự Routes...
+// Company Routes...
 Route::prefix('company')->middleware('auth')->group(function () {
     Route::get('/init', ['uses'=>'CompanyController@init','as'=>'company.init']);
     Route::get('/', ['uses'=>'CompanyController@index','as'=>'company.index']);
@@ -80,7 +80,8 @@ Route::prefix('company')->middleware('auth')->group(function () {
 // Ajax Routes...
 Route::prefix('ajax')->middleware('auth')->group(function () {
     Route::post('/dsBoPhanTheoPhongBan', ['uses'=>'NhanSuController@dsBoPhanTheoPhongBan','as'=>'dsBoPhanTheoPhongBan']);
-    Route::post('/postThemHopDong', ['uses'=>'NhanSuController@postThemHopDong','as'=>'postThemHopDong']);
+    Route::post('/postThemHopDong', ['uses'=>'HopDongController@postThemHopDong','as'=>'postThemHopDong']);
     Route::post('/postTimHopDongTheoId', ['uses'=>'HopDongController@postTimHopDongTheoId','as'=>'postTimHopDongTheoId']);
     Route::post('/postSuaHopDong', ['uses'=>'HopDongController@postSuaHopDong','as'=>'postSuaHopDong']);
+    Route::post('/postXoaHopDong', ['uses'=>'HopDongController@postXoaHopDong','as'=>'postXoaHopDong']);
 });
