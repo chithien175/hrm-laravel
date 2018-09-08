@@ -291,7 +291,7 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a data-hd-key="{{ $k }}" class="btn_edit_hd btn btn-xs yellow-gold" data-toggle="modal" href="#modal_edit_hd"> Sửa </a>
+                                            <a data-hd-id="{{ $v->id }}" class="btn_edit_hd btn btn-xs yellow-gold" href="#"> Sửa </a>
                                             <a class="btn btn-xs red-mint" href="#" onclick="return confirm('Bạn có chắc chắn muốn xóa hợp đồng này không?');"> Xóa </a>
                                         </td>
                                     </tr>

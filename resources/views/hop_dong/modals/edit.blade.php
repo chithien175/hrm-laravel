@@ -2,8 +2,9 @@
 <div class="modal fade bs-modal-lg" id="modal_edit_hd" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form action="#" id="form_add_hd">
+            <form action="#" id="form_edit_hd">
                 @csrf
+                <input value="" name="hopdong_id" type="hidden">
                 <input value="{{ $nhan_su->id }}" name="nhansu_id" type="hidden">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
@@ -15,7 +16,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Mã số<span class="required">*</span></label>
-                                    <input value="{{ $nhan_su->ma_nv }}/{{ \Carbon\Carbon::now()->year }}/HĐLĐ-TP" name="ma_hd" type="text" class="form-control" required>
+                                    <input value="" name="ma_hd" type="text" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Tên hợp đồng<span class="required">*</span></label>
@@ -69,7 +70,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
-                    <a href="#" class="btn green" id="btn_add_hd"><i class="fa fa-save"></i> Lưu</a>
+                    <a href="#" class="btn green" id="btn_edit_hd"><i class="fa fa-save"></i> Lưu</a>
                 </div>
             </form>
         </div>

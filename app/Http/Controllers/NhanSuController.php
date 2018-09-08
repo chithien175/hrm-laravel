@@ -68,18 +68,11 @@ class NhanSuController extends Controller
                 ]);
             }
 
-            // return response()->json([
-            //     'status' => true,
-            //     'data'   => $request->all()
-            // ]);
-
             try{
                 $hop_dong = HopDong::saveHopDong(0, $request->all());
-                // $ds_hop_dong = HopDong::getByNhanSuId($id)->get();
                 Log::info('Người dùng ID:'.Auth::user()->id.' đã thêm hợp đồng ID:'.$hop_dong->id.'-'.$hop_dong->ma_hd);
                 return response()->json([
                     'status' => true
-                    // 'data'   => $ds_hop_dong
                 ]);
             }
             catch(\Exception $e){

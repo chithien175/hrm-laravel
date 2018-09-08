@@ -81,4 +81,6 @@ Route::prefix('company')->middleware('auth')->group(function () {
 Route::prefix('ajax')->middleware('auth')->group(function () {
     Route::post('/dsBoPhanTheoPhongBan', ['uses'=>'NhanSuController@dsBoPhanTheoPhongBan','as'=>'dsBoPhanTheoPhongBan']);
     Route::post('/postThemHopDong', ['uses'=>'NhanSuController@postThemHopDong','as'=>'postThemHopDong']);
+    Route::post('/postTimHopDongTheoId', ['uses'=>'HopDongController@postTimHopDongTheoId','as'=>'postTimHopDongTheoId']);
+    Route::post('/postSuaHopDong', ['uses'=>'HopDongController@postSuaHopDong','as'=>'postSuaHopDong']);
 });

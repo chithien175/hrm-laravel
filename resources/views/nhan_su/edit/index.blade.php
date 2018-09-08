@@ -3,6 +3,7 @@
 @section('title', 'Chỉnh sửa nhân sự')
 
 @section('style')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="{{ asset('assets/global/plugins/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/global/plugins/icheck/skins/all.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/global/plugins/bootstrap-toastr/toastr.min.css') }}" rel="stylesheet" type="text/css" />
@@ -119,12 +120,11 @@
 
 
         // Ajax lấy ds bộ phận theo phòng ban
-        var url = "{{ route('dsBoPhanTheoPhongBan') }}";
         $("select[name='phongban_id']").change(function(){
             var phongban_id = $(this).val();
             var token = $("input[name='_token']").val();
             $.ajax({
-                url: url,
+                url: "{{ route('dsBoPhanTheoPhongBan') }}",
                 method: 'POST',
                 data: {
                     phongban_id: phongban_id,
@@ -245,12 +245,102 @@
         });
         // END Cấu hình bảng ds hợp đồng
 
-        // Khi click vào nút sửa hđ
-        $(".btn_edit_hd").on("click", function(){
-            var hd_key = $(this).data("hd-key");
-            var hd_data =   '{{ $ds_hop_dong['+$(this).data("hd-key")+']->id }}';
-            alert(hd_data);
+        // Khi click vào nút sửa hđ, tìm hđ theo id và đỗ dữ liệu vào form
+        $(".btn_edit_hd").on("click", function(e){
+            e.preventDefault();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url: '{{ route('postTimHopDongTheoId') }}',
+                method: 'POST',
+                data: {
+                    id: $(this).data("hd-id")
+                },
+                success: function(data) {
+                    if(data.status == true){
+                        // console.log(data.data);
+                        $("#form_edit_hd input[name='hopdong_id']").val(data.data.id);
+                        $("#form_edit_hd input[name='nhansu_id']").val(data.data.nhansu_id);
+                        $("#form_edit_hd input[name='ma_hd']").val(data.data.ma_hd);
+                        $("#form_edit_hd input[name='ten']").val(data.data.ten);
+                        $("#form_edit_hd select[name='loaihopdong_id']").val(data.data.loaihopdong_id);
+                        $("#form_edit_hd input[name='ngay_ky']").val(data.data.ngay_ky);
+                        $("#form_edit_hd input[name='ngay_co_hieu_luc']").val(data.data.ngay_co_hieu_luc);
+                        $("#form_edit_hd input[name='ngay_het_hieu_luc']").val(data.data.ngay_het_hieu_luc);
+                        $("#form_edit_hd input[name='luong_can_ban']").val(data.data.luong_can_ban);
+                        $("#form_edit_hd input[name='luong_hieu_qua']").val(data.data.luong_hieu_qua);
+                        $("#form_edit_hd input[name='luong_tro_cap']").val(data.data.luong_tro_cap);
+                        $('#modal_edit_hd').modal('show');
+                    }
+                }
+            });
         });
+        // END Khi click vào nút sửa hđ, tìm hđ theo id và đỗ dữ liệu vào form
+
+        // Ajax sửa hợp đồng
+        $("#btn_edit_hd").on('click', function(e){
+            e.preventDefault();
+
+            $.ajax({
+                url: '{{ route('postSuaHopDong') }}',
+                method: 'POST',
+                data: {
+                    nhansu_id: $("#form_edit_hd input[name='nhansu_id']").val(),
+                    ma_hd: $("#form_edit_hd input[name='ma_hd']").val(),
+                    ten: $("#form_edit_hd input[name='ten']").val(),
+                    loaihopdong_id: $("#form_edit_hd .loaihopdong_id").val(),
+                    ngay_ky: $("#form_edit_hd input[name='ngay_ky']").val(),
+                    ngay_co_hieu_luc: $("#form_edit_hd input[name='ngay_co_hieu_luc']").val(),
+                    ngay_het_hieu_luc: $("#form_edit_hd input[name='ngay_het_hieu_luc']").val(),
+                    luong_can_ban: $("#form_edit_hd input[name='luong_can_ban']").val(),
+                    luong_tro_cap: $("#form_edit_hd input[name='luong_tro_cap']").val(),
+                    luong_hieu_qua: $("#form_edit_hd input[name='luong_hieu_qua']").val(),
+                    trang_thai: $("#form_edit_hd .trang_thai").val(),
+                    _token: $("#form_edit_hd input[name='_token']").val()
+                },
+                success: function(data) {
+                    if(data.status == false){
+                        var errors = "";
+                        $.each(data.data, function(key, value){
+                            $.each(value, function(key2, value2){
+                                errors += value2 +"<br>";
+                            });
+                        });
+                        toastr.options = {
+                            "closeButton": true,
+                            "debug": false,
+                            "positionClass": "toast-top-center",
+                            "onclick": null,
+                            "showDuration": "1000",
+                            "hideDuration": "1000",
+                            "timeOut": "5000",
+                            "extendedTimeOut": "1000",
+                            "showEasing": "swing",
+                            "hideEasing": "linear",
+                            "showMethod": "fadeIn",
+                            "hideMethod": "fadeOut"
+                        }
+                        toastr["error"](errors, "Lỗi")
+                    }
+                    if(data.status == true){
+                        $('#modal_edit_hd').modal('hide');
+                        swal({
+                            "title":"Thành công!", 
+                            "text":"Bạn đã tạo thành công hợp đồng!",
+                            "type":"success"
+                        }, function() {
+                                localStorage.setItem('activeTab', '#tab4');
+                                location.reload();
+                            }
+                        );
+                    }
+                }
+            });
+        });
+        // END Ajax sửa hợp đồng
     });
 </script>
 <script src="{{ asset('assets/global/plugins/datatables/datatables.min.js') }}" type="text/javascript"></script>
