@@ -277,7 +277,7 @@
                                     <tr>
                                         <td> {{ $stt }} </td>
                                         <td> 
-                                            <a href="#">{{ $v->ma_hd }}</a> 
+                                            <a class="btn_read_hd" data-hd-id="{{ $v->id }}" href="#">{{ $v->ma_hd }}</a> 
                                         </td>
                                         <td> {{ ($v->loaihopdong_id)?$v->loaihopdongs->ten:'' }} </td>
                                         <td> {{ $v->ngay_ky }} </td>
@@ -354,3 +354,4 @@
 </form>
 @include('hop_dong.modals.add')
 @include('hop_dong.modals.edit')
+@include('hop_dong.modals.read')

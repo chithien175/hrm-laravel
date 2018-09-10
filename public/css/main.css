@@ -1,5 +1,107 @@
-.login .logo {
-    margin: 60px auto 0;
-    padding: 15px;
+#read-hdld{
+    font-family: "Times New Roman";
+}
+
+#read-hdld .divider{
+    width: 85%;
+    height: 1px;
+    border-bottom: 1px solid #333;
+    margin: 0 auto;
+}
+
+#read-hdld .company-info-left .company-logo{
+    width: 150px;
+}
+
+#read-hdld .company-info-right p{
+    margin: 5px;
+}
+
+#read-hdld .company-info-right .company-name{
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#read-hdld .company-info-right .company-address{
+    font-size: 15px;
+}
+
+#read-hdld .company-info-right .company-phone{
+    font-size: 15px;
+}
+
+#read-hdld .content-hdld{
+    padding: 0 7.5%;
+}
+
+#read-hdld .content-hdld .quoc-hieu{
+    margin: 10px 0 0 0;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+#read-hdld .content-hdld .tieu-ngu{
+    margin: 0px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+#read-hdld .content-hdld .line{
+    margin: 0px;
+    font-size: 17px;
+}
+
+#read-hdld .content-hdld .ma-hdld{
+    font-size: 17px;
+    margin: 0;
+}
+
+#read-hdld .content-hdld .ten-hdld{
+    font-size: 23px;
+    margin: 0 0 30px 0;
+    font-weight: bold;
+    text-transform: uppercase;
     text-align: center;
+}
+
+#read-hdld .content-hdld .ten-cong-ty{
+    font-size: 12pt;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+@media screen {
+    #printSection {
+        display: none;
+    }
+}
+@media print {
+    body * {
+        visibility:hidden;
+    }
+    #printSection, #printSection * {
+        visibility:visible;
+    }
+    #printSection {
+        position:absolute;
+        left:0;
+        top:0;
+    }
+
+    #read-hdld{
+        width: 868px;
+    }
+
+    #read-hdld .company-info-left{
+        width: 33.33333%;
+        float: left;
+    }
+
+    #read-hdld .company-info-right{
+        width: 66.66667%;
+        float: right;
+    }
+
+    
 }

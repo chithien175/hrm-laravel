@@ -5,6 +5,7 @@
 @section('style')
     <link href="{{ asset('assets/global/plugins/icheck/skins/all.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/global/plugins/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet" type="text/css" />
 @endsection()
 
 @section('content')

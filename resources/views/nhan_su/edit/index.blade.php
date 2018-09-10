@@ -8,6 +8,7 @@
     <link href="{{ asset('assets/global/plugins/icheck/skins/all.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/global/plugins/bootstrap-toastr/toastr.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/global/plugins/bootstrap-sweetalert/sweetalert.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet" type="text/css" />
 @endsection()
 
 @section('content')
@@ -251,6 +252,7 @@
         // Khi click vào nút sửa hđ, tìm hđ theo id và đỗ dữ liệu vào form
         $(".btn_edit_hd").on("click", function(e){
             e.preventDefault();
+            var hd_id = $(this).data("hd-id");
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -260,7 +262,7 @@
                 url: '{{ route('postTimHopDongTheoId') }}',
                 method: 'POST',
                 data: {
-                    id: $(this).data("hd-id")
+                    id: hd_id
                 },
                 success: function(data) {
                     if(data.status == true){
@@ -397,7 +399,57 @@
 
         });
         // END Xử lý khi click nút xóa hợp đồng
+
+        // Khi click vào nút xem hđ, tìm hđ theo id và đỗ dữ liệu
+        $(".btn_read_hd").on("click", function(e){
+            e.preventDefault();
+            var hd_id = $(this).data("hd-id");
+            
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url: '{{ route('postTimHopDongTheoId') }}',
+                method: 'POST',
+                data: {
+                    id: hd_id
+                },
+                success: function(data) {
+                    if(data.status == true){
+                        console.log(data.data);
+                        $('#read-hdld .ma-hdld').html("Số: "+data.data.ma_hd);
+                        $('#read-hdld .ten-hdld').html(data.data.ten);
+                        $('#modal_read_hd').modal('show');
+                    }
+                }
+            });
+        });
+        // END Khi click vào nút xem hđ, tìm hđ theo id và đỗ dữ liệu
     });
+</script>
+<script>
+// Xử lý in hđlđ
+document.getElementById("btn-print-hd").onclick = function () {
+    printElement(document.getElementById("print-hdld"));
+};
+
+function printElement(elem) {
+    var domClone = elem.cloneNode(true);
+
+    var $printSection = document.getElementById("printSection");
+
+    if (!$printSection) {
+        var $printSection = document.createElement("div");
+        $printSection.id = "printSection";
+        document.body.appendChild($printSection);
+    }
+
+    $printSection.innerHTML = "";
+    $printSection.appendChild(domClone);
+    window.print();
+}
 </script>
 <script src="{{ asset('assets/global/plugins/datatables/datatables.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') }}" type="text/javascript"></script>
