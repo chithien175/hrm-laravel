@@ -20,6 +20,14 @@ class HopDong extends Model
         return $this->belongsTo('App\LoaiHopDong', 'loaihopdong_id');
     }
 
+    /**
+     * Get the loaihopdong for the hopdong.
+     */
+    public function nhansus()
+    {
+        return $this->belongsTo('App\NhanSu', 'nhansu_id');
+    }
+
     public static function saveHopDong($id, $data){
         if($id == 0){
             $hop_dong = new HopDong;

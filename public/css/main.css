@@ -3,10 +3,10 @@
 }
 
 #read-hdld .divider{
-    width: 85%;
+    width: 90%;
     height: 1px;
     border-bottom: 1px solid #333;
-    margin: 0 auto;
+    margin: 10px auto;
 }
 
 #read-hdld .company-info-left .company-logo{
@@ -14,7 +14,7 @@
 }
 
 #read-hdld .company-info-right p{
-    margin: 5px;
+    margin: 0 0 5px 0;
 }
 
 #read-hdld .company-info-right .company-name{
@@ -33,6 +33,7 @@
 
 #read-hdld .content-hdld{
     padding: 0 7.5%;
+    font-size: 12pt;
 }
 
 #read-hdld .content-hdld .quoc-hieu{
@@ -66,9 +67,12 @@
 }
 
 #read-hdld .content-hdld .ten-cong-ty{
-    font-size: 12pt;
     font-weight: bold;
     text-transform: uppercase;
+}
+
+#read-hdld .content-hdld .dai-dien-boi, #read-hdld .content-hdld .nguoi-lao-dong, #read-hdld .content-hdld .ten-loai-hdld{
+    font-weight: bold;
 }
 
 @media screen {

@@ -421,6 +421,8 @@
                         console.log(data.data);
                         $('#read-hdld .ma-hdld').html("Số: "+data.data.ma_hd);
                         $('#read-hdld .ten-hdld').html(data.data.ten);
+                        $('#read-hdld .ten-loai-hdld').html(data.data.loaihopdong_ten);
+                        $('#read-hdld .thoi-han-hdld').html("Từ ngày: <strong>"+data.data.ngay_co_hieu_luc+"</strong> Đến hết ngày: <strong>"+data.data.ngay_het_hieu_luc+"</strong>");
                         $('#modal_read_hd').modal('show');
                     }
                 }
