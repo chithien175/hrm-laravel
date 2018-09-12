@@ -3,9 +3,9 @@
 }
 
 #read-hdld .divider{
-    width: 90%;
-    height: 1px;
-    border-bottom: 1px solid #333;
+    width: 95%;
+    height: 3px;
+    border-bottom: 3px double #333;
     margin: 10px auto;
 }
 
@@ -14,52 +14,61 @@
 }
 
 #read-hdld .company-info-right p{
-    margin: 0 0 5px 0;
+    margin: 0;
 }
 
 #read-hdld .company-info-right .company-name{
-    font-size: 20px;
+    font-size: 18pt;
     text-transform: uppercase;
     font-weight: bold;
 }
 
 #read-hdld .company-info-right .company-address{
-    font-size: 15px;
+    font-size: 15pt;
 }
 
 #read-hdld .company-info-right .company-phone{
-    font-size: 15px;
+    font-size: 15pt;
 }
 
 #read-hdld .content-hdld{
     padding: 0 7.5%;
-    font-size: 12pt;
+    font-size: 13.5pt;
+    text-align: justify;
+}
+
+#read-hdld .content-hdld .row{
+    line-height: 24px;
+}
+
+#read-hdld .content-hdld .d-contents{
+    padding-left: 0px;
 }
 
 #read-hdld .content-hdld .quoc-hieu{
     margin: 10px 0 0 0;
-    font-size: 17px;
+    font-size: 16pt;
     font-weight: bold;
 }
 
 #read-hdld .content-hdld .tieu-ngu{
     margin: 0px;
-    font-size: 17px;
+    font-size: 16pt;
     font-weight: bold;
 }
 
 #read-hdld .content-hdld .line{
     margin: 0px;
-    font-size: 17px;
+    font-size: 16pt;
 }
 
 #read-hdld .content-hdld .ma-hdld{
-    font-size: 17px;
+    font-size: 16pt;
     margin: 0;
 }
 
 #read-hdld .content-hdld .ten-hdld{
-    font-size: 23px;
+    font-size: 19pt;
     margin: 0 0 30px 0;
     font-weight: bold;
     text-transform: uppercase;
@@ -71,7 +80,12 @@
     text-transform: uppercase;
 }
 
-#read-hdld .content-hdld .dai-dien-boi, #read-hdld .content-hdld .nguoi-lao-dong, #read-hdld .content-hdld .ten-loai-hdld{
+#read-hdld .content-hdld .dai-dien-boi,
+#read-hdld .content-hdld .nguoi-lao-dong,
+#read-hdld .content-hdld .ten-loai-hdld,
+#read-hdld .content-hdld .luong-can-ban-hdld,
+#read-hdld .content-hdld .luong-tro-cap-hdld,
+#read-hdld .content-hdld .luong-hieu-qua-hdld{
     font-weight: bold;
 }
 
@@ -98,14 +112,12 @@
     }
 
     #read-hdld .company-info-left{
-        width: 33.33333%;
+        width: 25%;
         float: left;
     }
 
     #read-hdld .company-info-right{
-        width: 66.66667%;
+        width: 75%;
         float: right;
     }
-
-    
 }

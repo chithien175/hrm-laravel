@@ -104,9 +104,9 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a class="btn btn-xs blue-sharp" href="{{ route('nhan_su.read.get', $v->id) }}"> Xem </a>
-                                            <a class="btn btn-xs yellow-gold" href="{{ route('nhan_su.edit.get', $v->id) }}"> Sửa </a>
-                                            <a class="btn btn-xs red-mint" href="{{ route('nhan_su.delete.get', $v->id) }}" onclick="return confirm('Bạn có chắc chắn muốn xóa người dùng này không?');"> Xóa </a>
+                                            <a class="btn btn-xs blue-sharp" href="{{ route('nhan_su.read.get', $v->id) }}" title="Xem"> <i class="fa fa-eye"></i> </a>
+                                            <a class="btn btn-xs yellow-gold" href="{{ route('nhan_su.edit.get', $v->id) }}" title="Sửa"> <i class="fa fa-edit"></i> </a>
+                                            <a class="btn btn-xs red-mint" href="{{ route('nhan_su.delete.get', $v->id) }}" onclick="return confirm('Bạn có chắc chắn muốn xóa người dùng này không?');" title="Xóa"> <i class="fa fa-trash"></i> </a>
                                         </td>
                                     </tr>
                                     @php $stt++; @endphp

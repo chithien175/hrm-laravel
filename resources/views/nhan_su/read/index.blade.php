@@ -172,7 +172,7 @@
                             <!-- BEGIN TAB 3-->
                             <div class="tab-pane" id="tab3">
                                 <div class="alert alert-danger" style="margin-bottom: 0px;">
-                                        <p> Vui lòng tạo mới nhân sự trước khi thêm lương! </p>
+                                        <p> Chức năng này đang được cập nhật </p>
                                 </div>
                             </div>
                             <!-- END BEGIN TAB 3-->
@@ -186,11 +186,14 @@
                                             <thead>
                                                 <tr>
                                                     <th> STT</th>
-                                                    <th> Mã HĐ</th>
-                                                    <th> Loại </th>
+                                                    <!-- <th> Mã HĐ</th> -->
+                                                    <th> Loại HĐ </th>
                                                     <th> Ngày ký</th>
                                                     <th> Từ ngày</th>
                                                     <th> Đến ngày</th>
+                                                    <th> Lương CB </th>
+                                                    <th> Hỗ trợ </th>
+                                                    <th> Thưởng HQ </th>
                                                     <th> Trạng thái</th>
                                                 </tr>
                                             </thead>
@@ -200,13 +203,14 @@
                                                     @foreach( $ds_hop_dong as $v )
                                                     <tr>
                                                         <td> {{ $stt }} </td>
-                                                        <td> 
-                                                            <a href="#">{{ $v->ma_hd }}</a> 
-                                                        </td>
+                                                        <!-- <td> {{ $v->ma_hd }} </td> -->
                                                         <td> {{ ($v->loaihopdong_id)?$v->loaihopdongs->ten:'' }} </td>
                                                         <td> {{ $v->ngay_ky }} </td>
                                                         <td> {{ $v->ngay_co_hieu_luc }} </td>
                                                         <td> {{ $v->ngay_het_hieu_luc }} </td>
+                                                        <td> {{ $v->luong_can_ban }} </td>
+                                                        <td> {{ $v->luong_tro_cap }} </td>
+                                                        <td> {{ $v->luong_hieu_qua }} </td>
                                                         <td> 
                                                             @if( $v->trang_thai )
                                                             <span class="label label-sm label-success" style="font-size: 12px;"> Còn hiệu lực </span>

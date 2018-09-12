@@ -423,6 +423,10 @@
                         $('#read-hdld .ten-hdld').html(data.data.ten);
                         $('#read-hdld .ten-loai-hdld').html(data.data.loaihopdong_ten);
                         $('#read-hdld .thoi-han-hdld').html("Từ ngày: <strong>"+data.data.ngay_co_hieu_luc+"</strong> Đến hết ngày: <strong>"+data.data.ngay_het_hieu_luc+"</strong>");
+                        $('#read-hdld .luong-can-ban-hdld').html(data.data.luong_can_ban+" đồng/tháng");
+                        $('#read-hdld .luong-tro-cap-hdld').html(data.data.luong_tro_cap+" đồng/tháng");
+                        $('#read-hdld .luong-hieu-qua-hdld').html(data.data.luong_hieu_qua+" đồng/tháng");
+                        $('#read-hdld .ngay-ky-hdld').html(data.data.ngay_ky);
                         $('#modal_read_hd').modal('show');
                     }
                 }

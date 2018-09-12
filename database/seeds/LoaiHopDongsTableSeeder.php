@@ -14,19 +14,19 @@ class LoaiHopDongsTableSeeder extends Seeder
         $loaihopdongs = array(
             [
                 'id'   => 1,
-                'ten' => 'Hợp đồng thử việc'
+                'ten' => 'Thử việc'
             ],
             [
                 'id'   => 2,
-                'ten' => 'Hợp đồng xác định thời hạn'
+                'ten' => 'Xác định thời hạn'
             ],
             [
                 'id'   => 3,
-                'ten' => 'Hợp đồng không xác định thời hạn'
+                'ten' => 'Không xác định thời hạn'
             ],
             [
                 'id'   => 4,
-                'ten' => 'Hợp đồng đào tạo nghề'
+                'ten' => 'Đào tạo nghề'
             ]
         );
         

@@ -14,19 +14,23 @@ class PhongBansTableSeeder extends Seeder
         $phongbans = array(
             [
                 'id'   => 1,
-                'ten' => 'Phòng Kỹ Thuật'
+                'ten' => 'Kỹ Thuật'
             ],
             [
                 'id'   => 2,
-                'ten' => 'Phòng Dự Án'
+                'ten' => 'Dự Án'
             ],
             [
                 'id'   => 3,
-                'ten' => 'Phòng Tài Chính - Kế Toán'
+                'ten' => 'Tài Chính - Kế Toán'
             ],
             [
                 'id'   => 4,
-                'ten' => 'Phòng Hành Chính - Nhân Sự'
+                'ten' => 'Hành Chính - Nhân Sự'
+            ],
+            [
+                'id'   => 5,
+                'ten' => 'Kinh Doanh'
             ]
         );
         

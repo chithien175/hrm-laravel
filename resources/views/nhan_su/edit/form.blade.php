@@ -235,7 +235,7 @@
         <!-- BEGIN TAB 3-->
         <div class="tab-pane" id="tab3">
             <div class="alert alert-danger" style="margin-bottom: 0px;">
-                    <p> Vui lòng tạo mới nhân sự trước khi thêm lương! </p>
+                    <p> Chức năng này đang được cập nhật </p>
             </div>
         </div>
         <!-- END TAB 3-->
@@ -262,7 +262,7 @@
                                 <tr>
                                     <th> STT</th>
                                     <th> Mã HĐ</th>
-                                    <th> Loại </th>
+                                    <th> Loại HĐ </th>
                                     <th> Ngày ký</th>
                                     <th> Từ ngày</th>
                                     <th> Đến ngày</th>
@@ -291,8 +291,8 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a data-hd-id="{{ $v->id }}" class="btn_edit_hd btn btn-xs yellow-gold" href="#"> Sửa </a>
-                                            <a class="btn_delete_hd btn btn-xs red-mint" href="#" data-hd-id="{{ $v->id }}"> Xóa </a>
+                                            <a data-hd-id="{{ $v->id }}" class="btn_edit_hd btn btn-xs yellow-gold" href="#" title="Sửa"> <i class="fa fa-edit"></i> </a>
+                                            <a class="btn_delete_hd btn btn-xs red-mint" href="#" data-hd-id="{{ $v->id }}" title="Xóa"> <i class="fa fa-trash"></i> </a>
                                         </td>
                                     </tr>
                                     @php $stt++; @endphp

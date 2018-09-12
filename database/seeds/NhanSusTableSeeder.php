@@ -32,6 +32,27 @@ class NhanSusTableSeeder extends Seeder
                 'phongban_id'        => 1,
                 'bophan_id'          => 2,
                 'hoso_id'            => '["1","2","3","4","5","6","7","8","9"]'
+            ],
+            [
+                'ma_nv'              => 'TP0002',
+                'ho_ten'             => 'Nguyễn Văn A',
+                'dia_chi_thuong_tru' => '01 Trần Phú, Lộc Thọ, Nha Trang, Khánh Hòa',
+                'dia_chi_lien_he'    => '01 Trần Phú, Lộc Thọ, Nha Trang, Khánh Hòa',
+                'dien_thoai'         => '0905123321',
+                'email'              => 'nguyenvana@gmail.com',
+                'gioi_tinh'          => 1,
+                'ngay_sinh'          => '1993-07-20',
+                'so_cmnd'            => '225477222',
+                'ngay_cap_cmnd'      => '2010-07-03',
+                'noi_cap_cmnd'       => 'CA. Phú Yên',
+                'ngay_bat_dau_lam'   => '2017-05-20',
+                'trinh_do'           => 'Đại học',
+                'truong_tot_nghiep'  => 'ĐH Nha Trang',
+                'nam_tot_nghiep'     => '2014',
+                'chuc_danh'          => 'Trưởng Phòng',
+                'phongban_id'        => 1,
+                'bophan_id'          => 3,
+                'hoso_id'            => '["1","2","3","4","5","6","7","8","9"]'
             ]
         );
 
