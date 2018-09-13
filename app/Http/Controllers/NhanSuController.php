@@ -108,4 +108,12 @@ class NhanSuController extends Controller
             return redirect()->route('nhan_su.index')->with('status_error', 'Xảy ra lỗi khi xóa nhân sự!');
         }
     }
+
+    public function importExcel(){
+        return view('nhan_su.import.index');
+    }
+
+    public function uploadExcel(){
+        return response()->json('success', 200);
+    }
 }

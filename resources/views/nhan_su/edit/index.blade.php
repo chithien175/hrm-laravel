@@ -59,13 +59,13 @@
                             <a href="#tab2" data-toggle="tab">Trình độ</a>
                         </li>
                         <li>
-                            <a href="#tab3" data-toggle="tab">QĐ lương</a>
+                            <a href="#tab3" data-toggle="tab">Hồ sơ</a>
                         </li>
                         <li>
                             <a href="#tab4" data-toggle="tab">HĐLĐ</a>
                         </li>
                         <li>
-                            <a href="#tab5" data-toggle="tab">Hồ sơ</a>
+                            <a href="#tab5" data-toggle="tab">Quyết định</a>
                         </li>
                     </ul>
                     <!-- BEGIN VALIDATION STATES-->
@@ -107,6 +107,9 @@
             // autoUnmask: true
         });
         $("#ngay_bat_dau_lam").inputmask("d-m-y", {
+            // autoUnmask: true
+        });
+        $("#ngay_lam_viec_cuoi").inputmask("d-m-y", {
             // autoUnmask: true
         });
         $("input[name='ngay_ky']").inputmask("d-m-y", {
@@ -422,12 +425,13 @@
                         $('#read-hdld .ma-hdld').html("Số: "+data.data.ma_hd);
                         $('#read-hdld .ten-hdld').html(data.data.ten);
                         $('#read-hdld .ten-loai-hdld').html(data.data.loaihopdong_ten);
-                        $('#read-hdld .thoi-han-hdld').html("Từ ngày: <strong>"+data.data.ngay_co_hieu_luc+"</strong> Đến hết ngày: <strong>"+data.data.ngay_het_hieu_luc+"</strong>");
+                        $('#read-hdld .thoi-han-hdld').html("Từ ngày: <strong>"+data.data.ngay_co_hieu_luc.replace(/-/g,'/')+"</strong> Đến hết ngày: <strong>"+data.data.ngay_het_hieu_luc.replace(/-/g,'/')+"</strong>");
                         $('#read-hdld .luong-can-ban-hdld').html(data.data.luong_can_ban+" đồng/tháng");
                         $('#read-hdld .luong-tro-cap-hdld').html(data.data.luong_tro_cap+" đồng/tháng");
                         $('#read-hdld .luong-hieu-qua-hdld').html(data.data.luong_hieu_qua+" đồng/tháng");
-                        $('#read-hdld .ngay-ky-hdld').html(data.data.ngay_ky);
+                        $('#read-hdld .ngay-ky-hdld').html(data.data.ngay_ky.replace(/-/g,'/'));
                         $('#modal_read_hd').modal('show');
+                        
                     }
                 }
             });

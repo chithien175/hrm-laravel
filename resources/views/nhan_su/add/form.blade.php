@@ -136,6 +136,16 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-4">Ngày làm việc cuối
+                            </label>
+                            <div class="col-md-7">
+                                <div class="input-icon right">
+                                    <i class="fa fa-calendar"></i>
+                                    <input class="form-control" name="ngay_lam_viec_cuoi" id="ngay_lam_viec_cuoi" type="text" placeholder="dd-mm-yyyy" value="{{ old('ngay_lam_viec_cuoi') }}" />
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -172,6 +182,16 @@
                                 <div class="input-icon right">
                                     <i class="fa fa-calendar-check-o"></i>
                                     <input type="text" class="form-control" name="nam_tot_nghiep" value="{{ old('nam_tot_nghiep') }}" /> </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-4">Chứng chỉ
+                            </label>
+                            <div class="col-md-7">
+                                <div class="input-icon right">
+                                    <i class="fa fa-calendar-check-o"></i>
+                                    <textarea name="chung_chi" class="form-control" id="chung_chi" rows="5">{{ old('chung_chi') }}</textarea>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -217,13 +237,13 @@
         </div>
         <!-- END TAB 2-->
 
-        <!-- BEGIN TAB 3-->
-        <div class="tab-pane" id="tab3">
+        <!-- BEGIN TAB 5-->
+        <div class="tab-pane" id="tab5">
             <div class="alert alert-danger" style="margin-bottom: 0px;">
-                    <p> Vui lòng tạo mới nhân sự trước khi thêm lương! </p>
+                    <p> Vui lòng tạo mới nhân sự trước khi thêm quyết định! </p>
             </div>
         </div>
-        <!-- END TAB 3-->
+        <!-- END TAB 5-->
 
         <!-- BEGIN TAB 4-->
         <div class="tab-pane" id="tab4">
@@ -233,8 +253,8 @@
         </div>
         <!-- END TAB 4-->
 
-        <!-- BEGIN TAB 5-->
-        <div class="tab-pane" id="tab5">
+        <!-- BEGIN TAB 3-->
+        <div class="tab-pane" id="tab3">
             <div class="form-body">
                     <div class="form-group">
                         <div class="input-group col-md-12">
@@ -251,7 +271,7 @@
                 </div>
             </div>
         </div>
-        <!-- END TAB 5-->
+        <!-- END TAB 3-->
     </div>
     <div class="form-actions">
         <div class="row">

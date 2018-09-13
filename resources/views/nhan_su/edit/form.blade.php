@@ -137,6 +137,16 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="control-label col-md-4">Ngày làm việc cuối
+                            </label>
+                            <div class="col-md-7">
+                                <div class="input-icon right">
+                                    <i class="fa fa-calendar"></i>
+                                    <input class="form-control" name="ngay_lam_viec_cuoi" id="ngay_lam_viec_cuoi" type="text" placeholder="dd-mm-yyyy" value="{{ $nhan_su->ngay_lam_viec_cuoi }}" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="control-label col-md-4">Trạng thái</label>
                             <div class="col-md-7">
                                 <div class="input-icon right">
@@ -186,7 +196,18 @@
                                     <input type="text" class="form-control" name="nam_tot_nghiep" value="{{ $nhan_su->nam_tot_nghiep }}" /> </div>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-4">Chứng chỉ
+                            </label>
+                            <div class="col-md-7">
+                                <div class="input-icon right">
+                                    <i class="fa fa-calendar-check-o"></i>
+                                    <textarea name="chung_chi" class="form-control" id="chung_chi" rows="5">{{ $nhan_su->chung_chi }}</textarea>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label col-md-4">Chức danh
@@ -232,13 +253,13 @@
         </div>
         <!-- END TAB 2-->
 
-        <!-- BEGIN TAB 3-->
-        <div class="tab-pane" id="tab3">
+        <!-- BEGIN TAB 5-->
+        <div class="tab-pane" id="tab5">
             <div class="alert alert-danger" style="margin-bottom: 0px;">
                     <p> Chức năng này đang được cập nhật </p>
             </div>
         </div>
-        <!-- END TAB 3-->
+        <!-- END TAB 5-->
 
         <!-- BEGIN TAB 4-->
         <div class="tab-pane" id="tab4">
@@ -292,6 +313,7 @@
                                         </td>
                                         <td>
                                             <a data-hd-id="{{ $v->id }}" class="btn_edit_hd btn btn-xs yellow-gold" href="#" title="Sửa"> <i class="fa fa-edit"></i> </a>
+                                            <a data-hd-id="{{ $v->id }}" class="btn_read_hd btn btn-xs blue-steel" href="#" title="In"> <i class="fa fa-print"></i> </a>
                                             <a class="btn_delete_hd btn btn-xs red-mint" href="#" data-hd-id="{{ $v->id }}" title="Xóa"> <i class="fa fa-trash"></i> </a>
                                         </td>
                                     </tr>
@@ -311,8 +333,8 @@
         </div>
         <!-- END TAB 4-->
 
-        <!-- BEGIN TAB 5-->
-        <div class="tab-pane" id="tab5">
+        <!-- BEGIN TAB 3-->
+        <div class="tab-pane" id="tab3">
             <div class="form-body">
                     <div class="form-group">
                         <div class="input-group col-md-12">
@@ -341,7 +363,7 @@
                 </div>
             </div>
         </div>
-        <!-- END TAB 5-->
+        <!-- END TAB 3-->
     </div>
     <div class="form-actions">
         <div class="row">

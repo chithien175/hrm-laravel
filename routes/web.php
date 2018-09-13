@@ -68,6 +68,8 @@ Route::prefix('staffs')->middleware('auth')->group(function () {
     Route::get('/edit/{id}', ['uses' =>'NhanSuController@edit','as'=>'nhan_su.edit.get']);
     Route::post('/edit/{id}', ['uses'=>'NhanSuController@update','as'=>'nhan_su.edit.post']);
     Route::get('/delete/{id}', ['uses'=>'NhanSuController@destroy','as'=>'nhan_su.delete.get']);
+    Route::get('/import-excel', ['uses'=>'NhanSuController@importExcel','as'=>'nhan_su.import-excel.get']);
+    Route::post('/upload-excel', ['uses'=>'NhanSuController@uploadExcel','as'=>'nhan_su.upload-excel.post']);
 });
 
 // Company Routes...

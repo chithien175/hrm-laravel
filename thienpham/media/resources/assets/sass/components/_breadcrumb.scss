@@ -1,0 +1,15 @@
+.rv-media-breadcrumb {
+    @include lib-css(flex-grow, 1);
+    ul {
+        margin  : 0;
+        padding : 0;
+    }
+    .breadcrumb {
+        background-color : transparent;
+        li:last-child:not(:first-child) {
+            a {
+                color : #333333;
+            }
+        }
+    }
+}

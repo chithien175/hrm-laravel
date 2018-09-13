@@ -15,7 +15,7 @@
                             <div class="col-md-3 text-center company-info-left">
                                 <img class="company-logo" src="{{ asset('/uploads/logos') }}/{{ setting('company.logo', '') }}" alt="">
                             </div>
-                            <div class="col-md-9 text-center company-info-right">
+                            <div class="col-md-9 company-info-right">
                                 <p class="company-name">{{ setting('company.name', '') }}</p>
                                 <p class="company-address"><strong><em>Địa chỉ:</em></strong> {{ setting('company.address', '') }}</p>
                                 <p class="company-phone"><strong><em>Điện thoại:</em></strong> {{ setting('company.phone', '') }} &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <strong><em>Fax:</em></strong> {{ setting('company.fax', '') }}</p>
@@ -422,7 +422,7 @@
                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 cot-trai text-center">
                                     <p style="font-weight: bold; margin: 0 0 0 0;">NGƯỜI LAO ĐỘNG</p>
                                     <p style="margin: 0 0 0 0;"><em>(Ký, ghi rõ họ tên)</em></p>
-                                    <br><br><br><br><br>
+                                    <br><br><br><br>
                                     <p style="font-weight: bold; margin: 0 0 0 0;">{{ $nhan_su->ho_ten }}</p>
                                 </div>
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
@@ -430,7 +430,7 @@
                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 cot-phai text-center">
                                     <p style="font-weight: bold; margin: 0 0 0 0;">NGƯỜI SỬ DỤNG LAO ĐỘNG</p>
                                     <p style="font-weight: bold; margin: 0 0 0 0;">{{ setting('company.chuc_vu', '') }}</p>
-                                    <br><br><br><br><br>
+                                    <br><br><br><br>
                                     <p style="font-weight: bold; margin: 0 0 0 0;">{{ setting('company.nguoi_dai_dien', '') }}</p>
                                 </div>
                             </div>

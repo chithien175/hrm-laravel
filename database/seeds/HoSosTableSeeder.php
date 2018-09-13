@@ -20,7 +20,8 @@ class HoSosTableSeeder extends Seeder
             ['ten' => 'Giấy khám sức khỏe'],
             ['ten' => 'Giấy khai sinh'],
             ['ten' => 'Bằng chính (ĐH, CĐ, TC)'],
-            ['ten' => 'Chứng chỉ'] 
+            ['ten' => 'Chứng chỉ'],
+            ['ten' => 'Hộ khẩu']
         );
         
         DB::table('ho_sos')->insert($hosos);

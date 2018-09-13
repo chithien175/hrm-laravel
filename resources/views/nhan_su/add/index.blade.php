@@ -50,13 +50,13 @@
                             <a href="#tab2" data-toggle="tab">Trình độ</a>
                         </li>
                         <li>
-                            <a href="#tab3" data-toggle="tab">QĐ lương</a>
+                            <a href="#tab3" data-toggle="tab">Hồ sơ</a>
                         </li>
                         <li>
                             <a href="#tab4" data-toggle="tab">HĐLĐ</a>
                         </li>
                         <li>
-                            <a href="#tab5" data-toggle="tab">Hồ sơ</a>
+                            <a href="#tab5" data-toggle="tab">Quyết định</a>
                         </li>
                     </ul>
                     <!-- BEGIN VALIDATION STATES-->
@@ -89,6 +89,9 @@
             // autoUnmask: true
         });
         $("#ngay_bat_dau_lam").inputmask("d-m-y", {
+            // autoUnmask: true
+        });
+        $("#ngay_lam_viec_cuoi").inputmask("d-m-y", {
             // autoUnmask: true
         });
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: localhost:3306
--- Thời gian đã tạo: Th9 08, 2018 lúc 10:00 AM
+-- Thời gian đã tạo: Th9 12, 2018 lúc 07:31 AM
 -- Phiên bản máy phục vụ: 5.7.19
 -- Phiên bản PHP: 7.1.20
 
@@ -77,8 +77,10 @@ CREATE TABLE `hop_dongs` (
 --
 
 INSERT INTO `hop_dongs` (`id`, `nhansu_id`, `ma_hd`, `ten`, `loaihopdong_id`, `ngay_ky`, `ngay_co_hieu_luc`, `ngay_het_hieu_luc`, `luong_can_ban`, `luong_tro_cap`, `luong_hieu_qua`, `trang_thai`, `created_at`, `updated_at`) VALUES
-(1, 1, 'TP0001/2018/HĐTV-TP', 'Hợp đồng thử việc', 1, '2018-06-11 00:00:00', '2018-06-11 00:00:00', '2018-08-10 00:00:00', '3.800.000', '1.000.000', '1.150.000', 0, NULL, NULL),
-(2, 1, 'TP0001/2018/HĐLĐ-TP', 'Hợp đồng lao động', 2, '2018-08-11 00:00:00', '2018-08-11 00:00:00', '2019-08-10 00:00:00', '3.800.000', '1.000.000', '2.200.000', 1, NULL, NULL);
+(1, 1, 'TP0001/2018/HĐTV-TP', 'Hợp đồng thử việc', 1, '2018-06-11 00:00:00', '2018-06-11 00:00:00', '2018-08-10 00:00:00', '3.800.000', '20.000.000', '30.000.000', 0, NULL, NULL),
+(2, 1, 'TP0001/2018/HĐLĐ-TP', 'Hợp đồng lao động', 2, '2018-08-11 00:00:00', '2018-08-11 00:00:00', '2019-08-10 00:00:00', '3.800.000', '40.000.000', '50.000.000', 1, NULL, NULL),
+(3, 2, 'TP0002/2018/HĐTV-TP', 'Hợp đồng thử việc', 1, '2017-05-20 00:00:00', '2017-05-20 00:00:00', '2017-07-19 00:00:00', '3.800.000', '6.000.000', '7.150.000', 0, NULL, NULL),
+(4, 2, 'TP0002/2018/HĐLĐ-TP', 'Hợp đồng lao động', 2, '2017-07-20 00:00:00', '2017-07-20 00:00:00', '2018-07-19 00:00:00', '3.800.000', '5.000.000', '3.200.000', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -126,10 +128,10 @@ CREATE TABLE `loai_hop_dongs` (
 --
 
 INSERT INTO `loai_hop_dongs` (`id`, `ten`, `created_at`, `updated_at`) VALUES
-(1, 'Hợp đồng thử việc', NULL, NULL),
-(2, 'Hợp đồng xác định thời hạn', NULL, NULL),
-(3, 'Hợp đồng không xác định thời hạn', NULL, NULL),
-(4, 'Hợp đồng đào tạo nghề', NULL, NULL);
+(1, 'Thử việc', NULL, NULL),
+(2, 'Xác định thời hạn', NULL, NULL),
+(3, 'Không xác định thời hạn', NULL, NULL),
+(4, 'Đào tạo nghề', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -148,14 +150,14 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(65, '2014_10_12_000000_create_users_table', 1),
-(66, '2014_10_12_100000_create_password_resets_table', 1),
-(67, '2018_08_30_075551_create_phong_bans_table', 1),
-(68, '2018_08_30_075711_create_bo_phans_table', 1),
-(69, '2018_08_30_084129_create_nhan_sus_table', 1),
-(70, '2018_08_30_162233_create_ho_sos_table', 1),
-(71, '2018_09_05_142047_create_hop_dongs_table', 1),
-(72, '2018_09_05_143038_create_loai_hop_dongs_table', 1);
+(97, '2014_10_12_000000_create_users_table', 1),
+(98, '2014_10_12_100000_create_password_resets_table', 1),
+(99, '2018_08_30_075551_create_phong_bans_table', 1),
+(100, '2018_08_30_075711_create_bo_phans_table', 1),
+(101, '2018_08_30_084129_create_nhan_sus_table', 1),
+(102, '2018_08_30_162233_create_ho_sos_table', 1),
+(103, '2018_09_05_142047_create_hop_dongs_table', 1),
+(104, '2018_09_05_143038_create_loai_hop_dongs_table', 1);
 
 -- --------------------------------------------------------
 
@@ -195,7 +197,8 @@ CREATE TABLE `nhan_sus` (
 --
 
 INSERT INTO `nhan_sus` (`id`, `ma_nv`, `ho_ten`, `gioi_tinh`, `ngay_sinh`, `so_cmnd`, `ngay_cap_cmnd`, `noi_cap_cmnd`, `dia_chi_thuong_tru`, `dia_chi_lien_he`, `dien_thoai`, `email`, `trinh_do`, `truong_tot_nghiep`, `nam_tot_nghiep`, `ngay_bat_dau_lam`, `chuc_danh`, `phongban_id`, `bophan_id`, `chung_chi`, `hoso_id`, `trang_thai`, `created_at`, `updated_at`) VALUES
-(1, 'TP0001', 'Phạm Đức Chí Thiện', 1, '1991-05-17 00:00:00', '225477220', '2008-03-22 00:00:00', 'CA. Khánh Hòa', '5 An Dương Vương, P.Phước Tân, Nha Trang, Khánh Hòa', '5 An Dương Vương, P.Phước Tân, Nha Trang, Khánh Hòa', '0905160320', 'chithien175@gmail.com', 'Cao đẳng', 'CĐ sư phạm Nha Trang', '2015', '2018-06-11 00:00:00', 'Nhân viên', 1, 2, NULL, '[\"1\",\"2\",\"3\",\"4\",\"5\",\"6\",\"7\",\"8\",\"9\"]', 1, NULL, NULL);
+(1, 'TP0001', 'Phạm Đức Chí Thiện', 1, '1991-05-17 00:00:00', '225477220', '2008-03-22 00:00:00', 'CA. Khánh Hòa', '5 An Dương Vương, P.Phước Tân, Nha Trang, Khánh Hòa', '5 An Dương Vương, P.Phước Tân, Nha Trang, Khánh Hòa', '0905160320', 'chithien175@gmail.com', 'Cao đẳng', 'CĐ sư phạm Nha Trang', '2015', '2018-06-11 00:00:00', 'Nhân viên', 1, 2, NULL, '[\"1\",\"2\",\"3\",\"4\",\"5\",\"6\",\"7\",\"8\",\"9\"]', 1, NULL, NULL),
+(2, 'TP0002', 'Nguyễn Văn A', 1, '1993-07-20 00:00:00', '225477222', '2010-07-03 00:00:00', 'CA. Phú Yên', '01 Trần Phú, Lộc Thọ, Nha Trang, Khánh Hòa', '01 Trần Phú, Lộc Thọ, Nha Trang, Khánh Hòa', '0905123321', 'nguyenvana@gmail.com', 'Đại học', 'ĐH Nha Trang', '2014', '2017-05-20 00:00:00', 'Trưởng Phòng', 1, 3, NULL, '[\"1\",\"2\",\"3\",\"4\",\"5\",\"6\",\"7\",\"8\",\"9\"]', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -227,10 +230,11 @@ CREATE TABLE `phong_bans` (
 --
 
 INSERT INTO `phong_bans` (`id`, `ten`, `created_at`, `updated_at`) VALUES
-(1, 'Phòng Kỹ Thuật', NULL, NULL),
-(2, 'Phòng Dự Án', NULL, NULL),
-(3, 'Phòng Tài Chính - Kế Toán', NULL, NULL),
-(4, 'Phòng Hành Chính - Nhân Sự', NULL, NULL);
+(1, 'Kỹ Thuật', NULL, NULL),
+(2, 'Dự Án', NULL, NULL),
+(3, 'Tài Chính - Kế Toán', NULL, NULL),
+(4, 'Hành Chính - Nhân Sự', NULL, NULL),
+(5, 'Kinh Doanh', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -256,9 +260,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `avatar`, `role`, `active`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Thiện Phạm', 'chithien175@gmail.com', '$2y$10$nh5t/PUjaTd1WziL/eFIA.Ge/CSLUzAYm.1XuUtUDgarJs0Rsz2Ja', 'default-avatar.jpg', 'superadmin', 1, NULL, NULL, NULL),
-(2, 'Test 1', 'test1@gmail.com', '$2y$10$Ua/nTgP79OQXECh.KBN./OdKyGD8kU62KVEJAj4igihwzPe.z408i', 'default-avatar.jpg', 'admin', 1, NULL, NULL, NULL),
-(3, 'Test 2', 'test2@gmail.com', '$2y$10$.p298R.s0m8eGDkUgeM9eup0i7yAiG7FToRD2GitM5wN77QTWqH46', 'default-avatar.jpg', 'user', 1, NULL, NULL, NULL);
+(1, 'Thiện Phạm', 'chithien175@gmail.com', '$2y$10$f4D.PU3TajHbhdmvDByOSuPQt5GJuSkxcPx.PwavdNXNKbIk7EwJK', 'default-avatar.jpg', 'superadmin', 1, NULL, NULL, NULL),
+(2, 'Test 1', 'test1@gmail.com', '$2y$10$ST97RXIqc2OdK2JRgKBhBuLTTv3HZ0ECjgCag0jvuXzfVFJDBGZFa', 'default-avatar.jpg', 'admin', 1, NULL, NULL, NULL),
+(3, 'Test 2', 'test2@gmail.com', '$2y$10$eL/MUBFmw4lQ1t/vcH0SA.NV8xRxh7SBSERZwI1VFre4Nvu46TB2W', 'default-avatar.jpg', 'user', 1, NULL, NULL, NULL);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -336,7 +340,7 @@ ALTER TABLE `bo_phans`
 -- AUTO_INCREMENT cho bảng `hop_dongs`
 --
 ALTER TABLE `hop_dongs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `ho_sos`
@@ -354,19 +358,19 @@ ALTER TABLE `loai_hop_dongs`
 -- AUTO_INCREMENT cho bảng `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- AUTO_INCREMENT cho bảng `nhan_sus`
 --
 ALTER TABLE `nhan_sus`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `phong_bans`
 --
 ALTER TABLE `phong_bans`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `users`

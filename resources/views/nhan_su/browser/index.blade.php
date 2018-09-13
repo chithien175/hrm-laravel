@@ -4,6 +4,7 @@
 
 @section('style')
     <link href="{{ asset('assets/global/plugins/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/global/plugins/bootstrap-sweetalert/sweetalert.css') }}" rel="stylesheet" type="text/css" />
 @endsection()
 
 @section('content')
@@ -59,7 +60,7 @@
                                         </button>
                                         <ul class="dropdown-menu pull-right">
                                             <li>
-                                                <a href="javascript:;"> In </a>
+                                                <a id="import-excel" href="#"> Nhập liệu bằng Excel </a>
                                             </li>
                                             <li>
                                                 <a href="javascript:;"> Lưu PDF </a>
@@ -167,10 +168,28 @@
                 // [0, "asc"]
             ] // set first column as a default sort by asc
         });
+
+        $("#import-excel").on("click", function(e){
+            e.preventDefault();
+            swal({
+                title: "Bạn có chắc không?",
+                text: "Vui lòng tham khảo người quản trị trước khi làm điều này!",
+                type: "warning",
+                showCancelButton: true,
+                cancelButtonText: 'Hủy bỏ',
+                confirmButtonClass: "btn-danger",
+                confirmButtonText: "Chắc chắn!",
+                closeOnConfirm: false
+                },
+                function(){
+                    window.location.href = "{{ route('nhan_su.import-excel.get') }}";
+                });
+        });
     });
 </script>
 
 <!-- <script src="{{ asset('assets/global/scripts/datatable.js') }}" type="text/javascript"></script> -->
 <script src="{{ asset('assets/global/plugins/datatables/datatables.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/global/plugins/bootstrap-sweetalert/sweetalert.min.js') }}" type="text/javascript"></script>
 @endsection

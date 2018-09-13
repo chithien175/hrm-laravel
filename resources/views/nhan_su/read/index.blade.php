@@ -56,13 +56,13 @@
                             <a href="#tab2" data-toggle="tab">Trình độ</a>
                         </li>
                         <li>
-                            <a href="#tab3" data-toggle="tab">QĐ lương</a>
+                            <a href="#tab3" data-toggle="tab">Hồ sơ</a>
                         </li>
                         <li>
                             <a href="#tab4" data-toggle="tab">HĐLĐ</a>
                         </li>
                         <li>
-                            <a href="#tab5" data-toggle="tab">Hồ sơ</a>
+                            <a href="#tab5" data-toggle="tab">Quyết định</a>
                         </li>
                     </ul>
                     <!-- BEGIN VALIDATION STATES-->
@@ -128,6 +128,10 @@
                                                 <label class="control-label col-md-4 col-xs-6">Ngày bắt đầu làm:</label>
                                                 <label class="control-label col-md-7 col-xs-6">{{ (new \Carbon\Carbon($nhan_su->ngay_bat_dau_lam))->format('d-m-Y') }}</label>
                                             </div>
+                                            <div class="row">
+                                                <label class="control-label col-md-4 col-xs-6">Ngày làm việc cuối:</label>
+                                                <label class="control-label col-md-7 col-xs-6">{{ (new \Carbon\Carbon($nhan_su->ngay_lam_viec_cuoi))->format('d-m-Y') }}</label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -150,6 +154,10 @@
                                                 <label class="control-label col-md-4 col-xs-6">Năm tốt nghiệp:</label>
                                                 <label class="control-label col-md-7 col-xs-6">{{ $nhan_su->nam_tot_nghiep }}</label>
                                             </div>
+                                            <div class="row">
+                                                <label class="control-label col-md-4 col-xs-6">Chứng chỉ:</label>
+                                                <label class="control-label col-md-7 col-xs-6">{!! $nhan_su->chung_chi !!}</label>
+                                            </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="row">
@@ -171,11 +179,38 @@
                             <!-- END BEGIN TAB 2-->
                             <!-- BEGIN TAB 3-->
                             <div class="tab-pane" id="tab3">
-                                <div class="alert alert-danger" style="margin-bottom: 0px;">
-                                        <p> Chức năng này đang được cập nhật </p>
+                                <div class="form-body">
+                                    @if($nhan_su->hoso_id)
+                                        @php
+                                            $ho_so = json_decode($nhan_su->hoso_id);
+                                            $ds_ho_so = App\HoSo::all()->pluck('ten','id');
+                                        @endphp
+                                        <div class="row">
+                                            <div class="input-group col-md-12">
+                                                @foreach($ds_ho_so as $k => $v)
+                                                    @if(in_array($k, $ho_so))
+                                                    <label class="control-label col-md-3 col-xs-6"><i class="glyphicon glyphicon-ok-sign font-green"></i> {{ $v }}</label>
+                                                    @else
+                                                    <label class="control-label col-md-3 col-xs-6 font-grey-steel"><i class="glyphicon glyphicon-remove-sign font-yellow-casablanca"></i> {{ $v }}</label>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    @else
+                                        @php
+                                            $ds_ho_so = App\HoSo::all()->pluck('ten','id');
+                                        @endphp
+                                        <div class="row">
+                                            <div class="input-group col-md-12">
+                                                @foreach($ds_ho_so as $k => $v)
+                                                    <label class="control-label col-md-3 col-xs-6 font-grey-steel"><i class="glyphicon glyphicon-remove-sign font-yellow-casablanca"></i> {{ $v }}</label>
+                                                   
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
-                            <!-- END BEGIN TAB 3-->
                             <!-- BEGIN TAB 4-->
                             <div class="tab-pane" id="tab4">
                                 @if($ds_hop_dong->isNotEmpty())
@@ -234,38 +269,12 @@
                                 @endif
                             </div>
                             <!-- END BEGIN TAB 4-->
+                            
+                            <!-- END BEGIN TAB 3-->
                             <!-- BEGIN TAB 5-->
                             <div class="tab-pane" id="tab5">
-                                <div class="form-body">
-                                    @if($nhan_su->hoso_id)
-                                        @php
-                                            $ho_so = json_decode($nhan_su->hoso_id);
-                                            $ds_ho_so = App\HoSo::all()->pluck('ten','id');
-                                        @endphp
-                                        <div class="row">
-                                            <div class="input-group col-md-12">
-                                                @foreach($ds_ho_so as $k => $v)
-                                                    @if(in_array($k, $ho_so))
-                                                    <label class="control-label col-md-3 col-xs-6"><i class="glyphicon glyphicon-ok-sign font-green"></i> {{ $v }}</label>
-                                                    @else
-                                                    <label class="control-label col-md-3 col-xs-6 font-grey-steel"><i class="glyphicon glyphicon-remove-sign font-yellow-casablanca"></i> {{ $v }}</label>
-                                                    @endif
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    @else
-                                        @php
-                                            $ds_ho_so = App\HoSo::all()->pluck('ten','id');
-                                        @endphp
-                                        <div class="row">
-                                            <div class="input-group col-md-12">
-                                                @foreach($ds_ho_so as $k => $v)
-                                                    <label class="control-label col-md-3 col-xs-6 font-grey-steel"><i class="glyphicon glyphicon-remove-sign font-yellow-casablanca"></i> {{ $v }}</label>
-                                                   
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    @endif
+                                <div class="alert alert-danger" style="margin-bottom: 0px;">
+                                        <p> Chức năng này đang được cập nhật </p>
                                 </div>
                             </div>
                             <!-- END BEGIN TAB 5-->

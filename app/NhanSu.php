@@ -44,9 +44,11 @@ class NhanSu extends Model
         $nhan_su->ngay_cap_cmnd      = Carbon::parse($data['ngay_cap_cmnd'])->format('Y-m-d');
         $nhan_su->noi_cap_cmnd       = $data['noi_cap_cmnd'];
         $nhan_su->ngay_bat_dau_lam   = Carbon::parse($data['ngay_bat_dau_lam'])->format('Y-m-d');
+        $nhan_su->ngay_lam_viec_cuoi   = Carbon::parse($data['ngay_lam_viec_cuoi'])->format('Y-m-d');
         $nhan_su->trinh_do           = $data['trinh_do'];
         $nhan_su->truong_tot_nghiep  = $data['truong_tot_nghiep'];
         $nhan_su->nam_tot_nghiep     = $data['nam_tot_nghiep'];
+        $nhan_su->chung_chi          = $data['chung_chi'];
         $nhan_su->chuc_danh          = $data['chuc_danh'];
         $nhan_su->phongban_id        = $data['phongban_id'];
         $nhan_su->bophan_id          = $data['bophan_id'];
@@ -70,6 +72,11 @@ class NhanSu extends Model
     }
 
     public function getNgayBatDauLamAttribute($value)
+    {
+        return Carbon::parse($value)->format('d-m-Y');
+    }
+
+    public function getNgayLamViecCuoiAttribute($value)
     {
         return Carbon::parse($value)->format('d-m-Y');
     }
