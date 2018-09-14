@@ -29,4 +29,14 @@ class EventServiceProvider extends ServiceProvider
 
         //
     }
+
+    /**
+     * "ctf0/package-changelog".
+     */
+    public static function postAutoloadDump(\Composer\Script\Event $event)
+    {
+        if (class_exists('ctf0\PackageChangeLog\Ops')) {
+            return \ctf0\PackageChangeLog\Ops::postAutoloadDump($event);
+        }
+    }
 }

@@ -87,3 +87,5 @@ Route::prefix('ajax')->middleware('auth')->group(function () {
     Route::post('/postSuaHopDong', ['uses'=>'HopDongController@postSuaHopDong','as'=>'postSuaHopDong']);
     Route::post('/postXoaHopDong', ['uses'=>'HopDongController@postXoaHopDong','as'=>'postXoaHopDong']);
 });
+// MediaManager
+ctf0\MediaManager\MediaRoutes::routes();
