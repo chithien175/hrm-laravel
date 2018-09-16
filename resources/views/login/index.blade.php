@@ -1,17 +1,18 @@
 @extends('layouts.login')
 
+@section('title', 'Đăng nhập hệ thống')
+
 @section('content')
     <!-- BEGIN LOGO -->
     <div class="logo">
         <a href="#">
             <img src="{{ asset('/images/logo.png') }}" alt="HRM - Thinh Phong Co., Ltd" /> 
         </a>
-        <h3 style="color: #ff0000;">CÔNG TY TNHH THỊNH PHONG</h3>
-        <h3 style="color: #00ff66;">PHẦN MỀM QUẢN LÝ NHÂN SỰ</h3>
+        <h3 style="color: #00ff66;">PHẦN MỀM NHÂN SỰ</h3>
     </div>
     <!-- END LOGO -->
     <!-- BEGIN LOGIN -->
-    <div class="content">
+    <div class="content" style="margin-top: 0px;">
         <!-- BEGIN LOGIN FORM -->
         <form class="login-form" action="{{ route('login.post') }}" method="post">
             @csrf()
@@ -31,10 +32,10 @@
             <div class="form-group">
                 <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
                 <label class="control-label visible-ie8 visible-ie9">Email</label>
-                <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" name="email" /> </div>
+                <input value="chithien175@gmail.com" class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="Email" name="email" /> </div>
             <div class="form-group">
                 <label class="control-label visible-ie8 visible-ie9">Mật khẩu</label>
-                <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Mật khẩu" name="password" /> </div>
+                <input value="123123" class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Mật khẩu" name="password" /> </div>
             <div class="form-actions">
                 <button type="submit" class="btn green uppercase">Đăng nhập</button>
                 <label class="rememberme check mt-checkbox mt-checkbox-outline">
@@ -45,7 +46,7 @@
         </form>
         <!-- END LOGIN FORM -->
     </div>
-    <div class="copyright"> 2018 © HRM - Thinh Phong. </div>
+    <div class="copyright"> 2018 © <a href="http://thinhphongnt.vn" target="_blank">Công ty TNHH Thịnh Phong.</a></div>
     
     <!--[if lt IE 9]>
     <script src="../assets/global/plugins/respond.min.js"></script>

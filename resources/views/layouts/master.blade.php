@@ -5,11 +5,11 @@
     <!-- BEGIN HEAD -->
 
     @include('partials.head')
-
+    @yield('style')
     @include('partials.style')
     <!-- END HEAD -->
 
-    @yield('style')
+    
 
     <body class="page-header-fixed page-sidebar-closed-hide-logo page-content-white">
         <div class="page-wrapper">

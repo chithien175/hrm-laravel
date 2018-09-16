@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', 'Danh sách người dùng')
+
 @section('style')
     <link href="{{ asset('assets/global/plugins/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- <link href="{{ asset('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.css') }}" rel="stylesheet" type="text/css" /> -->
@@ -27,6 +29,7 @@
         <!-- END PAGE BAR -->
         <!-- BEGIN PAGE TITLE-->
         <h1 class="page-title">
+            <i class="fa fa-list-ul"></i>
             Danh Sách Người Dùng
         </h1>
 
@@ -45,14 +48,14 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="btn-group">
-                                        <a id="sample_editable_1_new" class="btn green" href="{{ route('user.add.get') }}"> Thêm mới
-                                            <i class="fa fa-plus"></i>
+                                        <a id="sample_editable_1_new" class="btn green" href="{{ route('user.add.get') }}"><i class="fa fa-plus"></i> Thêm mới
+                                            
                                         </a>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="btn-group pull-right">
-                                        <button class="btn green btn-outline dropdown-toggle" data-toggle="dropdown">Công cụ
+                                        <button class="btn green btn-outline dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog"></i> Công cụ
                                             <i class="fa fa-angle-down"></i>
                                         </button>
                                         <ul class="dropdown-menu pull-right">
@@ -99,13 +102,12 @@
                                             if($v->role == 'user')
                                             echo 'font-blue';
                                             ?>"> {{ $v->role }} </td>
-                                        <td class="<?php 
-                                            if($v->active)
-                                            echo 'font-green-jungle'; 
-                                            if(!$v->active)
-                                            echo 'font-red';
-                                            ?>">
-                                            {{ ($v->active)?'Đang hoạt động':'Khóa' }}
+                                        <td>
+                                            @if($v->active)
+                                                <span class="label label-sm label-success"> Kích hoạt </span>
+                                            @else
+                                                <span class="label label-sm label-danger"> Vô hiệu hóa </span>
+                                            @endif
                                         </td>
                                         <td>
                                             <a class="edit" href="{{ route('user.edit.get', $v->id) }}"> Sửa </a>

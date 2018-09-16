@@ -1,5 +1,7 @@
 @extends('layouts.master')
 
+@section('title', 'Thêm mới người dùng')
+
 @section('style')
     <link href="{{ asset('assets/global/plugins/datatables/datatables.min.css') }}" rel="stylesheet" type="text/css" />
     
@@ -27,6 +29,7 @@
         <!-- END PAGE BAR -->
         <!-- BEGIN PAGE TITLE-->
         <h1 class="page-title">
+            <i class="fa fa-plus"></i>
             Thêm Người Dùng
         </h1>
         <!-- END PAGE TITLE-->
@@ -52,7 +55,7 @@
                                 <div class="form-group form-md-line-input form-md-floating-label">
                                     <div class="input-group">
                                         <input type="text" class="form-control" name="name" value="{{ old('name') }}">
-                                        <label for="form_control_1">Họ tên <span>(*)</span></label>
+                                        <label for="form_control_1">Họ tên <span class="required"> * </span></label>
                                         <span class="input-group-addon">
                                             <i class="fa fa-user"></i>
                                         </span>
@@ -61,7 +64,7 @@
                                 <div class="form-group form-md-line-input form-md-floating-label">
                                     <div class="input-group">
                                         <input type="text" class="form-control" name="email" value="{{ old('email') }}">
-                                        <label for="form_control_1">Email (*)</label>
+                                        <label for="form_control_1">Email <span class="required"> * </span></label>
                                         <span class="input-group-addon">
                                             <i class="fa fa-envelope"></i>
                                         </span>
@@ -70,7 +73,7 @@
                                 <div class="form-group form-md-line-input form-md-floating-label">
                                     <div class="input-group">
                                         <input type="password" class="form-control" name="password" value="{{ old('password') }}">
-                                        <label for="form_control_1">Mật khẩu (*)</label>
+                                        <label for="form_control_1">Mật khẩu <span class="required"> * </span></label>
                                         <!-- <span id="name-error" class="help-block help-block-error">Để trống để giữ nguyên.</span> -->
                                         <span class="input-group-addon">
                                             <i class="fa fa-key"></i>
@@ -90,8 +93,8 @@
                             <div class="form-actions">
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <button type="submit" class="btn dark">Tạo</button>
-                                        <button type="reset" class="btn default">Làm mới <i class="fa fa-refresh"></i>
+                                        <button type="submit" class="btn green"><i class="fa fa-save"></i> Lưu</button>
+                                        <button type="reset" class="btn default"><i class="fa fa-refresh"></i> Làm lại
                                         </button>
                                     </div>
                                 </div>
