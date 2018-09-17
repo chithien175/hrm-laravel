@@ -27,6 +27,23 @@
 // Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
 // Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
+use Illuminate\Support\Facades\Input;
+use League\Glide\ServerFactory;
+use League\Glide\Responses\LaravelResponseFactory;
+
+// Elkfinder...
+Route::get('glide/{path}', function($path){
+    $server = ServerFactory::create([
+        'source' => app('filesystem')->disk('public')->getDriver(),
+        'cache' => storage_path('glide'),
+        'response' => new LaravelResponseFactory(app('request'))
+    ]);
+    $response = $server->getImageResponse($path, Input::query());
+    $response->send();
+})->where('path', '.+');
+
+Route::get('file/{input_id}', '\Barryvdh\Elfinder\ElfinderController@showPopup');
+
 // Authentication Routes...
 Route::get('login', [
     'uses' => 'LoginController@getLogin',

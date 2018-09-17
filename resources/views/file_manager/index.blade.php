@@ -1,9 +1,16 @@
 @extends('layouts.master')
 
-@section('title', 'Danh sách nhân sự')
+@section('title', 'Quản lý tập tin')
 
 @section('style')
+<!-- jQuery and jQuery UI (REQUIRED) -->
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/smoothness/jquery-ui.css" />
 
+    <!-- elFinder CSS (REQUIRED) -->
+    <link rel="stylesheet" type="text/css" href="<?= asset('packages/barryvdh/elfinder/css/elfinder.min.css') ?>">
+    <link rel="stylesheet" type="text/css" href="<?= asset('packages/barryvdh/elfinder/css/theme.css') ?>">
+
+    
 @endsection()
 
 @section('content')
@@ -33,13 +40,11 @@
         </h1>
         <!-- END PAGE TITLE-->
         <!-- END PAGE HEADER-->
-        <!-- BEGIN DASHBOARD STATS 1-->
-        <div class="">
-            <iframe src="{{ route('media.index') }}" frameborder="0" style="min-height:800px;width:100%"></iframe>
-        </div>
+
+        <!-- Element where elFinder will be created (REQUIRED) -->
+        <div id="elfinder"></div>
                 
         <div class="clearfix"></div>
-        <!-- END DASHBOARD STATS 1-->
 
     </div>
     <!-- END CONTENT BODY -->
@@ -49,5 +54,28 @@
 @endsection
 
 @section('script')
+<!-- jQuery and jQuery UI (REQUIRED) -->
+<!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script> -->
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<!-- elFinder JS (REQUIRED) -->
+<script src="<?= asset('packages/barryvdh/elfinder/js/elfinder.min.js') ?>"></script>
+<!-- elFinder translation (OPTIONAL) -->
+<script src="{{ asset('packages/barryvdh/elfinder/js/i18n/elfinder.'.app()->getLocale() .'.js') }}"></script>
 
+<!-- elFinder initialization (REQUIRED) -->
+<script type="text/javascript" charset="utf-8">
+    // Documentation for client options:
+    // https://github.com/Studio-42/elFinder/wiki/Client-configuration-options
+    jQuery(document).ready(function() {
+        $('#elfinder').elfinder({
+            // set your elFinder options here
+                lang: '{{ app()->getLocale() }}', // locale
+            customData: { 
+                _token: '<?= csrf_token() ?>'
+            },
+            url : '<?= route("elfinder.connector") ?>',  // connector URL
+            soundPath: '<?= asset('packages/barryvdh/elfinder/sounds') ?>'
+        });
+    });
+</script>
 @endsection

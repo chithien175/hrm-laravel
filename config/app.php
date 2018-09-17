@@ -151,6 +151,7 @@ return [
          * Package Service Providers...
          */
         anlutro\LaravelSettings\ServiceProvider::class,
+        Barryvdh\Elfinder\ElfinderServiceProvider::class,
 
         /*
          * Application Service Providers...
