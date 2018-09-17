@@ -41,10 +41,24 @@ class NhanSu extends Model
         $nhan_su->gioi_tinh          = $data['gioi_tinh'];
         $nhan_su->ngay_sinh          = Carbon::parse($data['ngay_sinh'])->format('Y-m-d');
         $nhan_su->so_cmnd            = $data['so_cmnd'];
-        $nhan_su->ngay_cap_cmnd      = Carbon::parse($data['ngay_cap_cmnd'])->format('Y-m-d');
+        if($data['ngay_cap_cmnd'] != null){
+            $nhan_su->ngay_cap_cmnd      = Carbon::parse($data['ngay_cap_cmnd'])->format('Y-m-d');
+        }else{
+            $nhan_su->ngay_cap_cmnd      = null;
+        }
+        
         $nhan_su->noi_cap_cmnd       = $data['noi_cap_cmnd'];
-        $nhan_su->ngay_bat_dau_lam   = Carbon::parse($data['ngay_bat_dau_lam'])->format('Y-m-d');
-        $nhan_su->ngay_lam_viec_cuoi   = Carbon::parse($data['ngay_lam_viec_cuoi'])->format('Y-m-d');
+        if($data['ngay_bat_dau_lam'] != null){
+            $nhan_su->ngay_bat_dau_lam   = Carbon::parse($data['ngay_bat_dau_lam'])->format('Y-m-d');
+        }else{
+            $nhan_su->ngay_bat_dau_lam   = null;
+        }
+        
+        if($data['ngay_lam_viec_cuoi'] != null){
+            $nhan_su->ngay_lam_viec_cuoi   = Carbon::parse($data['ngay_lam_viec_cuoi'])->format('Y-m-d');
+        }else{
+            $nhan_su->ngay_lam_viec_cuoi   = null;
+        }
         $nhan_su->trinh_do           = $data['trinh_do'];
         $nhan_su->truong_tot_nghiep  = $data['truong_tot_nghiep'];
         $nhan_su->nam_tot_nghiep     = $data['nam_tot_nghiep'];
@@ -56,6 +70,7 @@ class NhanSu extends Model
             $nhan_su->hoso_id        = json_encode($data['hoso_id']);
         }
         
+        // dd($data);
         // dd($nhan_su);
         $nhan_su->save();
         return $nhan_su;
@@ -68,16 +83,25 @@ class NhanSu extends Model
 
     public function getNgayCapCmndAttribute($value)
     {
-        return Carbon::parse($value)->format('d-m-Y');
+        if($value != null){
+            return Carbon::parse($value)->format('d-m-Y');
+        }
+        return null;
     }
 
     public function getNgayBatDauLamAttribute($value)
     {
-        return Carbon::parse($value)->format('d-m-Y');
+        if($value != null){
+            return Carbon::parse($value)->format('d-m-Y');
+        }
+        return null;
     }
 
     public function getNgayLamViecCuoiAttribute($value)
     {
-        return Carbon::parse($value)->format('d-m-Y');
+        if($value != null){
+            return Carbon::parse($value)->format('d-m-Y');
+        }
+        return null;
     }
 }

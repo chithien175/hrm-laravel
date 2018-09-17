@@ -19,6 +19,7 @@
         "vue": "^2.5.17"
     },
     "dependencies": {
+        "bulma": "^0.7.1",
         "cropperjs": "^1.4.1",
         "date-fns": "^1.29.0",
         "dropzone": "^5.5.1",

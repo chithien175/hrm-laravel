@@ -12,6 +12,7 @@ use App\BoPhan;
 use App\HoSo;
 use App\HopDong;
 use App\LoaiHopDong;
+use Rap2hpoutre\FastExcel\FastExcel;
 
 class NhanSuController extends Controller
 {
@@ -115,5 +116,52 @@ class NhanSuController extends Controller
 
     public function uploadExcel(){
         return response()->json('success', 200);
+    }
+
+    public function exportExcel(){
+        $nhan_su = NhanSu::all();
+
+        // Xử lý hồ sơ nhân viên
+        foreach($nhan_su as $v){
+            $nhan_su_hs = '';
+            $hoso_id = json_decode($v->hoso_id);
+            foreach( $hoso_id as $k2 => $v2 ){
+                if ($v2 === end($hoso_id)) {
+                    $nhan_su_hs .= HoSo::getNameById($v2);
+                }else{
+                    $nhan_su_hs .= HoSo::getNameById($v2) .', ';
+                }
+            }
+            $v->hoso_id = $nhan_su_hs;
+        }
+        
+        return (new FastExcel($nhan_su))->download('ds_nhan_su.xlsx', function($nhan_su){
+            $array_export = [
+                'Mã NV' => $nhan_su->ma_nv,              
+                'Họ tên' => $nhan_su->ho_ten,             
+                'Địa chỉ thường trú' => $nhan_su->dia_chi_thuong_tru, 
+                'Địa chỉ liên hệ' => $nhan_su->dia_chi_lien_he,    
+                'Điện thoại' => $nhan_su->dien_thoai,         
+                'Email' => $nhan_su->email,             
+                'Giới tính' => ($nhan_su->gioi_tinh == 1) ? 'Nam' : 'Nữ',          
+                'Ngày sinh' => $nhan_su->ngay_sinh,        
+                'Số CMND' => $nhan_su->so_cmnd,           
+                'Ngày cấp CMND' => $nhan_su->ngay_cap_cmnd,     
+                'Nơi cấp CMND' => $nhan_su->noi_cap_cmnd,       
+                'Ngày bắt đầu làm' => $nhan_su->ngay_bat_dau_lam,  
+                'Ngày làm việc cuối' => $nhan_su->ngay_lam_viec_cuoi,   
+                'Trình độ' => $nhan_su->trinh_do,          
+                'Trường tốt nghiệp' => $nhan_su->truong_tot_nghiep,  
+                'Năm tốt nghiệp' => $nhan_su->nam_tot_nghiep,   
+                'Chứng chỉ' => $nhan_su->chung_chi,        
+                'Chức danh' => $nhan_su->chuc_danh,        
+                'Phòng ban' => ($nhan_su->phongban_id != 0) ? $nhan_su->phongbans->ten : '',       
+                'Bộ phận' => ($nhan_su->bophan_id != 0) ? $nhan_su->bophans->ten : '',   
+                'Hồ sơ' => $nhan_su->hoso_id,   
+                'Trạng thái' => ($nhan_su->trang_thai == 1)?'Đang làm việc':'Thôi việc'
+            ];
+            
+            return $array_export;
+        });
     }
 }

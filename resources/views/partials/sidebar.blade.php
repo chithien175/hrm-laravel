@@ -30,21 +30,30 @@
                 </a>
             </li>
             <li class="heading">
-                <h3 class="uppercase">Cơ bản</h3>
+                <h3 class="uppercase">Chức năng ứng dụng</h3>
             </li>
             <li class="nav-item {{ Route::getCurrentRoute()->getPrefix() == '/staffs' ? 'active open' : '' }}"">
                 <a href="{{ route('nhan_su.index') }}" class="nav-link nav-toggle">
-                    <i class="fa fa-users"></i>
-                    <span class="title">Nhân Sự Công Ty</span>
+                    <i class="icon-users"></i>
+                    <span class="title">Quản trị nhân sự</span>
+                    <span class="selected"></span>
                 </a>
             </li>
             <li class="heading">
                 <h3 class="uppercase">Nâng cao</h3>
             </li>
+            <li class="nav-item {{ Route::getCurrentRoute()->getPrefix() == '/file-manager' ? 'active open' : '' }}">
+                <a href="{{ route('file-manager.index') }}" class="nav-link nav-toggle">
+                    <i class="fa fa-files-o"></i>
+                    <span class="title">Quản lý tập tin</span>
+                    <span class="selected"></span>
+                </a>
+            </li>
             <li class="nav-item {{ Route::getCurrentRoute()->getPrefix() == '/users' ? 'active open' : '' }}">
                 <a href="{{ route('user.index') }}" class="nav-link nav-toggle">
-                    <i class="icon-users"></i>
-                    <span class="title">Người Dùng Phần Mềm</span>
+                    <i class="icon-user"></i>
+                    <span class="title">Quản lý người dùng</span>
+                    <span class="selected"></span>
                 </a>
             </li>
             <li class="heading">
@@ -53,7 +62,8 @@
             <li class="nav-item {{ Route::getCurrentRoute()->getPrefix() == '/company' ? 'active open' : '' }}">
                 <a href="{{ route('company.index') }}" class="nav-link nav-toggle">
                     <i class="fa fa-building-o"></i>
-                    <span class="title">Thông Tin Công Ty</span>
+                    <span class="title">Cấu hình công Ty</span>
+                    <span class="selected"></span>
                 </a>
             </li>
         </ul>

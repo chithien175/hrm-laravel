@@ -1,12 +1,12 @@
 <!-- BEGIN HEADER -->
 <div class="page-header navbar navbar-fixed-top">
     <!-- BEGIN HEADER INNER -->
-    <div class="page-header-inner ">
+    <div class="page-header-inner" style="width: 100%;">
         <!-- BEGIN LOGO -->
         <div class="page-logo">
             <a href="index.html">
-                <!-- <img src="{{ asset('/images/logo.png') }}" alt="logo" class="logo-default" />  -->
-                <h5 style="padding:7px; color: #fff;">THỊNH PHONG HRM</h5>
+                <img src="{{ asset('/images/logo_name.png') }}" alt="logo" class="logo-default" width="140" /> 
+                <!-- <h5 style="padding:7px; color: #fff;">THỊNH PHONG HRM</h5> -->
             </a>
             <div class="menu-toggler sidebar-toggler">
                 <span></span>

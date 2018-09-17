@@ -9,8 +9,6 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-require('../vendor/MediaManager/js/manager');
-
 new Vue({
     el: '#app'
 })

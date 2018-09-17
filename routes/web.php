@@ -68,6 +68,7 @@ Route::prefix('staffs')->middleware('auth')->group(function () {
     Route::get('/edit/{id}', ['uses' =>'NhanSuController@edit','as'=>'nhan_su.edit.get']);
     Route::post('/edit/{id}', ['uses'=>'NhanSuController@update','as'=>'nhan_su.edit.post']);
     Route::get('/delete/{id}', ['uses'=>'NhanSuController@destroy','as'=>'nhan_su.delete.get']);
+    Route::get('/export-excel', ['uses'=>'NhanSuController@exportExcel','as'=>'nhan_su.export-excel.get']);
     Route::get('/import-excel', ['uses'=>'NhanSuController@importExcel','as'=>'nhan_su.import-excel.get']);
     Route::post('/upload-excel', ['uses'=>'NhanSuController@uploadExcel','as'=>'nhan_su.upload-excel.post']);
 });
@@ -87,5 +88,8 @@ Route::prefix('ajax')->middleware('auth')->group(function () {
     Route::post('/postSuaHopDong', ['uses'=>'HopDongController@postSuaHopDong','as'=>'postSuaHopDong']);
     Route::post('/postXoaHopDong', ['uses'=>'HopDongController@postXoaHopDong','as'=>'postXoaHopDong']);
 });
-// MediaManager
-ctf0\MediaManager\MediaRoutes::routes();
+
+// File Manager
+Route::prefix('file-manager')->middleware('auth')->group(function () {
+    Route::get('/', ['uses'=>'FileManagerController@index','as'=>'file-manager.index']);
+});

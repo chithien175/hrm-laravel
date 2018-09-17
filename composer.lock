@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "535bd021ba8dc6269895efde2a2ea2d1",
+    "content-hash": "e13b34356c382a378517d4594aa699fb",
     "packages": [
         {
             "name": "anlutro/l4-settings",
@@ -66,114 +66,72 @@
             "time": "2018-04-12T13:20:18+00:00"
         },
         {
-            "name": "ctf0/media-manager",
-            "version": "v3.2.5",
+            "name": "box/spout",
+            "version": "v2.7.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/ctf0/Laravel-Media-Manager.git",
-                "reference": "8145ef7e49ea84657d7938169166160d9c22e6fa"
+                "url": "https://github.com/box/spout.git",
+                "reference": "3681a3421a868ab9a65da156c554f756541f452b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ctf0/Laravel-Media-Manager/zipball/8145ef7e49ea84657d7938169166160d9c22e6fa",
-                "reference": "8145ef7e49ea84657d7938169166160d9c22e6fa",
+                "url": "https://api.github.com/repos/box/spout/zipball/3681a3421a868ab9a65da156c554f756541f452b",
+                "reference": "3681a3421a868ab9a65da156c554f756541f452b",
                 "shasum": ""
             },
             "require": {
-                "ctf0/package-changelog": "^1.0",
-                "illuminate/support": "~5.4.0|~5.5.0|~5.6.0|~5.7.0",
-                "maennchen/zipstream-php": "~1.0",
-                "php": "~7.0"
+                "ext-xmlreader": "*",
+                "ext-zip": "*",
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8.0"
             },
             "suggest": {
-                "league/flysystem-cached-adapter": "Required to use the Flysystem cache (~1.0)."
+                "ext-iconv": "To handle non UTF-8 CSV files (if \"php-intl\" is not already installed or is too limited)",
+                "ext-intl": "To handle non UTF-8 CSV files (if \"iconv\" is not already installed)"
             },
             "type": "library",
             "extra": {
-                "laravel": {
-                    "providers": [
-                        "ctf0\\MediaManager\\MediaManagerServiceProvider"
-                    ]
-                },
-                "changeLog": "logs"
+                "branch-alias": {
+                    "dev-master": "2.8.x-dev"
+                }
             },
             "autoload": {
                 "psr-4": {
-                    "ctf0\\MediaManager\\": "src"
+                    "Box\\Spout\\": "src/Spout"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "Apache-2.0"
             ],
             "authors": [
                 {
-                    "name": "Muah",
-                    "email": "muah003@gmail.com"
+                    "name": "Adrien Loison",
+                    "email": "adrien@box.com"
                 }
             ],
-            "description": "A Media Manager Built With Vuejs & Laravel",
-            "homepage": "https://github.com/ctf0/Laravel-Media-Manager",
+            "description": "PHP Library to read and write spreadsheet files (CSV, XLSX and ODS), in a fast and scalable way",
+            "homepage": "https://www.github.com/box/spout",
             "keywords": [
-                "ctf0",
-                "gui",
-                "laravel",
-                "manager",
-                "media",
-                "mediamanager"
+                "OOXML",
+                "csv",
+                "excel",
+                "memory",
+                "odf",
+                "ods",
+                "office",
+                "open",
+                "php",
+                "read",
+                "scale",
+                "spreadsheet",
+                "stream",
+                "write",
+                "xlsx"
             ],
-            "time": "2018-09-13T20:46:03+00:00"
-        },
-        {
-            "name": "ctf0/package-changelog",
-            "version": "v1.0.7",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ctf0/PackageChangeLog.git",
-                "reference": "31296cf42ee2993dbc478ccfaace282c162a2006"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ctf0/PackageChangeLog/zipball/31296cf42ee2993dbc478ccfaace282c162a2006",
-                "reference": "31296cf42ee2993dbc478ccfaace282c162a2006",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "~5.0",
-                "php": "~7.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "ctf0\\PackageChangeLog\\PackageChangeLogServiceProvider"
-                    ]
-                },
-                "changeLog": "logs"
-            },
-            "autoload": {
-                "psr-4": {
-                    "ctf0\\PackageChangeLog\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Muah",
-                    "email": "muah003@gmail.com"
-                }
-            ],
-            "description": "show package changeLog on install/update",
-            "homepage": "https://github.com/ctf0/PackageChangeLog",
-            "keywords": [
-                "ctf0",
-                "laravel",
-                "package-changelog"
-            ],
-            "time": "2017-10-24T11:48:12+00:00"
+            "time": "2017-09-25T19:44:35+00:00"
         },
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -961,26 +919,26 @@
         },
         {
             "name": "league/flysystem",
-            "version": "1.0.46",
+            "version": "1.0.47",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thephpleague/flysystem.git",
-                "reference": "f3e0d925c18b92cf3ce84ea5cc58d62a1762a2b2"
+                "reference": "a11e4a75f256bdacf99d20780ce42d3b8272975c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/f3e0d925c18b92cf3ce84ea5cc58d62a1762a2b2",
-                "reference": "f3e0d925c18b92cf3ce84ea5cc58d62a1762a2b2",
+                "url": "https://api.github.com/repos/thephpleague/flysystem/zipball/a11e4a75f256bdacf99d20780ce42d3b8272975c",
+                "reference": "a11e4a75f256bdacf99d20780ce42d3b8272975c",
                 "shasum": ""
             },
             "require": {
+                "ext-fileinfo": "*",
                 "php": ">=5.5.9"
             },
             "conflict": {
                 "league/flysystem-sftp": "<1.0.6"
             },
             "require-dev": {
-                "ext-fileinfo": "*",
                 "phpspec/phpspec": "^3.4",
                 "phpunit/phpunit": "^5.7.10"
             },
@@ -1041,67 +999,7 @@
                 "sftp",
                 "storage"
             ],
-            "time": "2018-08-22T07:45:22+00:00"
-        },
-        {
-            "name": "maennchen/zipstream-php",
-            "version": "v1.0.0-alpha.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/maennchen/ZipStream-PHP.git",
-                "reference": "37e50c38274c3812741fde35be9f6a176d649b9a"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/maennchen/ZipStream-PHP/zipball/37e50c38274c3812741fde35be9f6a176d649b9a",
-                "reference": "37e50c38274c3812741fde35be9f6a176d649b9a",
-                "shasum": ""
-            },
-            "require": {
-                "ext-mbstring": "*",
-                "myclabs/php-enum": "^1.5",
-                "php": ">= 7.1",
-                "psr/http-message": "^1.0"
-            },
-            "require-dev": {
-                "ext-zip": "*",
-                "guzzlehttp/guzzle": ">= 6.3",
-                "phpunit/phpunit": ">= 5.7"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "ZipStream\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Paul Duncan",
-                    "email": "pabs@pablotron.org"
-                },
-                {
-                    "name": "Jesse Donat",
-                    "email": "donatj@gmail.com"
-                },
-                {
-                    "name": "Jonatan Männchen",
-                    "email": "jonatan@maennchen.ch"
-                },
-                {
-                    "name": "András Kolesár",
-                    "email": "kolesar@kolesar.hu"
-                }
-            ],
-            "description": "ZipStream is a library for dynamically streaming dynamic zip files from PHP without writing to the disk at all on the server.",
-            "keywords": [
-                "stream",
-                "zip"
-            ],
-            "time": "2018-04-02T13:25:14+00:00"
+            "time": "2018-09-14T15:30:29+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -1180,50 +1078,6 @@
                 "psr-3"
             ],
             "time": "2017-06-19T01:22:40+00:00"
-        },
-        {
-            "name": "myclabs/php-enum",
-            "version": "1.6.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/myclabs/php-enum.git",
-                "reference": "ca2f4090a7ecae6f0c67fc9bd07cfb51cdf04219"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/php-enum/zipball/ca2f4090a7ecae6f0c67fc9bd07cfb51cdf04219",
-                "reference": "ca2f4090a7ecae6f0c67fc9bd07cfb51cdf04219",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8.35|^5.7|^6.0",
-                "squizlabs/php_codesniffer": "1.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "MyCLabs\\Enum\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP Enum contributors",
-                    "homepage": "https://github.com/myclabs/php-enum/graphs/contributors"
-                }
-            ],
-            "description": "PHP Enum implementation",
-            "homepage": "http://github.com/myclabs/php-enum",
-            "keywords": [
-                "enum"
-            ],
-            "time": "2018-08-01T21:05:54+00:00"
         },
         {
             "name": "nesbot/carbon",
@@ -1723,6 +1577,53 @@
                 "uuid"
             ],
             "time": "2018-07-19T23:38:55+00:00"
+        },
+        {
+            "name": "rap2hpoutre/fast-excel",
+            "version": "v0.9.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rap2hpoutre/fast-excel.git",
+                "reference": "38fc47261da15ca529cbd992430525897b176d87"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rap2hpoutre/fast-excel/zipball/38fc47261da15ca529cbd992430525897b176d87",
+                "reference": "38fc47261da15ca529cbd992430525897b176d87",
+                "shasum": ""
+            },
+            "require": {
+                "box/spout": "^2.7",
+                "illuminate/database": "5.3.* || 5.4.* || 5.5.* || 5.6.* || 5.7.*",
+                "illuminate/support": "5.3.* || 5.4.* || 5.5.* || 5.6.* || 5.7.*"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Rap2hpoutre\\FastExcel\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "rap2h",
+                    "email": "raphaelht@gmail.com"
+                }
+            ],
+            "keywords": [
+                "csv",
+                "excel",
+                "laravel",
+                "xls",
+                "xlsx"
+            ],
+            "time": "2018-09-05T21:47:34+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",

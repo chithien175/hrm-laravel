@@ -171,7 +171,7 @@
                                     {{ $nhan_su->chuc_danh }}
                                     @if($nhan_su->bophan_id != 0)
                                         {{ $nhan_su->bophans->ten }}
-                                    @else
+                                    @elseif($nhan_su->phongban_id != 0)
                                         {{ $nhan_su->phongbans->ten }}
                                     @endif
                                 </div>

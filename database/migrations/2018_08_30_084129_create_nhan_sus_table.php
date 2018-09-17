@@ -20,7 +20,7 @@ class CreateNhanSusTable extends Migration
             $table->boolean('gioi_tinh')->default(true);
             $table->datetime('ngay_sinh');
             $table->string('so_cmnd')->unique();
-            $table->datetime('ngay_cap_cmnd')->nullable();
+            $table->datetime('ngay_cap_cmnd')->nullable()->default(null);
             $table->string('noi_cap_cmnd')->nullable();
             $table->string('dia_chi_thuong_tru');
             $table->string('dia_chi_lien_he')->nullable();
@@ -29,8 +29,8 @@ class CreateNhanSusTable extends Migration
             $table->string('trinh_do')->nullable();
             $table->string('truong_tot_nghiep')->nullable();
             $table->string('nam_tot_nghiep')->nullable();
-            $table->datetime('ngay_bat_dau_lam')->nullable();
-            $table->datetime('ngay_lam_viec_cuoi')->nullable();
+            $table->datetime('ngay_bat_dau_lam')->nullable()->default(null);
+            $table->datetime('ngay_lam_viec_cuoi')->nullable()->default(null);
             $table->string('chuc_danh')->nullable();
             $table->integer('phongban_id')->default(0);
             $table->integer('bophan_id')->default(0);

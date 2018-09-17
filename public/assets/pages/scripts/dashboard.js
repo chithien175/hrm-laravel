@@ -15,7 +15,7 @@ var Dashboard = function() {
             var setMap = function(name) {
                 var map = jQuery('#vmap_' + name);
                 
-                if (map.size() !== 1) {
+                if (map.length() !== 1) {
                     return;
                 }
 
