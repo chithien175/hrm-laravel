@@ -42,7 +42,8 @@ Route::get('glide/{path}', function($path){
     $response->send();
 })->where('path', '.+');
 
-Route::get('file/{input_id}', '\Barryvdh\Elfinder\ElfinderController@showPopup');
+// Route::get('file/{input_id}', '\Barryvdh\Elfinder\ElfinderController@showPopup');
+
 
 // Authentication Routes...
 Route::get('login', [
@@ -87,7 +88,7 @@ Route::prefix('staffs')->middleware('auth')->group(function () {
     Route::get('/delete/{id}', ['uses'=>'NhanSuController@destroy','as'=>'nhan_su.delete.get']);
     Route::get('/export-excel', ['uses'=>'NhanSuController@exportExcel','as'=>'nhan_su.export-excel.get']);
     Route::get('/import-excel', ['uses'=>'NhanSuController@importExcel','as'=>'nhan_su.import-excel.get']);
-    Route::post('/upload-excel', ['uses'=>'NhanSuController@uploadExcel','as'=>'nhan_su.upload-excel.post']);
+    Route::post('/import-excel', ['uses'=>'NhanSuController@postImportExcel','as'=>'nhan_su.import-excel.post']);
 });
 
 // Company Routes...

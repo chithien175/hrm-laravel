@@ -114,8 +114,17 @@ class NhanSuController extends Controller
         return view('nhan_su.import.index');
     }
 
-    public function uploadExcel(){
-        return response()->json('success', 200);
+    public function postImportExcel(Request $request){
+        $collection = (new FastExcel)->import(storage_path('app/'.$request->input('excel_link')));
+
+        if($collection->count() > 0 ){
+
+            NhanSu::insertIgnore($collection);
+            return true;
+            
+        }
+
+        return false;
     }
 
     public function exportExcel(){

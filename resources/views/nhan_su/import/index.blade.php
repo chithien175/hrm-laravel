@@ -4,8 +4,7 @@
 
 @section('style')
     <link href="{{ asset('assets/global/plugins/bootstrap-sweetalert/sweetalert.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/global/plugins/dropzone/dropzone.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/global/plugins/dropzone/basic.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/colorbox/colorbox1.css') }}" rel="stylesheet" type="text/css" />
 @endsection()
 
 @section('content')
@@ -36,15 +35,17 @@
         <!-- END PAGE HEADER-->
         <!-- BEGIN DASHBOARD STATS 1-->
         <div class="row">
-            <div class="col-md-12">
-            <form action="{{ route('nhan_su.upload-excel.post') }}" enctype="multipart/form-data" method="post" class="dropzone dropzone-file-area" id="my-dropzone" style="width: 100%; margin-top: 0px;">
+            <form action="{{ route('nhan_su.import-excel.post') }}" method="post">
                 @csrf
-                <h3 class="sbold">Tải lên tập tin</h3>
-                <div class="fallback">
-                    <input name="file" type="file" accept="image/jpeg, image/png, image/jpg" />
+                <div class="col-md-12">
+                    <label for="excel_link">Chọn lên tập tin excel để nhập liệu</label>
+                    <input type="hidden" id="excel_link" name="excel_link" value="">
+                </div>
+                <div class="col-md-12">
+                    <a href="" class="btn btn-default popup_selector" data-inputid="excel_link">Chọn tập tin</a>
+                    <button type="submit" class="btn blue">Nhập liệu</button>
                 </div>
             </form>
-            </div>
         </div>
         <div class="clearfix"></div>
         <!-- END DASHBOARD STATS 1-->
@@ -56,47 +57,10 @@
 @endsection
 
 @section('script')
-<script>
-    var FormDropzone = function () {
-        return {
-            //main function to initiate the module
-            init: function () {  
-                Dropzone.options.myDropzone = {
-                    dictDefaultMessage: "Kéo thả file tại đây hoặc nhấp chuột để tải lên",
-                    init: function() {
-                        this.on("addedfile", function(file) {
-                            // Create the remove button
-                            var removeButton = Dropzone.createElement("<a href='javascript:;'' class='btn red btn-sm btn-block'>Remove</a>");
-                            
-                            // Capture the Dropzone instance as closure.
-                            var _this = this;
-
-                            // Listen to the click event
-                            removeButton.addEventListener("click", function(e) {
-                            // Make sure the button click doesn't submit the form:
-                            e.preventDefault();
-                            e.stopPropagation();
-
-                            // Remove the file preview.
-                            _this.removeFile(file);
-                            // If you want to the delete the file on the server as well,
-                            // you can do the AJAX request here.
-                            });
-
-                            // Add the button to the file preview element.
-                            file.previewElement.appendChild(removeButton);
-                        });
-                    }            
-                }
-            }
-        };
-    }();
-
-    jQuery(document).ready(function() {    
-        FormDropzone.init();
-    });
-</script>
 
 <script src="{{ asset('assets/global/plugins/bootstrap-sweetalert/sweetalert.min.js') }}" type="text/javascript"></script>
-<script src="{{ asset('assets/global/plugins/dropzone/dropzone.min.js') }}" type="text/javascript"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.6.4/jquery.colorbox-min.js"></script>
+<script type="text/javascript" src="{{ asset('packages/barryvdh/elfinder/js/standalonepopup.min.js') }}"></script>
+
 @endsection
