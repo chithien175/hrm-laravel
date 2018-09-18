@@ -284,8 +284,7 @@
                                     <th> STT</th>
                                     <th> Mã HĐ</th>
                                     <th> Loại HĐ </th>
-                                    <th> Ngày ký</th>
-                                    <th> Từ ngày</th>
+                                    <th> Vào làm</th>
                                     <th> Đến ngày</th>
                                     <th> Trạng thái</th>
                                     <th> Hành động</th>
@@ -301,7 +300,6 @@
                                             <a class="btn_read_hd" data-hd-id="{{ $v->id }}" href="#">{{ $v->ma_hd }}</a> 
                                         </td>
                                         <td> {{ ($v->loaihopdong_id)?$v->loaihopdongs->ten:'' }} </td>
-                                        <td> {{ $v->ngay_ky }} </td>
                                         <td> {{ $v->ngay_co_hieu_luc }} </td>
                                         <td> {{ $v->ngay_het_hieu_luc }} </td>
                                         <td> 
@@ -312,9 +310,9 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a data-hd-id="{{ $v->id }}" class="btn_edit_hd btn btn-xs yellow-gold" href="#" title="Sửa"> <i class="fa fa-edit"></i> </a>
-                                            <a data-hd-id="{{ $v->id }}" class="btn_read_hd btn btn-xs blue-steel" href="#" title="In"> <i class="fa fa-print"></i> </a>
-                                            <a class="btn_delete_hd btn btn-xs red-mint" href="#" data-hd-id="{{ $v->id }}" title="Xóa"> <i class="fa fa-trash"></i> </a>
+                                            <a data-hd-id="{{ $v->id }}" class="btn_edit_hd btn btn-xs yellow-gold" href="#" title="Sửa"> <i class="fa fa-edit"></i> Sửa </a>
+                                            <a data-hd-id="{{ $v->id }}" class="btn_read_hd btn btn-xs blue-steel" href="#" title="In"> <i class="fa fa-print"></i> In </a>
+                                            <a class="btn_delete_hd btn btn-xs red-mint" href="#" data-hd-id="{{ $v->id }}" title="Xóa"> <i class="fa fa-trash"></i> Xóa </a>
                                         </td>
                                     </tr>
                                     @php $stt++; @endphp
@@ -341,7 +339,7 @@
                             @if($ds_ho_so->count()>0)
                                 @if(!empty($nhan_su->hoso_id))
                                     @php
-                                        $ho_so = json_decode($nhan_su->hoso_id);
+                                        $ho_so = explode(',', $nhan_su->hoso_id);
                                     @endphp
                                     <div class="icheck-inline">
                                         @foreach($ds_ho_so as $k => $v)

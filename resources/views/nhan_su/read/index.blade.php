@@ -75,33 +75,33 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="row">
-                                                <label class="control-label col-md-4 col-xs-6">Mã NV:</label>
+                                                <label class="control-label col-md-4 col-xs-6 bold">Mã NV:</label>
                                                 <label class="control-label col-md-7 col-xs-6">{{ $nhan_su->ma_nv }}</label>
                                             </div>
                                             <div class="row">
-                                                <label class="control-label col-md-4 col-xs-6">Họ tên:</label>
+                                                <label class="control-label col-md-4 col-xs-6 bold">Họ tên:</label>
                                                 <label class="control-label col-md-7 col-xs-6">{{ $nhan_su->ho_ten }}</label>
                                             </div>
                                             <div class="row">
-                                                <label class="control-label col-md-4 col-xs-6">Địa chỉ thường trú:</label>
+                                                <label class="control-label col-md-4 col-xs-6 bold">Địa chỉ thường trú:</label>
                                                 <label class="control-label col-md-7 col-xs-6">{{ $nhan_su->dia_chi_thuong_tru }}</label>
                                             </div>
                                             <div class="row">
-                                                <label class="control-label col-md-4 col-xs-6">Địa chỉ liên hệ:</label>
+                                                <label class="control-label col-md-4 col-xs-6 bold">Địa chỉ liên hệ:</label>
                                                 <label class="control-label col-md-7 col-xs-6">{{ $nhan_su->dia_chi_lien_he }}</label>
                                             </div>
                                             <div class="row">
-                                                <label class="control-label col-md-4 col-xs-6">Điện thoại:</label>
+                                                <label class="control-label col-md-4 col-xs-6 bold">Điện thoại:</label>
                                                 <label class="control-label col-md-7 col-xs-6">{{ $nhan_su->dien_thoai }}</label>
                                             </div>
                                             <div class="row">
-                                                <label class="control-label col-md-4 col-xs-6">Email:</label>
+                                                <label class="control-label col-md-4 col-xs-6 bold">Email:</label>
                                                 <label class="control-label col-md-7 col-xs-6">{{ $nhan_su->email }}</label>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="row">
-                                                <label class="control-label col-md-4 col-xs-6">Giới tính:</label>
+                                                <label class="control-label col-md-4 col-xs-6 bold">Giới tính:</label>
                                                 @if($nhan_su->gioi_tinh)
                                                     <label class="control-label col-md-7 col-xs-6">Nam</label>
                                                 @else
@@ -109,27 +109,27 @@
                                                 @endif
                                             </div>
                                             <div class="row">
-                                                <label class="control-label col-md-4 col-xs-6">Ngày sinh:</label>
+                                                <label class="control-label col-md-4 col-xs-6 bold">Ngày sinh:</label>
                                                 <label class="control-label col-md-7 col-xs-6">{{ (new \Carbon\Carbon($nhan_su->ngay_sinh))->format('d-m-Y') }}</label>
                                             </div>
                                             <div class="row">
-                                                <label class="control-label col-md-4 col-xs-6">Số CMND:</label>
+                                                <label class="control-label col-md-4 col-xs-6 bold">Số CMND:</label>
                                                 <label class="control-label col-md-7 col-xs-6">{{ $nhan_su->so_cmnd }}</label>
                                             </div>
                                             <div class="row">
-                                                <label class="control-label col-md-4 col-xs-6">Ngày cấp CMND:</label>
+                                                <label class="control-label col-md-4 col-xs-6 bold">Ngày cấp CMND:</label>
                                                 <label class="control-label col-md-7 col-xs-6">{{ (new \Carbon\Carbon($nhan_su->ngay_cap_cmnd))->format('d-m-Y') }}</label>
                                             </div>
                                             <div class="row">
-                                                <label class="control-label col-md-4 col-xs-6">Nơi cấp CMND:</label>
+                                                <label class="control-label col-md-4 col-xs-6 bold">Nơi cấp CMND:</label>
                                                 <label class="control-label col-md-7 col-xs-6">{{ $nhan_su->noi_cap_cmnd }}</label>
                                             </div>
                                             <div class="row">
-                                                <label class="control-label col-md-4 col-xs-6">Ngày bắt đầu làm:</label>
+                                                <label class="control-label col-md-4 col-xs-6 bold">Ngày bắt đầu làm:</label>
                                                 <label class="control-label col-md-7 col-xs-6">{{ (new \Carbon\Carbon($nhan_su->ngay_bat_dau_lam))->format('d-m-Y') }}</label>
                                             </div>
                                             <div class="row">
-                                                <label class="control-label col-md-4 col-xs-6">Ngày làm việc cuối:</label>
+                                                <label class="control-label col-md-4 col-xs-6 bold">Ngày làm việc cuối:</label>
                                                 <label class="control-label col-md-7 col-xs-6">{{ (new \Carbon\Carbon($nhan_su->ngay_lam_viec_cuoi))->format('d-m-Y') }}</label>
                                             </div>
                                         </div>
@@ -143,33 +143,33 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="row">
-                                                <label class="control-label col-md-4 col-xs-6">Trình độ:</label>
+                                                <label class="control-label col-md-4 col-xs-6 bold">Trình độ:</label>
                                                 <label class="control-label col-md-7 col-xs-6">{{ $nhan_su->trinh_do }}</label>
                                             </div>
                                             <div class="row">
-                                                <label class="control-label col-md-4 col-xs-6">Trường tốt nghiệp:</label>
+                                                <label class="control-label col-md-4 col-xs-6 bold">Trường tốt nghiệp:</label>
                                                 <label class="control-label col-md-7 col-xs-6">{{ $nhan_su->truong_tot_nghiep }}</label>
                                             </div>
                                             <div class="row">
-                                                <label class="control-label col-md-4 col-xs-6">Năm tốt nghiệp:</label>
+                                                <label class="control-label col-md-4 col-xs-6 bold">Năm tốt nghiệp:</label>
                                                 <label class="control-label col-md-7 col-xs-6">{{ $nhan_su->nam_tot_nghiep }}</label>
                                             </div>
                                             <div class="row">
-                                                <label class="control-label col-md-4 col-xs-6">Chứng chỉ:</label>
+                                                <label class="control-label col-md-4 col-xs-6 bold">Chứng chỉ:</label>
                                                 <label class="control-label col-md-7 col-xs-6">{!! $nhan_su->chung_chi !!}</label>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <div class="row">
-                                                <label class="control-label col-md-4 col-xs-6">Chức danh:</label>
+                                                <label class="control-label col-md-4 col-xs-6 bold">Chức danh:</label>
                                                 <label class="control-label col-md-7 col-xs-6">{{ $nhan_su->chuc_danh }}</label>
                                             </div>
                                             <div class="row">
-                                                <label class="control-label col-md-4 col-xs-6">Phòng ban:</label>
+                                                <label class="control-label col-md-4 col-xs-6 bold">Phòng ban:</label>
                                                 <label class="control-label col-md-7 col-xs-6">{{ ($nhan_su->phongban_id !=0)?$nhan_su->phongbans->ten:'' }}</label>
                                             </div>
                                             <div class="row">
-                                                <label class="control-label col-md-4 col-xs-6">Bộ phận:</label>
+                                                <label class="control-label col-md-4 col-xs-6 bold">Bộ phận:</label>
                                                 <label class="control-label col-md-7 col-xs-6">{{ ($nhan_su->bophan_id)?$nhan_su->bophans->ten:'' }}</label>
                                             </div>
                                         </div>
@@ -182,7 +182,7 @@
                                 <div class="form-body">
                                     @if($nhan_su->hoso_id)
                                         @php
-                                            $ho_so = json_decode($nhan_su->hoso_id);
+                                            $ho_so = explode(',', $nhan_su->hoso_id);
                                             $ds_ho_so = App\HoSo::all()->pluck('ten','id');
                                         @endphp
                                         <div class="row">
@@ -223,8 +223,7 @@
                                                     <th> STT</th>
                                                     <!-- <th> Mã HĐ</th> -->
                                                     <th> Loại HĐ </th>
-                                                    <th> Ngày ký</th>
-                                                    <th> Từ ngày</th>
+                                                    <th> Vào làm</th>
                                                     <th> Đến ngày</th>
                                                     <th> Lương CB </th>
                                                     <th> Hỗ trợ </th>
@@ -240,7 +239,6 @@
                                                         <td> {{ $stt }} </td>
                                                         <!-- <td> {{ $v->ma_hd }} </td> -->
                                                         <td> {{ ($v->loaihopdong_id)?$v->loaihopdongs->ten:'' }} </td>
-                                                        <td> {{ $v->ngay_ky }} </td>
                                                         <td> {{ $v->ngay_co_hieu_luc }} </td>
                                                         <td> {{ $v->ngay_het_hieu_luc }} </td>
                                                         <td> {{ $v->luong_can_ban }} </td>

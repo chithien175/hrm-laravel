@@ -42,9 +42,6 @@ Route::get('glide/{path}', function($path){
     $response->send();
 })->where('path', '.+');
 
-// Route::get('file/{input_id}', '\Barryvdh\Elfinder\ElfinderController@showPopup');
-
-
 // Authentication Routes...
 Route::get('login', [
     'uses' => 'LoginController@getLogin',

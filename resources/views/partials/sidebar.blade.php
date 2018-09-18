@@ -24,7 +24,7 @@
             
             <li class="nav-item start {{ Route::currentRouteName() == 'dashboard' ? 'active open' : '' }}">
                 <a href="{{ route('dashboard') }}" class="nav-link">
-                    <i class="icon-home"></i>
+                    <i class="fa fa-dashboard"></i>
                     <span class="title">Bảng điều khiển</span>
                     <span class="selected"></span>
                 </a>
@@ -34,7 +34,7 @@
             </li>
             <li class="nav-item {{ Route::getCurrentRoute()->getPrefix() == '/staffs' ? 'active open' : '' }}"">
                 <a href="{{ route('nhan_su.index') }}" class="nav-link nav-toggle">
-                    <i class="icon-users"></i>
+                    <i class="fa fa-users"></i>
                     <span class="title">Quản trị nhân sự</span>
                     <span class="selected"></span>
                 </a>
@@ -44,14 +44,14 @@
             </li>
             <li class="nav-item {{ Route::getCurrentRoute()->getPrefix() == '/file-manager' ? 'active open' : '' }}">
                 <a href="{{ route('file-manager.index') }}" class="nav-link nav-toggle">
-                    <i class="fa fa-files-o"></i>
+                    <i class="fa fa-folder-open"></i>
                     <span class="title">Quản lý tập tin</span>
                     <span class="selected"></span>
                 </a>
             </li>
             <li class="nav-item {{ Route::getCurrentRoute()->getPrefix() == '/users' ? 'active open' : '' }}">
                 <a href="{{ route('user.index') }}" class="nav-link nav-toggle">
-                    <i class="icon-user"></i>
+                    <i class="fa fa-user-secret"></i>
                     <span class="title">Quản lý người dùng</span>
                     <span class="selected"></span>
                 </a>
@@ -61,7 +61,7 @@
             </li>
             <li class="nav-item {{ Route::getCurrentRoute()->getPrefix() == '/company' ? 'active open' : '' }}">
                 <a href="{{ route('company.index') }}" class="nav-link nav-toggle">
-                    <i class="fa fa-building-o"></i>
+                    <i class="fa fa-building"></i>
                     <span class="title">Cấu hình công Ty</span>
                     <span class="selected"></span>
                 </a>

@@ -60,10 +60,10 @@
                                         </button>
                                         <ul class="dropdown-menu pull-right">
                                             <li>
-                                                <a id="import-excel" href="#"><i class="fa fa-file-excel-o"></i> Nhập Excel </a>
+                                                <a id="import-excel" href="#"><i class="glyphicon glyphicon-folder-open"></i> Nhập Excel </a>
                                             </li>
                                             <li>
-                                                <a href="{{ route('nhan_su.export-excel.get') }}"><i class="fa fa-file-excel-o"></i> Xuất Excel </a>
+                                                <a href="{{ route('nhan_su.export-excel.get') }}"><i class="glyphicon glyphicon-download-alt"></i> Xuất Excel </a>
                                             </li>
                                         </ul>
                                     </div>
@@ -104,7 +104,7 @@
                                         <td>
                                             <a class="btn btn-xs blue-sharp" href="{{ route('nhan_su.read.get', $v->id) }}" title="Xem"> <i class="fa fa-eye"></i> Xem</a>
                                             <a class="btn btn-xs yellow-gold" href="{{ route('nhan_su.edit.get', $v->id) }}" title="Sửa"> <i class="fa fa-edit"></i> Sửa</a>
-                                            <a class="btn btn-xs red-mint" href="{{ route('nhan_su.delete.get', $v->id) }}" onclick="return confirm('Bạn có chắc chắn muốn xóa người dùng này không?');" title="Xóa"> <i class="fa fa-trash"></i> Xóa</a>
+                                            <a class="btn btn-xs red-mint" href="{{ route('nhan_su.delete.get', $v->id) }}" onclick="return confirm('Bạn có chắc chắn muốn xóa nhân sự này không?');" title="Xóa"> <i class="fa fa-trash"></i> Xóa</a>
                                         </td>
                                     </tr>
                                     @php $stt++; @endphp
@@ -143,7 +143,7 @@
             "language": {
                 "lengthMenu": "Hiển thị _MENU_ bản ghi / trang",
                 "zeroRecords": "Không tìm thấy dữ liệu",
-                "info": "Trang hiển thị _PAGE_ / _PAGES_",
+                "info": "Trang hiển thị _PAGE_ / _PAGES_ <br> Tổng nhân viên: _TOTAL_",
                 "infoEmpty": "Không có bản ghi nào",
                 "infoFiltered": "(chọn lọc từ _MAX_ bản ghi)",
                 "search": "Tìm kiếm",

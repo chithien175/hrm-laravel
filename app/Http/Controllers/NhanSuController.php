@@ -115,16 +115,69 @@ class NhanSuController extends Controller
     }
 
     public function postImportExcel(Request $request){
-        $collection = (new FastExcel)->import(storage_path('app/'.$request->input('excel_link')));
+        if($request->input('excel_link')){
+            if(file_exists(storage_path('app/'.$request->input('excel_link')))){
 
-        if($collection->count() > 0 ){
+                $file_ext = pathinfo(storage_path('app/'.$request->input('excel_link')), PATHINFO_EXTENSION);
 
-            NhanSu::insertIgnore($collection);
-            return true;
-            
+                if($file_ext == 'xlsx' || $file_ext == 'xls' || $file_ext == 'csv'){
+                    $collection = (new FastExcel)->import(storage_path('app/'.$request->input('excel_link')));
+    
+                    if($collection->count() > 0 ){
+                        // print_r($collection);
+                        $trung_ma_nv = '';
+                        $trung_so_cmnd = '';
+                        $count = 0;
+                        foreach($collection as $k => $v){
+                            if(!NhanSu::where('ma_nv', $v['ma_nv'])->exists()){
+                                if(!NhanSu::where('so_cmnd', $v['so_cmnd'])->exists()){
+                                    NhanSu::saveNhanSu(-1, $v);
+                                }else{
+                                    $count++;
+                                    $trung_so_cmnd .= $v['ma_nv'] . '|';
+                                }
+                            }else{
+                                $count++;
+                                $trung_ma_nv .= $v['ma_nv'] . '|';
+                            }
+                        }
+                        
+                        return response()
+                            ->json([
+                                'result' => true,
+                                'message' => 'Nhập liệu thành công!',
+                                'data' => [
+                                    'count' => $count,
+                                    'trung_ma_nv' => $trung_ma_nv,
+                                    'trung_so_cmnd' => $trung_so_cmnd
+                                ]
+                            ]);
+                        
+                    }else{
+                        return response()->json([
+                                'result' => false,
+                                'message' => 'Tập tin rỗng!'
+                            ]);
+                    }
+                }else{
+                    return response()->json([
+                        'result' => false,
+                        'message' => 'Định dạng file không đúng!'
+                    ]);
+                }
+                
+            }else{
+                return response()->json([
+                        'result' => false,
+                        'message' => 'Tập tin không tồn tại!'
+                    ]);
+            }
+        }else{
+            return response()->json([
+                        'result' => false,
+                        'message' => 'Vui lòng chọn tệp tin!'
+                    ]);
         }
-
-        return false;
     }
 
     public function exportExcel(){

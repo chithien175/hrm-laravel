@@ -81,8 +81,7 @@
                                     <th> Email </th>
                                     <th> Quyền </th>
                                     <th> Trạng thái</th>
-                                    <th> Sửa</th>
-                                    <th> Xóa</th>
+                                    <th> Hành động</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -110,10 +109,8 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a class="edit" href="{{ route('user.edit.get', $v->id) }}"> Sửa </a>
-                                        </td>
-                                        <td>
-                                            <a class="delete" href="{{ route('user.delete.get', $v->id) }}" onclick="return confirm('Bạn có chắc chắn muốn xóa người dùng này không?');"> Xóa </a>
+                                            <a class="btn btn-xs yellow-gold" href="{{ route('user.edit.get', $v->id) }}" title="Xem"> <i class="fa fa-eye"></i> Sửa</a>
+                                            <a class="btn btn-xs red-mint" href="{{ route('user.delete.get', $v->id) }}" onclick="return confirm('Bạn có chắc chắn muốn xóa người dùng này không?');" title="Xóa"> <i class="fa fa-trash"></i> Xóa</a>
                                         </td>
                                     </tr>
                                     @php $stt++; @endphp

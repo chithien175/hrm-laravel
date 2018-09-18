@@ -4,7 +4,7 @@
     <div class="page-header-inner" style="width: 100%;">
         <!-- BEGIN LOGO -->
         <div class="page-logo">
-            <a href="index.html">
+            <a href="{{ route('dashboard') }}">
                 <img src="{{ asset('/images/logo_name.png') }}" alt="logo" class="logo-default" width="140" /> 
                 <!-- <h5 style="padding:7px; color: #fff;">THỊNH PHONG HRM</h5> -->
             </a>

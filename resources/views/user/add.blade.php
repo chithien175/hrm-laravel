@@ -20,9 +20,7 @@
                 <li>
                     <a href="{{ route('dashboard') }}">Bảng Điều Khiển</a>
                     <i class="fa fa-circle"></i>
-                </li>
-                <li>
-                    <span>Thêm Người Dùng</span>
+                    <a href="{{ route('user.index') }}">Danh Sách Người Dùng</a>
                 </li>
             </ul>
         </div>

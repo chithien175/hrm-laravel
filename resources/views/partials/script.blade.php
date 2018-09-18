@@ -1,4 +1,5 @@
 <!-- BEGIN CORE PLUGINS -->
+<script src="{{ asset('assets/global/plugins/pace/pace.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/global/plugins/jquery.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/global/plugins/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/global/plugins/js.cookie.min.js') }}" type="text/javascript"></script>
