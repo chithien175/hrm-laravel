@@ -80,7 +80,9 @@
             Pace.stop();
         });
         
-        $("#import_btn").on('click', function(){
+        $("#import_btn").on('click', function(e){
+            e.preventDefault();
+
             var url = "{{ route('nhan_su.import-excel.post') }}";
             var token = $("input[name='_token']").val();
             var excel_link = $("input[name='excel_link']").val();

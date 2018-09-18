@@ -124,7 +124,7 @@ class NhanSuController extends Controller
                     $collection = (new FastExcel)->import(storage_path('app/'.$request->input('excel_link')));
     
                     if($collection->count() > 0 ){
-                        // print_r($collection);
+                        // dd($collection);
                         $trung_ma_nv = '';
                         $trung_so_cmnd = '';
                         $count = 0;

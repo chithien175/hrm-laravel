@@ -110,7 +110,7 @@
                                             </div>
                                             <div class="row">
                                                 <label class="control-label col-md-4 col-xs-6 bold">Ngày sinh:</label>
-                                                <label class="control-label col-md-7 col-xs-6">{{ (new \Carbon\Carbon($nhan_su->ngay_sinh))->format('d-m-Y') }}</label>
+                                                <label class="control-label col-md-7 col-xs-6">{{ $nhan_su->ngay_sinh }}</label>
                                             </div>
                                             <div class="row">
                                                 <label class="control-label col-md-4 col-xs-6 bold">Số CMND:</label>
@@ -118,7 +118,7 @@
                                             </div>
                                             <div class="row">
                                                 <label class="control-label col-md-4 col-xs-6 bold">Ngày cấp CMND:</label>
-                                                <label class="control-label col-md-7 col-xs-6">{{ (new \Carbon\Carbon($nhan_su->ngay_cap_cmnd))->format('d-m-Y') }}</label>
+                                                <label class="control-label col-md-7 col-xs-6">{{ $nhan_su->ngay_cap_cmnd }}</label>
                                             </div>
                                             <div class="row">
                                                 <label class="control-label col-md-4 col-xs-6 bold">Nơi cấp CMND:</label>
@@ -126,11 +126,11 @@
                                             </div>
                                             <div class="row">
                                                 <label class="control-label col-md-4 col-xs-6 bold">Ngày bắt đầu làm:</label>
-                                                <label class="control-label col-md-7 col-xs-6">{{ (new \Carbon\Carbon($nhan_su->ngay_bat_dau_lam))->format('d-m-Y') }}</label>
+                                                <label class="control-label col-md-7 col-xs-6">{{ $nhan_su->ngay_bat_dau_lam }}</label>
                                             </div>
                                             <div class="row">
                                                 <label class="control-label col-md-4 col-xs-6 bold">Ngày làm việc cuối:</label>
-                                                <label class="control-label col-md-7 col-xs-6">{{ (new \Carbon\Carbon($nhan_su->ngay_lam_viec_cuoi))->format('d-m-Y') }}</label>
+                                                <label class="control-label col-md-7 col-xs-6">{{ $nhan_su->ngay_lam_viec_cuoi }}</label>
                                             </div>
                                         </div>
                                     </div>
