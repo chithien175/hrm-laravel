@@ -28,7 +28,7 @@
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <a class="dashboard-stat dashboard-stat-v2 blue" href="{{ route('nhan_su.index') }}">
                     <div class="visual">
-                        <i class="fa fa-comments"></i>
+                        <i class="fa fa-users"></i>
                     </div>
                     <div class="details">
                         <div class="number">

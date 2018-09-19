@@ -62,10 +62,10 @@ Route::get('/', function () {
 Route::get('dashboard', [
     'uses' => 'DashboardController@getDashboard',
     'as'   => 'dashboard'
-])->middleware('auth');
+])->middleware(['auth','only_active_user']);
 
 // User Routes...
-Route::prefix('users')->middleware('auth')->group(function () {
+Route::prefix('users')->middleware(['auth', 'only_active_user', 'role:superadministrator'])->group(function () {
     Route::get('/', ['uses'=>'UserController@index','as'=>'user.index']);
     Route::get('/add', ['uses'=>'UserController@create','as'=>'user.add.get']);
     Route::post('/add', ['uses'=>'UserController@store','as'=>'user.add.post']);
@@ -75,7 +75,7 @@ Route::prefix('users')->middleware('auth')->group(function () {
 });
 
 // Nhân Sự Routes...
-Route::prefix('staffs')->middleware('auth')->group(function () {
+Route::prefix('staffs')->middleware(['auth', 'only_active_user'])->group(function () {
     Route::get('/', ['uses'=>'NhanSuController@index','as'=>'nhan_su.index']);
     Route::get('/read/{id}', ['uses'=>'NhanSuController@read','as'=>'nhan_su.read.get']);
     Route::get('/add', ['uses'=>'NhanSuController@create','as'=>'nhan_su.add.get']);
@@ -89,14 +89,14 @@ Route::prefix('staffs')->middleware('auth')->group(function () {
 });
 
 // Company Routes...
-Route::prefix('company')->middleware('auth')->group(function () {
+Route::prefix('company')->middleware(['auth', 'only_active_user'])->group(function () {
     Route::get('/init', ['uses'=>'CompanyController@init','as'=>'company.init']);
     Route::get('/', ['uses'=>'CompanyController@index','as'=>'company.index']);
     Route::post('/update', ['uses'=>'CompanyController@update','as'=>'company.update']);
 });
 
 // Ajax Routes...
-Route::prefix('ajax')->middleware('auth')->group(function () {
+Route::prefix('ajax')->middleware(['auth', 'only_active_user'])->group(function () {
     Route::post('/dsBoPhanTheoPhongBan', ['uses'=>'NhanSuController@dsBoPhanTheoPhongBan','as'=>'dsBoPhanTheoPhongBan']);
     Route::post('/postThemHopDong', ['uses'=>'HopDongController@postThemHopDong','as'=>'postThemHopDong']);
     Route::post('/postTimHopDongTheoId', ['uses'=>'HopDongController@postTimHopDongTheoId','as'=>'postTimHopDongTheoId']);
@@ -105,6 +105,6 @@ Route::prefix('ajax')->middleware('auth')->group(function () {
 });
 
 // File Manager
-Route::prefix('file-manager')->middleware('auth')->group(function () {
+Route::prefix('file-manager')->middleware(['auth', 'only_active_user'])->group(function () {
     Route::get('/', ['uses'=>'FileManagerController@index','as'=>'file-manager.index']);
 });

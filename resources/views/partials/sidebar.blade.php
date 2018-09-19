@@ -39,8 +39,9 @@
                     <span class="selected"></span>
                 </a>
             </li>
+            @role('superadministrator')
             <li class="heading">
-                <h3 class="uppercase">Nâng cao</h3>
+                <h3 class="uppercase">Quản trị nâng cao</h3>
             </li>
             <li class="nav-item {{ Route::getCurrentRoute()->getPrefix() == '/file-manager' ? 'active open' : '' }}">
                 <a href="{{ route('file-manager.index') }}" class="nav-link nav-toggle">
@@ -51,11 +52,19 @@
             </li>
             <li class="nav-item {{ Route::getCurrentRoute()->getPrefix() == '/users' ? 'active open' : '' }}">
                 <a href="{{ route('user.index') }}" class="nav-link nav-toggle">
-                    <i class="fa fa-user-secret"></i>
+                    <i class="fa fa-user"></i>
                     <span class="title">Quản lý người dùng</span>
                     <span class="selected"></span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link nav-toggle">
+                    <i class="fa fa-user-secret"></i>
+                    <span class="title">Quản lý phân quyền</span>
+                    <span class="selected"></span>
+                </a>
+            </li>
+            @endrole
             <li class="heading">
                 <h3 class="uppercase">Cấu Hình</h3>
             </li>
