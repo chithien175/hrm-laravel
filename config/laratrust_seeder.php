@@ -3,16 +3,25 @@
 return [
     'role_structure' => [
         'superadministrator' => [
-            'users' => 'c,r,u,d',
-            'acl' => 'c,r,u,d',
-            'profile' => 'r,u'
+            'dashboard' => 'r',
+            'users'     => 'c,r,u,d',
+            'acl'       => 'c,r,u,d',
+            'profile'   => 'r,u',
+            'nhan-su'   => 'c,r,u,d',
+            'hop-dong'  => 'c,r,u,d'
         ],
         'administrator' => [
-            'users' => 'c,r,u,d',
-            'profile' => 'r,u'
+            'dashboard' => 'r',
+            'users'     => 'c,r,u,d',
+            'profile'   => 'r,u',
+            'nhan-su'   => 'c,r,u,d',
+            'hop-dong'  => 'c,r,u,d'
         ],
         'user' => [
-            'profile' => 'r,u'
+            'dashboard' => 'r',
+            'profile'   => 'r,u',
+            'nhan-su'   => 'r',
+            'hop-dong'  => 'r'
         ],
     ],
     'permission_structure' => [],

@@ -46,21 +46,21 @@
             <li class="nav-item {{ Route::getCurrentRoute()->getPrefix() == '/file-manager' ? 'active open' : '' }}">
                 <a href="{{ route('file-manager.index') }}" class="nav-link nav-toggle">
                     <i class="fa fa-folder-open"></i>
-                    <span class="title">Quản lý tập tin</span>
+                    <span class="title">Tập tin & hình ảnh</span>
                     <span class="selected"></span>
                 </a>
             </li>
             <li class="nav-item {{ Route::getCurrentRoute()->getPrefix() == '/users' ? 'active open' : '' }}">
                 <a href="{{ route('user.index') }}" class="nav-link nav-toggle">
                     <i class="fa fa-user"></i>
-                    <span class="title">Quản lý người dùng</span>
+                    <span class="title">Người dùng ứng dụng</span>
                     <span class="selected"></span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link nav-toggle">
+            <li class="nav-item {{ Route::getCurrentRoute()->getPrefix() == '/roles' ? 'active open' : '' }}">
+                <a href="{{ route('role.index') }}" class="nav-link nav-toggle">
                     <i class="fa fa-user-secret"></i>
-                    <span class="title">Quản lý phân quyền</span>
+                    <span class="title">Nhóm & phân quyền</span>
                     <span class="selected"></span>
                 </a>
             </li>

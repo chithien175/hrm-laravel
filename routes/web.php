@@ -108,3 +108,12 @@ Route::prefix('ajax')->middleware(['auth', 'only_active_user'])->group(function 
 Route::prefix('file-manager')->middleware(['auth', 'only_active_user'])->group(function () {
     Route::get('/', ['uses'=>'FileManagerController@index','as'=>'file-manager.index']);
 });
+
+// Role Route...
+Route::prefix('roles')->middleware(['auth', 'only_active_user'])->group(function () {
+    Route::get('/', ['uses'=>'RoleController@index','as'=>'role.index']);
+    Route::get('/create', ['uses'=>'RoleController@create','as'=>'role.create']);
+    Route::get('/show/{id}', ['uses'=>'RoleController@show','as'=>'role.show']);
+    Route::get('/edit/{id}', ['uses'=>'RoleController@edit','as'=>'role.edit']);
+    Route::post('/edit/{id}', ['uses'=>'RoleController@update','as'=>'role.update']);
+});
