@@ -40,6 +40,7 @@ class CompanyController extends Controller
         \Setting::set('company.address', $request->input('address'));
         \Setting::set('company.phone', $request->input('phone'));
         \Setting::set('company.fax', $request->input('fax'));
+        \Setting::set('company.website', $request->input('website'));
         \Setting::set('company.nguoi_dai_dien', $request->input('nguoi_dai_dien'));
         \Setting::set('company.chuc_vu', $request->input('chuc_vu'));
         \Setting::set('company.quoc_tich', $request->input('quoc_tich'));

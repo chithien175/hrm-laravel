@@ -72,6 +72,10 @@
                                         <label>Fax<span class="required">*</span></label>
                                         <input value="{{ setting('company.fax','') }}" name="fax" type="text" class="form-control" placeholder="" required>
                                     </div>
+                                    <div class="form-group">
+                                        <label>Website</label>
+                                        <input value="{{ setting('company.website','') }}" name="website" type="text" class="form-control" placeholder="">
+                                    </div>
                                     <hr>
                                     <div class="form-group">
                                         <label>Người đại diện<span class="required">*</span></label>
