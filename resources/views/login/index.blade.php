@@ -8,7 +8,7 @@
         <!-- <a href="#">
             <img src="{{ asset('/uploads/logos').'/'.setting('company.logo','') }}" alt="HRM - Thinh Phong Co., Ltd" /> 
         </a> -->
-        <h3 class="font-green">PHẦN MỀM NHÂN SỰ (Bản Demo)</h3>
+        <h3 class="font-green">PHẦN MỀM NHÂN SỰ (Bản thử nghiệm)</h3>
     </div>
     <!-- END LOGO -->
     <!-- BEGIN LOGIN -->
@@ -72,7 +72,7 @@
         </table>
         <!-- END LOGIN FORM -->
     </div>
-    <div class="copyright"> v1.0.0(beta) - 2018 © <a href="{{ setting('company.website','') }}" target="_blank">{{ setting('company.name','') }}</a></div>
+    <div class="copyright"> v1.0.0-beta - 2018 © <a href="{{ setting('company.website','') }}" target="_blank">{{ setting('company.name','') }}</a></div>
     
     <!--[if lt IE 9]>
     <script src="../assets/global/plugins/respond.min.js"></script>
