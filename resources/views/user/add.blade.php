@@ -79,14 +79,13 @@
                                     </div>
                                 </div>
                                 <div class="form-group form-md-line-input form-md-floating-label">
-                                    <select class="form-control" name="role">
-                                        <option value="superadmin">Super Admin</option>
-                                        <option value="admin">Admin</option>
-                                        <option value="user">User</option>
+                                    <select class="form-control" name="role[]">
+                                        @foreach($roles as $role)
+                                        <option value="{{$role->id}}">{{ $role->display_name }}</option>
+                                        @endforeach
                                     </select>
                                     <label for="form_control_1">Quyền</label>
                                 </div>
-                                
                             </div>
                             <div class="form-actions">
                                 <div class="row">

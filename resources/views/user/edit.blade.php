@@ -95,10 +95,10 @@
                                     </div>
                                 </div>
                                 <div class="form-group form-md-line-input form-md-floating-label">
-                                    <select class="form-control" name="role">
-                                        <option value="superadmin" {{ ($user->role == 'superadmin')?'selected':'' }}>Super Admin</option>
-                                        <option value="admin" {{ ($user->role == 'admin')?'selected':'' }}>Admin</option>
-                                        <option value="user" {{ ($user->role == 'user')?'selected':'' }}>User</option>
+                                    <select class="form-control" name="role[]">
+                                        @foreach($roles as $role)
+                                            <option value="{{ $role->id }}" {{ ($user->roles[0]->id == $role->id)?'selected':'' }}>{{ $role->display_name }}</option>
+                                        @endforeach
                                     </select>
                                     <label for="form_control_1">Quyền</label>
                                 </div>

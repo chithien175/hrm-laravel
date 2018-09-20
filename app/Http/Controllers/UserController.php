@@ -7,19 +7,21 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+use App\Role;
 use Image;
 
 class UserController extends Controller
 {
 
     public function index(){
-        $users = User::all();
+        $users = User::with('roles')->get();
 
         return view('user.browser', ['users' => $users]);
     }
 
     public function create(){
-        return view('user.add');
+        $roles = Role::all();
+        return view('user.add')->withRoles($roles);
     }
 
     public function store(Request $request){
@@ -43,10 +45,11 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-        $user->role = $request->role;
+        // $user->role = $request->role;
         
         try{
             $user->save();
+            $user->syncRoles($request->role);
             Log::info('Người dùng ID:'.Auth::user()->id.' đã thêm người dùng ID:'.$user->id);
             return redirect()->route('user.index')->with('status_success', 'Tạo mới người dùng thành công!');
         }
@@ -57,9 +60,9 @@ class UserController extends Controller
     }
 
     public function edit($id){
-        $user = User::findOrFail($id);
-
-        return view('user.edit', ['user' => $user]);
+        $user = User::where('id', $id)->with('roles')->first();;
+        $roles = Role::all();
+        return view('user.edit')->withUser($user)->withRoles($roles);
     }
 
     public function update(Request $request){
@@ -82,7 +85,6 @@ class UserController extends Controller
         if(!empty($request->password)){
             $user->password = Hash::make($request->password);
         }
-        $user->role = $request->role;
         $user->active = $request->active;
 
         // Handle the user upload of avatar
@@ -96,6 +98,7 @@ class UserController extends Controller
 
         try{
             $user->save();
+            $user->syncRoles($request->role);
             Log::info('Người dùng ID:'.Auth::user()->id.' đã chỉnh sửa người dùng id:'.$user->id);
             return redirect()->route('user.index')->with('status_success', 'Chỉnh sửa người dùng thành công!');
         }
@@ -109,8 +112,8 @@ class UserController extends Controller
 
         $user = User::findOrFail($id);
 
-        if($user->role == 'superadmin'){
-            return redirect()->route('user.index')->with('status_danger', 'Bạn không được xóa "Super Admin"!');
+        if($user->id == Auth::user()->id){
+            return redirect()->route('user.index')->with('status_danger', 'Bạn không được xóa tài khoản của mình!');
         }else{
             try{
                 $user->delete();

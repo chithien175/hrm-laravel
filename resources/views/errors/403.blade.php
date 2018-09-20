@@ -21,14 +21,17 @@
                     <i class="fa fa-circle"></i>
                 </li>
                 <li>
-                    <span>Lỗi</span>
+                    <span>Xảy ra lỗi</span>
                 </li>
             </ul>
         </div>
         <!-- END PAGE BAR -->
         <!-- BEGIN PAGE TITLE-->
         <h1 class="page-title">
-            Bạn không có quyền truy cập chức năng này.<br>Vui lòng liên hệ người quản trị!
+            Bạn không có quyền thực hiện chức năng này
+        </h1>
+        <h1 class="page-title">
+            Vui lòng liên hệ người quản trị!
         </h1>
     </div>
     <!-- END CONTENT BODY -->

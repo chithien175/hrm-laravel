@@ -21,7 +21,7 @@
             </li>
             <!-- END SIDEBAR TOGGLER BUTTON -->
             <!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
-            
+            @permission('read-dashboard')
             <li class="nav-item start {{ Route::currentRouteName() == 'dashboard' ? 'active open' : '' }}">
                 <a href="{{ route('dashboard') }}" class="nav-link">
                     <i class="fa fa-dashboard"></i>
@@ -29,6 +29,8 @@
                     <span class="selected"></span>
                 </a>
             </li>
+            @endpermission
+            @permission('read-nhan-su')
             <li class="heading">
                 <h3 class="uppercase">Chức năng ứng dụng</h3>
             </li>
@@ -39,7 +41,8 @@
                     <span class="selected"></span>
                 </a>
             </li>
-            @role('superadministrator')
+            @endpermission
+            @permission('update-file-manager')
             <li class="heading">
                 <h3 class="uppercase">Quản trị nâng cao</h3>
             </li>
@@ -50,6 +53,8 @@
                     <span class="selected"></span>
                 </a>
             </li>
+            @endpermission
+            @permission('read-users')
             <li class="nav-item {{ Route::getCurrentRoute()->getPrefix() == '/users' ? 'active open' : '' }}">
                 <a href="{{ route('user.index') }}" class="nav-link nav-toggle">
                     <i class="fa fa-user"></i>
@@ -57,6 +62,8 @@
                     <span class="selected"></span>
                 </a>
             </li>
+            @endpermission
+            @permission('read-acl')
             <li class="nav-item {{ Route::getCurrentRoute()->getPrefix() == '/roles' ? 'active open' : '' }}">
                 <a href="{{ route('role.index') }}" class="nav-link nav-toggle">
                     <i class="fa fa-user-secret"></i>
@@ -64,7 +71,8 @@
                     <span class="selected"></span>
                 </a>
             </li>
-            @endrole
+            @endpermission
+            @permission('update-company')
             <li class="heading">
                 <h3 class="uppercase">Cấu Hình</h3>
             </li>
@@ -75,6 +83,7 @@
                     <span class="selected"></span>
                 </a>
             </li>
+            @endpermission
         </ul>
         <!-- END SIDEBAR MENU -->
     </div>

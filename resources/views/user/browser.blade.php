@@ -53,24 +53,6 @@
                                         </a>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="btn-group pull-right">
-                                        <button class="btn green btn-outline dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog"></i> Công cụ
-                                            <i class="fa fa-angle-down"></i>
-                                        </button>
-                                        <ul class="dropdown-menu pull-right">
-                                            <li>
-                                                <a href="javascript:;"> In </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;"> Lưu PDF </a>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:;"> Xuất Excel </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <table class="table table-striped table-hover table-bordered" id="ds_nguoi_dung">
@@ -85,22 +67,17 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if( $users->count() > 0 )
                                     @php $stt = 1; @endphp
                                     @foreach( $users as $v )
                                     <tr>
                                         <td> {{ $stt }} </td>
                                         <td> {{ $v->name }} </td>
                                         <td> {{ $v->email }} </td>
-                                        <td style="text-transform: uppercase;"
-                                            class="<?php 
-                                            if($v->role == 'superadmin')
-                                            echo 'font-yellow-crusta'; 
-                                            if($v->role == 'admin')
-                                            echo 'font-purple-seance';
-                                            if($v->role == 'user')
-                                            echo 'font-blue';
-                                            ?>"> {{ $v->role }} </td>
+                                        <td>
+                                            @foreach($v->roles as $role)
+                                                {{ $role->display_name }}
+                                            @endforeach
+                                        </td>
                                         <td>
                                             @if($v->active)
                                                 <span class="label label-sm label-success"> Kích hoạt </span>
@@ -109,13 +86,12 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a class="btn btn-xs yellow-gold" href="{{ route('user.edit.get', $v->id) }}" title="Xem"> <i class="fa fa-eye"></i> Sửa</a>
+                                            <a class="btn btn-xs yellow-gold" href="{{ route('user.edit.get', $v->id) }}" title="Xem"> <i class="fa fa-edit"></i> Sửa</a>
                                             <a class="btn btn-xs red-mint" href="{{ route('user.delete.get', $v->id) }}" onclick="return confirm('Bạn có chắc chắn muốn xóa người dùng này không?');" title="Xóa"> <i class="fa fa-trash"></i> Xóa</a>
                                         </td>
                                     </tr>
                                     @php $stt++; @endphp
                                     @endforeach
-                                @endif
                             </tbody>
                         </table>
                     </div>

@@ -60,60 +60,62 @@ Route::get('/', function () {
 
 // Dashboard Routes...
 Route::get('dashboard', [
+    'middleware' => ['permission:read-dashboard'],
     'uses' => 'DashboardController@getDashboard',
     'as'   => 'dashboard'
 ])->middleware(['auth','only_active_user']);
 
 // User Routes...
-Route::prefix('users')->middleware(['auth', 'only_active_user', 'role:superadministrator'])->group(function () {
-    Route::get('/', ['uses'=>'UserController@index','as'=>'user.index']);
-    Route::get('/add', ['uses'=>'UserController@create','as'=>'user.add.get']);
-    Route::post('/add', ['uses'=>'UserController@store','as'=>'user.add.post']);
-    Route::get('/edit/{id}', ['uses' =>'UserController@edit','as'=>'user.edit.get']);
-    Route::post('/edit', ['uses'=>'UserController@update','as'=>'user.edit.post']);
-    Route::get('/delete/{id}', ['uses'=>'UserController@destroy','as'=>'user.delete.get']);
+Route::prefix('users')->middleware(['auth', 'only_active_user'])->group(function () {
+    Route::get('/', ['middleware' => ['permission:read-users'], 'uses'=>'UserController@index','as'=>'user.index']);
+    Route::get('/add', ['middleware' => ['permission:create-users'], 'uses'=>'UserController@create','as'=>'user.add.get']);
+    Route::post('/add', ['middleware' => ['permission:create-users'], 'uses'=>'UserController@store','as'=>'user.add.post']);
+    Route::get('/edit/{id}', ['middleware' => ['permission:update-users'], 'uses' =>'UserController@edit','as'=>'user.edit.get']);
+    Route::post('/edit', ['middleware' => ['permission:update-users'], 'uses'=>'UserController@update','as'=>'user.edit.post']);
+    Route::get('/delete/{id}', ['middleware' => ['permission:delete-users'], 'uses'=>'UserController@destroy','as'=>'user.delete.get']);
 });
 
 // Nhân Sự Routes...
 Route::prefix('staffs')->middleware(['auth', 'only_active_user'])->group(function () {
-    Route::get('/', ['uses'=>'NhanSuController@index','as'=>'nhan_su.index']);
-    Route::get('/read/{id}', ['uses'=>'NhanSuController@read','as'=>'nhan_su.read.get']);
-    Route::get('/add', ['uses'=>'NhanSuController@create','as'=>'nhan_su.add.get']);
-    Route::post('/add', ['uses'=>'NhanSuController@store','as'=>'nhan_su.add.post']);
-    Route::get('/edit/{id}', ['uses' =>'NhanSuController@edit','as'=>'nhan_su.edit.get']);
-    Route::post('/edit/{id}', ['uses'=>'NhanSuController@update','as'=>'nhan_su.edit.post']);
-    Route::get('/delete/{id}', ['uses'=>'NhanSuController@destroy','as'=>'nhan_su.delete.get']);
-    Route::get('/export-excel', ['uses'=>'NhanSuController@exportExcel','as'=>'nhan_su.export-excel.get']);
-    Route::get('/import-excel', ['uses'=>'NhanSuController@importExcel','as'=>'nhan_su.import-excel.get']);
-    Route::post('/import-excel', ['uses'=>'NhanSuController@postImportExcel','as'=>'nhan_su.import-excel.post']);
+    Route::get('/', ['middleware' => ['permission:read-nhan-su'], 'uses'=>'NhanSuController@index','as'=>'nhan_su.index']);
+    Route::get('/read/{id}', ['middleware' => ['permission:read-nhan-su'], 'uses'=>'NhanSuController@read','as'=>'nhan_su.read.get']);
+    Route::get('/add', ['middleware' => ['permission:create-nhan-su'], 'uses'=>'NhanSuController@create','as'=>'nhan_su.add.get']);
+    Route::post('/add', ['middleware' => ['permission:create-nhan-su'], 'uses'=>'NhanSuController@store','as'=>'nhan_su.add.post']);
+    Route::get('/edit/{id}', ['middleware' => ['permission:update-nhan-su'], 'uses' =>'NhanSuController@edit','as'=>'nhan_su.edit.get']);
+    Route::post('/edit/{id}', ['middleware' => ['permission:update-nhan-su'], 'uses'=>'NhanSuController@update','as'=>'nhan_su.edit.post']);
+    Route::get('/delete/{id}', ['middleware' => ['permission:delete-nhan-su'], 'uses'=>'NhanSuController@destroy','as'=>'nhan_su.delete.get']);
+    Route::get('/export-excel', ['middleware' => ['permission:create-nhan-su'], 'uses'=>'NhanSuController@exportExcel','as'=>'nhan_su.export-excel.get']);
+    Route::get('/import-excel', ['middleware' => ['permission:create-nhan-su'], 'uses'=>'NhanSuController@importExcel','as'=>'nhan_su.import-excel.get']);
+    Route::post('/import-excel', ['middleware' => ['permission:create-nhan-su'], 'uses'=>'NhanSuController@postImportExcel','as'=>'nhan_su.import-excel.post']);
 });
 
 // Company Routes...
 Route::prefix('company')->middleware(['auth', 'only_active_user'])->group(function () {
-    Route::get('/init', ['uses'=>'CompanyController@init','as'=>'company.init']);
-    Route::get('/', ['uses'=>'CompanyController@index','as'=>'company.index']);
-    Route::post('/update', ['uses'=>'CompanyController@update','as'=>'company.update']);
+    Route::get('/init', ['middleware' => ['permission:update-company'], 'uses'=>'CompanyController@init','as'=>'company.init']);
+    Route::get('/', ['middleware' => ['permission:update-company'], 'uses'=>'CompanyController@index','as'=>'company.index']);
+    Route::post('/update', ['middleware' => ['permission:update-company'], 'uses'=>'CompanyController@update','as'=>'company.update']);
 });
 
 // Ajax Routes...
 Route::prefix('ajax')->middleware(['auth', 'only_active_user'])->group(function () {
     Route::post('/dsBoPhanTheoPhongBan', ['uses'=>'NhanSuController@dsBoPhanTheoPhongBan','as'=>'dsBoPhanTheoPhongBan']);
-    Route::post('/postThemHopDong', ['uses'=>'HopDongController@postThemHopDong','as'=>'postThemHopDong']);
+    Route::post('/postThemHopDong', ['middleware' => ['permission:create-hop-dong'], 'uses'=>'HopDongController@postThemHopDong','as'=>'postThemHopDong']);
     Route::post('/postTimHopDongTheoId', ['uses'=>'HopDongController@postTimHopDongTheoId','as'=>'postTimHopDongTheoId']);
-    Route::post('/postSuaHopDong', ['uses'=>'HopDongController@postSuaHopDong','as'=>'postSuaHopDong']);
-    Route::post('/postXoaHopDong', ['uses'=>'HopDongController@postXoaHopDong','as'=>'postXoaHopDong']);
+    Route::post('/postSuaHopDong', ['middleware' => ['permission:update-hop-dong'], 'uses'=>'HopDongController@postSuaHopDong','as'=>'postSuaHopDong']);
+    Route::post('/postXoaHopDong', ['middleware' => ['permission:xoa-hop-dong'], 'uses'=>'HopDongController@postXoaHopDong','as'=>'postXoaHopDong']);
 });
 
 // File Manager
 Route::prefix('file-manager')->middleware(['auth', 'only_active_user'])->group(function () {
-    Route::get('/', ['uses'=>'FileManagerController@index','as'=>'file-manager.index']);
+    Route::get('/', ['middleware' => ['permission:update-file-manager'], 'uses'=>'FileManagerController@index','as'=>'file-manager.index']);
 });
 
 // Role Route...
 Route::prefix('roles')->middleware(['auth', 'only_active_user'])->group(function () {
-    Route::get('/', ['uses'=>'RoleController@index','as'=>'role.index']);
-    Route::get('/create', ['uses'=>'RoleController@create','as'=>'role.create']);
-    Route::get('/show/{id}', ['uses'=>'RoleController@show','as'=>'role.show']);
-    Route::get('/edit/{id}', ['uses'=>'RoleController@edit','as'=>'role.edit']);
-    Route::post('/edit/{id}', ['uses'=>'RoleController@update','as'=>'role.update']);
+    Route::get('/', ['middleware' => ['permission:read-acl'], 'uses'=>'RoleController@index','as'=>'role.index']);
+    Route::get('/create', ['middleware' => ['permission:create-acl'], 'uses'=>'RoleController@create','as'=>'role.create']);
+    Route::post('/store', ['middleware' => ['permission:create-acl'], 'uses'=>'RoleController@store','as'=>'role.store']);
+    Route::get('/show/{id}', ['middleware' => ['permission:update-acl'], 'uses'=>'RoleController@show','as'=>'role.show']);
+    Route::get('/edit/{id}', ['middleware' => ['permission:update-acl'], 'uses'=>'RoleController@edit','as'=>'role.edit']);
+    Route::post('/edit/{id}', ['middleware' => ['permission:delete-acl'], 'uses'=>'RoleController@update','as'=>'role.update']);
 });

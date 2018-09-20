@@ -44,12 +44,12 @@
                 <!-- BEGIN EXAMPLE TABLE PORTLET-->
                 <div class="portlet light portlet-fit bordered">
                     <div class="portlet-body">
+                        @permission('create-nhan-su')
                         <div class="table-toolbar">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="btn-group">
                                         <a id="sample_editable_1_new" class="btn green" href="{{ route('nhan_su.add.get') }}"><i class="fa fa-plus"></i> Thêm mới
-                                            
                                         </a>
                                     </div>
                                 </div>
@@ -70,6 +70,7 @@
                                 </div>
                             </div>
                         </div>
+                        @endpermission
                         <table class="table table-striped table-hover table-bordered" id="ds_nguoi_dung">
                             <thead>
                                 <tr>
@@ -102,9 +103,15 @@
                                             @endif
                                         </td>
                                         <td>
+                                            @permission('read-nhan-su')
                                             <a class="btn btn-xs blue-sharp" href="{{ route('nhan_su.read.get', $v->id) }}" title="Xem"> <i class="fa fa-eye"></i> Xem</a>
+                                            @endpermission
+                                            @permission('update-nhan-su')
                                             <a class="btn btn-xs yellow-gold" href="{{ route('nhan_su.edit.get', $v->id) }}" title="Sửa"> <i class="fa fa-edit"></i> Sửa</a>
+                                            @endpermission
+                                            @permission('delete-nhan-su')
                                             <a class="btn btn-xs red-mint" href="{{ route('nhan_su.delete.get', $v->id) }}" onclick="return confirm('Bạn có chắc chắn muốn xóa nhân sự này không?');" title="Xóa"> <i class="fa fa-trash"></i> Xóa</a>
+                                            @endpermission
                                         </td>
                                     </tr>
                                     @php $stt++; @endphp

@@ -36,7 +36,7 @@
             </div>
             <div class="col-xs-4 text-right" style="margin: 25px 0;">
                 <div class="btn-group">
-                    <a id="sample_editable_1_new" class="btn btn-sm green" href="#"><i class="fa fa-plus"></i> Thêm mới
+                    <a id="sample_editable_1_new" class="btn btn-sm green" href="{{ route('role.create') }}"><i class="fa fa-plus"></i> Thêm mới
                     </a>
                 </div>
             </div>

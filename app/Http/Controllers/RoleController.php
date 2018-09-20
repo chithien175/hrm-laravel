@@ -26,7 +26,8 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        $permissions = Permission::all();
+        return view('role.create')->withPermissions($permissions);
     }
 
     /**
@@ -37,7 +38,23 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'display_name' => 'required|max:255',
+            'name' => 'required|max:100|alpha_dash|unique:roles,name',
+            'description' => 'sometimes|max:255',
+        ]);
+
+        $role = new Role();
+        $role->display_name = $request->display_name;
+        $role->name = $request->name;
+        $role->description = $request->description;
+        $role->save();
+
+        if($request->permissions){
+            $role->syncPermissions($request->permissions);
+        }
+
+        return redirect()->route('role.show', $role->id)->with('status_success', 'Thêm nhóm quyền '.$role->display_name.' thành công!');
     }
 
     /**
@@ -48,8 +65,9 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        $role = Role::findOrFail($id);
-        return view('role.show')->withRole($role);
+        $role = Role::where('id',$id)->with('permissions')->first();
+        $permissions = Permission::all();
+        return view('role.show')->withRole($role)->withPermissions($permissions);
     }
 
     /**

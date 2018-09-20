@@ -49,7 +49,7 @@
         <h6>
             {{ $role->description }}
         </h6>
-
+        <hr>
         <!-- END PAGE TITLE-->
         <!-- END PAGE HEADER-->
         <!-- BEGIN DASHBOARD STATS 1-->
@@ -58,12 +58,18 @@
                 <!-- BEGIN EXAMPLE TABLE PORTLET-->
                 <div class="portlet light portlet-fit bordered">
                     <div class="portlet-body">
-                        <h4>Phân quyền:</h4>
-                        <ul>
-                            @foreach($role->permissions as $v)
-                                <li>{{ $v->display_name }} <em style="margin-left: 15px;">({{ $v->description }})</em></li>
-                            @endforeach
-                        </ul>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 class="bold">Phân quyền:</h4>
+                                <div class="form-group">
+                                    @foreach($permissions as $k => $permission)
+                                    <div class="" style="margin: 0 0 10px 0;">
+                                        <input disabled type="checkbox" class="make-switch" data-size="mini" name="permissions[]" value="{{ $permission->name }}" {{ (in_array($permission->name, $role->permissions->pluck('name')->toArray()))?"checked":"" }}> {{ $permission->display_name }} <em style="margin-left: 15px;">({{ $permission->description }})</em>
+                                    </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <!-- END EXAMPLE TABLE PORTLET-->

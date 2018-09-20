@@ -8,14 +8,17 @@ return [
             'acl'       => 'c,r,u,d',
             'profile'   => 'r,u',
             'nhan-su'   => 'c,r,u,d',
-            'hop-dong'  => 'c,r,u,d'
+            'hop-dong'  => 'c,r,u,d',
+            'company'   => 'u',
+            'file-manager' => 'u'
         ],
         'administrator' => [
             'dashboard' => 'r',
-            'users'     => 'c,r,u,d',
             'profile'   => 'r,u',
-            'nhan-su'   => 'c,r,u,d',
-            'hop-dong'  => 'c,r,u,d'
+            'nhan-su'   => 'c,r,u',
+            'hop-dong'  => 'c,r,u,d',
+            'company'   => 'u',
+            'file-manager' => 'u'
         ],
         'user' => [
             'dashboard' => 'r',
