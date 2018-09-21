@@ -57,7 +57,12 @@ class HopDongController extends Controller
     public function postTimHopDongTheoId(Request $request){
         $hop_dong = HopDong::findOrFail($request->input('id'));
         if($hop_dong){
-            $hop_dong->loaihopdong_ten = $hop_dong->loaihopdongs->ten;
+            if($hop_dong->loaihopdong_id != 0){
+                $hop_dong->loaihopdong_ten = $hop_dong->loaihopdongs->ten;
+            }else{
+                $hop_dong->loaihopdong_ten = '';
+            }
+            
             return response()->json([
                 'status' => true,
                 'data'   => $hop_dong

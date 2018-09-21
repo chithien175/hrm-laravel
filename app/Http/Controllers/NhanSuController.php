@@ -12,6 +12,8 @@ use App\BoPhan;
 use App\HoSo;
 use App\HopDong;
 use App\LoaiHopDong;
+use App\QuyetDinh;
+use App\LoaiQuyetDinh;
 use Rap2hpoutre\FastExcel\FastExcel;
 
 class NhanSuController extends Controller
@@ -27,7 +29,8 @@ class NhanSuController extends Controller
         $nhan_su = NhanSu::findOrFail($id);
         return view('nhan_su.read.index', [
             'nhan_su' => $nhan_su,
-            'ds_hop_dong'   => HopDong::getByNhanSuId($id)->get()
+            'ds_hop_dong'   => HopDong::getByNhanSuId($id)->get(),
+            'ds_quyet_dinh' => QuyetDinh::getByNhanSuId($id)->get()
         ]);
     }
 
@@ -41,7 +44,10 @@ class NhanSuController extends Controller
     // END AJAX
 
     public function create(){
-        return view('nhan_su.add.index', ['ds_phong_ban' => PhongBan::all(), 'ds_ho_so' => HoSo::all()]);
+        return view('nhan_su.add.index', [
+            'ds_phong_ban' => PhongBan::all(),
+            'ds_ho_so' => HoSo::all()
+        ]);
     }
 
     public function store(Request $request){
@@ -71,7 +77,9 @@ class NhanSuController extends Controller
             'ds_phong_ban'  => PhongBan::all(),
             'ds_ho_so'      => HoSo::all()->pluck('ten','id'),
             'ds_hop_dong'   => HopDong::getByNhanSuId($id)->get(),
-            'ds_loai_hd'    => LoaiHopDong::all()
+            'ds_loai_hd'    => LoaiHopDong::all(),
+            'ds_quyet_dinh' => QuyetDinh::getByNhanSuId($id)->get(),
+            'ds_loai_qd'    => LoaiQuyetDinh::all()
         ]);
     }
 

@@ -121,7 +121,9 @@
         $("input[name='ngay_het_hieu_luc']").inputmask("d-m-y", {
             // autoUnmask: true
         });
-
+        $("input[name='ngay_ky_qd']").inputmask("d-m-y", {
+            // autoUnmask: true
+        });
 
         // Ajax lấy ds bộ phận theo phòng ban
         $("select[name='phongban_id']").change(function(){
@@ -251,6 +253,43 @@
             ] // set first column as a default sort by asc
         });
         // END Cấu hình bảng ds hợp đồng
+
+        // Cấu hình bảng ds quyết định
+        $('#table_ds_qd').dataTable({
+
+            "lengthMenu": [
+                [10, 20, 50, -1],
+                [10, 20, 50, "Tất cả"] // change per page values here
+            ],
+
+            "pageLength": 10,
+
+            "language": {
+                "lengthMenu": "Hiển thị _MENU_ bản ghi / trang",
+                "zeroRecords": "Không tìm thấy dữ liệu",
+                "info": "Trang hiển thị _PAGE_ / _PAGES_",
+                "infoEmpty": "Không có bản ghi nào",
+                "infoFiltered": "(chọn lọc từ _MAX_ bản ghi)",
+                "search": "Tìm kiếm",
+                "paginate": {
+                    "first":      "Đầu",
+                    "last":       "Cuối",
+                    "next":       "Sau",
+                    "previous":   "Trước"
+                },
+            },
+            "columnDefs": [{ // set default column settings
+                'orderable': true,
+                'targets': [0]
+            }, {
+                "searchable": true,
+                "targets": [0]
+            }],
+            "order": [
+                // [0, "asc"]
+            ] // set first column as a default sort by asc
+        });
+        // END Cấu hình bảng ds quyết định
 
         // Khi click vào nút sửa hđ, tìm hđ theo id và đỗ dữ liệu vào form
         $(".btn_edit_hd").on("click", function(e){
@@ -437,8 +476,71 @@
             });
         });
         // END Khi click vào nút xem hđ, tìm hđ theo id và đỗ dữ liệu
+
+        // Ajax thêm quyết định
+        $("#btn_add_qd").on('click', function(e){
+            e.preventDefault();
+            $("#btn_add_qd").attr("disabled", "disabled");
+            $("#btn_add_qd").html('<i class="fa fa-spinner fa-spin"></i> Lưu');
+            $.ajax({
+                url: '{{ route('postThemQuyetDinh') }}',
+                method: 'POST',
+                data: {
+                    nhansu_id: $("#form_add_qd input[name='nhansu_id']").val(),
+                    ma_qd: $("#form_add_qd input[name='ma_qd']").val(),
+                    ten: $("#form_add_qd input[name='ten']").val(),
+                    loaiquyetdinh_id: $("#form_add_qd .loaiquyetdinh_id").val(),
+                    ngay_ky_qd: $("#form_add_qd input[name='ngay_ky_qd']").val(),
+                    can_cu: $("#form_add_qd input[name='can_cu']").val(),
+                    noi_nhan: $("#form_add_qd input[name='noi_nhan']").val(),
+                    trang_thai: $("#form_add_qd .trang_thai").val(),
+                    _token: $("#form_add_qd input[name='_token']").val()
+                },
+                success: function(data) {
+                    $("#btn_add_qd").removeAttr("disabled"); 
+                    $("#btn_add_qd").html('<i class="fa fa-save"></i> Lưu');
+                    if(data.status == false){
+                        var errors = "";
+                        $.each(data.data, function(key, value){
+                            $.each(value, function(key2, value2){
+                                errors += value2 +"<br>";
+                            });
+                        });
+                        toastr.options = {
+                            "closeButton": true,
+                            "debug": false,
+                            "positionClass": "toast-top-center",
+                            "onclick": null,
+                            "showDuration": "1000",
+                            "hideDuration": "1000",
+                            "timeOut": "5000",
+                            "extendedTimeOut": "1000",
+                            "showEasing": "swing",
+                            "hideEasing": "linear",
+                            "showMethod": "fadeIn",
+                            "hideMethod": "fadeOut"
+                        }
+                        toastr["error"](errors, "Lỗi")
+                    }
+                    if(data.status == true){
+                        $('#modal_add_qd').modal('hide');
+                        swal({
+                            "title":"Đã tạo!", 
+                            "text":"Bạn đã tạo thành công quyết định!",
+                            "type":"success"
+                        }, function() {
+                                localStorage.setItem('activeTab', '#tab5');
+                                location.reload();
+                            }
+                        );
+                    }
+                }
+            });
+        });
+        // END Ajax thêm quyết định
     });
 </script>
+
 <script>
 // Xử lý in hđlđ
 document.getElementById("btn-print-hd").onclick = function () {

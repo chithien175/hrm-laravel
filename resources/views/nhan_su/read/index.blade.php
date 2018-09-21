@@ -211,6 +211,8 @@
                                     @endif
                                 </div>
                             </div>
+                            <!-- END BEGIN TAB 3-->
+
                             <!-- BEGIN TAB 4-->
                             <div class="tab-pane" id="tab4">
                                 @if($ds_hop_dong->isNotEmpty())
@@ -262,18 +264,57 @@
                                 <!-- END EXAMPLE TABLE PORTLET-->
                                 @else
                                     <div class="alert alert-danger" style="margin-bottom: 0px;">
-                                        <p> Nhân viên này chưa có HĐLĐ!</p>
+                                        <p> Nhân sự này chưa có HĐLĐ!</p>
                                     </div>
                                 @endif
                             </div>
                             <!-- END BEGIN TAB 4-->
                             
-                            <!-- END BEGIN TAB 3-->
+                            
                             <!-- BEGIN TAB 5-->
                             <div class="tab-pane" id="tab5">
-                                <div class="alert alert-danger" style="margin-bottom: 0px;">
-                                        <p> Chức năng này đang được cập nhật </p>
+                                @if($ds_quyet_dinh->isNotEmpty())
+                                <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                <div class="portlet light portlet-fit bordered">
+                                    <div class="portlet-body">
+                                        <table class="table table-striped table-hover table-bordered" id="table_ds_qd">
+                                            <thead>
+                                                <tr>
+                                                    <th> STT</th>
+                                                    <th> Loại QĐ </th>
+                                                    <th> Ngày ký</th>
+                                                    <th> Trạng thái</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @if( $ds_quyet_dinh->count() > 0 )
+                                                    @php $stt = 1; @endphp
+                                                    @foreach( $ds_quyet_dinh as $v )
+                                                    <tr>
+                                                        <td> {{ $stt }} </td>
+                                                        <td> {{ ($v->loaiquyetdinh_id)?$v->loaiquyetdinhs->ten:'' }} </td>
+                                                        <td> {{ $v->ngay_ky }} </td>
+                                                        <td> 
+                                                            @if( $v->trang_thai )
+                                                            <span class="label label-sm label-success" style="font-size: 12px;"> Đã ký </span>
+                                                            @else
+                                                            <span class="label label-sm label-danger" style="font-size: 12px;"> Chưa ký </span>
+                                                            @endif
+                                                        </td>
+                                                    </tr>
+                                                    @php $stt++; @endphp
+                                                    @endforeach
+                                                @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
+                                <!-- END EXAMPLE TABLE PORTLET-->
+                                @else
+                                    <div class="alert alert-danger" style="margin-bottom: 0px;">
+                                        <p> Nhân sự này chưa có quyết định!</p>
+                                    </div>
+                                @endif
                             </div>
                             <!-- END BEGIN TAB 5-->
                         </div>
@@ -330,6 +371,40 @@
             ] // set first column as a default sort by asc
         });
         // END Cấu hình bảng ds hợp đồng
+
+        // Cấu hình bảng ds quyết định
+        $('#table_ds_qd').dataTable({
+            "lengthMenu": [
+                [10, 20, 50, -1],
+                [10, 20, 50, "Tất cả"] // change per page values here
+            ],
+            "pageLength": 10,
+            "language": {
+                "lengthMenu": "Hiển thị _MENU_ bản ghi / trang",
+                "zeroRecords": "Không tìm thấy dữ liệu",
+                "info": "Trang hiển thị _PAGE_ / _PAGES_",
+                "infoEmpty": "Không có bản ghi nào",
+                "infoFiltered": "(chọn lọc từ _MAX_ bản ghi)",
+                "search": "Tìm kiếm",
+                "paginate": {
+                    "first":      "Đầu",
+                    "last":       "Cuối",
+                    "next":       "Sau",
+                    "previous":   "Trước"
+                },
+            },
+            "columnDefs": [{ // set default column settings
+                'orderable': true,
+                'targets': [0]
+            }, {
+                "searchable": true,
+                "targets": [0]
+            }],
+            "order": [
+                // [0, "asc"]
+            ] // set first column as a default sort by asc
+        });
+        // END Cấu hình bảng ds quyết định
     });
 </script>
 <script src="{{ asset('assets/global/plugins/datatables/datatables.min.js') }}" type="text/javascript"></script>

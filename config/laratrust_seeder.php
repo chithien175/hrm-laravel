@@ -9,6 +9,7 @@ return [
             'profile'   => 'r,u',
             'nhan-su'   => 'c,r,u,d',
             'hop-dong'  => 'c,r,u,d',
+            'quyet-dinh'=> 'c,r,u,d',
             'company'   => 'u',
             'file-manager' => 'u'
         ],
@@ -17,6 +18,7 @@ return [
             'profile'   => 'r,u',
             'nhan-su'   => 'c,r,u',
             'hop-dong'  => 'c,r,u,d',
+            'quyet-dinh'=> 'c,r,u,d',
             'company'   => 'u',
             'file-manager' => 'u'
         ],

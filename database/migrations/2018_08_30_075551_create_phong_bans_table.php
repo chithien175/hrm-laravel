@@ -18,6 +18,13 @@ class CreatePhongBansTable extends Migration
             $table->string('ten');
             $table->timestamps();
         });
+
+        Schema::create('bo_phans', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('ten');
+            $table->integer('phongban_id');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -28,5 +35,6 @@ class CreatePhongBansTable extends Migration
     public function down()
     {
         Schema::dropIfExists('phong_bans');
+        Schema::dropIfExists('bo_phans');
     }
 }

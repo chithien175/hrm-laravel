@@ -119,7 +119,7 @@
                         }else if(data.result == true){
                             var msg = data.message;
                             toastr["success"](msg, "Thành công");
-                            $('#result').html('<p>Số nhân viên không được nhập: '+data.data.count+'</p><p>Lý do trùng ID: '+data.data.trung_ma_nv+'</p><p>Lý do trùng CMND: '+data.data.trung_so_cmnd+'</p>');
+                            $('#result').html('<p>Số nhân sự không được nhập: '+data.data.count+'</p><p>Lý do trùng ID: '+data.data.trung_ma_nv+'</p><p>Lý do trùng CMND: '+data.data.trung_so_cmnd+'</p>');
                         }
                     }
                 });

@@ -11,6 +11,7 @@ class PhongBansTableSeeder extends Seeder
      */
     public function run()
     {
+        // Seeder Phòng ban
         $phongbans = array(
             [
                 'id'   => 1,
@@ -35,5 +36,39 @@ class PhongBansTableSeeder extends Seeder
         );
         
         DB::table('phong_bans')->insert($phongbans);
+
+        // Seeder Bộ phận
+        $bophans = array(
+            [
+                'ten'        => 'Thiết Kế',
+                'phongban_id' => 1
+            ],
+            [
+                'ten'        => 'IT',
+                'phongban_id' => 1
+            ],
+            [
+                'ten'        => 'Bảo Trì',
+                'phongban_id' => 1
+            ],
+            [
+                'ten'        => 'Xưởng',
+                'phongban_id' => 1
+            ],
+            [
+                'ten'        => 'Kế Toán',
+                'phongban_id' => 3
+            ],
+            [
+                'ten'        => 'Cung Ứng',
+                'phongban_id' => 3
+            ],
+            [
+                'ten'        => 'Kho',
+                'phongban_id' => 3
+            ]
+        );
+        
+        DB::table('bo_phans')->insert($bophans);
     }
 }

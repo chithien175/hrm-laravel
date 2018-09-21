@@ -255,9 +255,65 @@
 
         <!-- BEGIN TAB 5-->
         <div class="tab-pane" id="tab5">
-            <div class="alert alert-danger" style="margin-bottom: 0px;">
-                    <p> Chức năng này đang được cập nhật </p>
-            </div>
+        @if($ds_quyet_dinh->isNotEmpty())
+                <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                <div class="portlet light portlet-fit bordered">
+                    <div class="portlet-body">
+                        <div class="table-toolbar">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="btn-group">
+                                        <a id="sample_editable_1_new" class="btn green" data-toggle="modal" href="#modal_add_qd"><i class="fa fa-plus"></i> Tạo quyết định
+                                            
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table table-striped table-hover table-bordered" id="table_ds_qd">
+                            <thead>
+                                <tr>
+                                    <th> STT</th>
+                                    <th> Loại QĐ </th>
+                                    <th> Ngày ký</th>
+                                    <th> Trạng thái</th>
+                                    <th> Hành động</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if( $ds_quyet_dinh->count() > 0 )
+                                    @php $stt = 1; @endphp
+                                    @foreach( $ds_quyet_dinh as $k => $v )
+                                    <tr>
+                                        <td> {{ $stt }} </td>
+                                        <td> {{ ($v->loaiquyetdinh_id)?$v->loaiquyetdinhs->ten:'' }} </td>
+                                        <td> {{ $v->ngay_ky }} </td>
+                                        <td> 
+                                            @if( $v->trang_thai )
+                                            <span class="label label-sm label-success" style="font-size: 12px;"> Đã ký </span>
+                                            @else
+                                            <span class="label label-sm label-danger" style="font-size: 12px;"> Chưa ký </span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a data-qd-id="{{ $v->id }}" class="btn_edit_qd btn btn-xs yellow-gold" href="#" title="Sửa"> <i class="fa fa-edit"></i> Sửa </a>
+                                            <a data-qd-id="{{ $v->id }}" class="btn_read_qd btn btn-xs blue-steel" href="#" title="In"> <i class="fa fa-print"></i> In </a>
+                                            <a class="btn_delete_qd btn btn-xs red-mint" href="#" data-qd-id="{{ $v->id }}" title="Xóa"> <i class="fa fa-trash"></i> Xóa </a>
+                                        </td>
+                                    </tr>
+                                    @php $stt++; @endphp
+                                    @endforeach
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- END EXAMPLE TABLE PORTLET-->
+            @else
+                <div class="alert alert-danger" style="margin-bottom: 0px;">
+                    <p> Nhân sự này chưa có quyết định! <a class="btn green btn-sm" data-toggle="modal" href="#modal_add_qd"><i class="fa fa-plus"></i> Tạo quyết định</a></p>
+                </div>
+            @endif
         </div>
         <!-- END TAB 5-->
 
@@ -325,7 +381,7 @@
                 <!-- END EXAMPLE TABLE PORTLET-->
             @else
                 <div class="alert alert-danger" style="margin-bottom: 0px;">
-                    <p> Nhân viên này chưa có HĐLĐ! <a class="btn green btn-sm" data-toggle="modal" href="#modal_add_hd"><i class="fa fa-plus"></i> Tạo hợp đồng</a></p>
+                    <p> Nhân sự này chưa có HĐLĐ! <a class="btn green btn-sm" data-toggle="modal" href="#modal_add_hd"><i class="fa fa-plus"></i> Tạo hợp đồng</a></p>
                 </div>
             @endif
         </div>
@@ -375,3 +431,4 @@
 @include('hop_dong.modals.add')
 @include('hop_dong.modals.edit')
 @include('hop_dong.modals.read')
+@include('quyet_dinh.modals.add')

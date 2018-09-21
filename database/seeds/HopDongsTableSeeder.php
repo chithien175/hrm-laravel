@@ -11,6 +11,29 @@ class HopDongsTableSeeder extends Seeder
      */
     public function run()
     {
+        // Seeder Loại hợp đồng
+        $loaihopdongs = array(
+            [
+                'id'   => 1,
+                'ten' => 'Thử việc'
+            ],
+            [
+                'id'   => 2,
+                'ten' => 'Xác định thời hạn'
+            ],
+            [
+                'id'   => 3,
+                'ten' => 'Không xác định thời hạn'
+            ],
+            [
+                'id'   => 4,
+                'ten' => 'Đào tạo nghề'
+            ]
+        );
+        DB::table('loai_hop_dongs')->insert($loaihopdongs);
+
+
+        // Seeder Hợp đồng
         $hopdongs = array(
             [
                 'id'   => 1,

@@ -28,6 +28,12 @@ class CreateHopDongsTable extends Migration
             $table->boolean('trang_thai')->default(0);
             $table->timestamps();
         });
+
+        Schema::create('loai_hop_dongs', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('ten');
+            $table->timestamps();
+        });
     }
 
     /**
@@ -38,5 +44,6 @@ class CreateHopDongsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('hop_dongs');
+        Schema::dropIfExists('loai_hop_dongs');
     }
 }

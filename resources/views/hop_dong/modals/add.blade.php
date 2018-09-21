@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Ngày ký HĐ<span class="required">*</span></label>
-                                    <input class="form-control" name="ngay_ky" id="ngay_ky_hd" type="text" placeholder="dd-mm-yyyy" value="{{ old('ngay_ky') }}" required />
+                                    <input class="form-control" name="ngay_ky" id="ngay_ky_hd" type="text" placeholder="dd-mm-yyyy" required />
                                 </div>
                                 <div class="form-group">
                                     <label>Ngày có hiệu lực<span class="required">*</span></label>
