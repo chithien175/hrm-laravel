@@ -32,6 +32,17 @@ class QuyetDinh extends Model
         $quyet_dinh->ngay_ky              = Carbon::parse($data['ngay_ky_qd'])->format('Y-m-d');
         $quyet_dinh->can_cu               = $data['can_cu'];
         $quyet_dinh->noi_nhan             = $data['noi_nhan'];
+        $quyet_dinh->tong_thu_nhap_cu     = $data['tong_thu_nhap_cu'];
+        $quyet_dinh->tong_thu_nhap_moi    = $data['tong_thu_nhap_moi'];
+        $quyet_dinh->luong_co_ban_moi     = $data['luong_co_ban_moi'];
+        $quyet_dinh->luong_tro_cap_moi    = $data['luong_tro_cap_moi'];
+        $quyet_dinh->luong_hieu_qua_moi   = $data['luong_hieu_qua_moi'];
+        $quyet_dinh->ly_do                = $data['ly_do'];
+        $quyet_dinh->chuc_vu_cu           = $data['chuc_vu_cu'];
+        $quyet_dinh->chuc_vu_moi          = $data['chuc_vu_moi'];
+        $quyet_dinh->bo_phan_cu           = $data['bo_phan_cu'];
+        $quyet_dinh->bo_phan_moi          = $data['bo_phan_moi'];
+        $quyet_dinh->chuc_vu_hien_tai     = $data['chuc_vu_hien_tai'];
         $quyet_dinh->trang_thai           = $data['trang_thai'];
         // dd($quyet_dinh);
         $quyet_dinh->save();

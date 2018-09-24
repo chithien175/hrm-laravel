@@ -493,6 +493,17 @@
                     ngay_ky_qd: $("#form_add_qd input[name='ngay_ky_qd']").val(),
                     can_cu: $("#form_add_qd input[name='can_cu']").val(),
                     noi_nhan: $("#form_add_qd input[name='noi_nhan']").val(),
+                    tong_thu_nhap_cu: $("#form_add_qd input[name='tong_thu_nhap_cu']").val(),
+                    tong_thu_nhap_moi: $("#form_add_qd input[name='tong_thu_nhap_moi']").val(),
+                    luong_co_ban_moi: $("#form_add_qd input[name='luong_co_ban_moi']").val(),
+                    luong_tro_cap_moi: $("#form_add_qd input[name='luong_tro_cap_moi']").val(),
+                    luong_hieu_qua_moi: $("#form_add_qd input[name='luong_hieu_qua_moi']").val(),
+                    ly_do: $("#form_add_qd input[name='ly_do']").val(),
+                    chuc_vu_cu: $("#form_add_qd input[name='chuc_vu_cu']").val(),
+                    chuc_vu_moi: $("#form_add_qd input[name='chuc_vu_moi']").val(),
+                    bo_phan_cu: $("#form_add_qd select[name='bo_phan_cu']").val(),
+                    bo_phan_moi: $("#form_add_qd select[name='bo_phan_moi']").val(),
+                    chuc_vu_hien_tai: $("#form_add_qd input[name='chuc_vu_hien_tai']").val(),
                     trang_thai: $("#form_add_qd .trang_thai").val(),
                     _token: $("#form_add_qd input[name='_token']").val()
                 },
@@ -538,6 +549,29 @@
             });
         });
         // END Ajax thêm quyết định
+
+        // Xử lý khi click chọn loại quyết định
+        
+        
+
+        $('#loaiquyetdinh_id').on('change', function() {
+            if(this.value == '1'){
+                $('#type1_qd').show();
+                $('#type2_qd').hide();
+                $('#type3_qd').hide();
+            }
+            if(this.value == '2'){
+                $('#type1_qd').hide();
+                $('#type2_qd').show();
+                $('#type3_qd').hide();
+            }
+            if(this.value == '3'){
+                $('#type1_qd').hide();
+                $('#type2_qd').hide();
+                $('#type3_qd').show();
+            }
+        });
+        // END Xử lý khi click chọn loại quyết định
     });
 </script>
 

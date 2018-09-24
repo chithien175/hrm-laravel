@@ -189,7 +189,7 @@
                             </label>
                             <div class="col-md-7">
                                 <div class="input-icon right">
-                                    <i class="fa fa-calendar-check-o"></i>
+                                    <i class="fa fa-edit"></i>
                                     <textarea name="chung_chi" class="form-control" id="chung_chi" rows="5">{{ old('chung_chi') }}</textarea>
                                 </div>
                             </div>

@@ -19,7 +19,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Loại quyết định</label>
-                                    <select name="loaiquyetdinh_id" class="form-control loaiquyetdinh_id" id="">
+                                    <select name="loaiquyetdinh_id" class="form-control loaiquyetdinh_id" id="loaiquyetdinh_id">
                                         @foreach($ds_loai_qd as $v)
                                             <option value="{{ $v->id }}">{{ $v->ten }}</option>
                                         @endforeach
@@ -45,7 +45,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-6" id="type1_qd">
                                 <div class="form-group">
                                     <label>Tổng thu nhập cũ</label>
                                     <input name="tong_thu_nhap_cu" type="text" class="form-control">
@@ -69,6 +69,44 @@
                                 <div class="form-group">
                                     <label>Lý do</label>
                                     <input name="ly_do" type="text" class="form-control">
+                                </div>
+                            </div>
+                            <div class="col-md-6" id="type2_qd" style="display: none;">
+                                <div class="form-group">
+                                    <label>Chức vụ cũ</label>
+                                    <input name="chuc_vu_cu" type="text" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>Chức vụ mới</label>
+                                    <input name="chuc_vu_moi" type="text" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label>Bộ phận cũ</label>
+                                    <select class="form-control" name="bo_phan_cu">
+                                        <option value="0">-------- Chọn Phòng / Ban --------</option>
+                                        @if($ds_phong_ban->count()>0)
+                                            @foreach($ds_phong_ban as $v)
+                                            <option value="{{ $v->id }}">{{ $v->ten }}</option>
+                                            @endforeach
+                                        @endif
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Bộ phân mới</label>
+                                    <select class="form-control" name="bo_phan_moi">
+                                        <option value="0">-------- Chọn Phòng / Ban --------</option>
+                                        @if($ds_phong_ban->count()>0)
+                                            @foreach($ds_phong_ban as $v)
+                                            <option value="{{ $v->id }}">{{ $v->ten }}</option>
+                                            @endforeach
+                                        @endif
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6" id="type3_qd" style="display: none;">
+                                <div class="form-group">
+                                    <label>Chức vụ hiện tại</label>
+                                    <input name="chuc_vu_hien_tai" type="text" class="form-control">
                                 </div>
                             </div>
                         </div>

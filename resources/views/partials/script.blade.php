@@ -8,7 +8,8 @@
 <script src="{{ asset('assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js') }}" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
 <!-- BEGIN PAGE LEVEL PLUGINS -->
-<script src="{{ asset('assets/global/plugins/moment.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/global/plugins/moment-with-locales.js') }}" type="text/javascript"></script>
+<!-- <script src="{{ asset('assets/global/plugins/moment.min.js') }}" type="text/javascript"></script> -->
 <script src="{{ asset('assets/global/plugins/bootstrap-daterangepicker/daterangepicker.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/global/plugins/morris/morris.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/global/plugins/morris/raphael-min.js') }}" type="text/javascript"></script>
@@ -50,3 +51,13 @@
 <!-- <script src="{{ asset('assets/layouts/layout/scripts/demo.min.js') }}" type="text/javascript"></script> -->
 <script src="{{ asset('assets/layouts/global/scripts/quick-sidebar.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('assets/layouts/global/scripts/quick-nav.min.js') }}" type="text/javascript"></script>
+
+<script>
+$(document).ready(function() {
+    var interval = setInterval(function() {
+        var $now = moment().locale('vi').format('dd, DD/MM/YYYY, h:mm:ss A');
+        $('#datetime-part').html($now);
+    }, 100);
+    
+});
+</script>

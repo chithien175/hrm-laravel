@@ -201,7 +201,7 @@
                             </label>
                             <div class="col-md-7">
                                 <div class="input-icon right">
-                                    <i class="fa fa-calendar-check-o"></i>
+                                    <i class="fa fa-edit"></i>
                                     <textarea name="chung_chi" class="form-control" id="chung_chi" rows="5">{{ $nhan_su->chung_chi }}</textarea>
                                 </div>
                             </div>
@@ -259,53 +259,111 @@
                 <!-- BEGIN EXAMPLE TABLE PORTLET-->
                 <div class="portlet light portlet-fit bordered">
                     <div class="portlet-body">
-                        <div class="table-toolbar">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="btn-group">
-                                        <a id="sample_editable_1_new" class="btn green" data-toggle="modal" href="#modal_add_qd"><i class="fa fa-plus"></i> Tạo quyết định
-                                            
-                                        </a>
-                                    </div>
+                        <div class="row" style="margin-bottom: 15px;">
+                            <div class="col-md-6">
+                                <div class="btn-group">
+                                    <a id="sample_editable_1_new" class="btn green" data-toggle="modal" href="#modal_add_qd"><i class="fa fa-plus"></i> Tạo quyết định
+                                        
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                        <table class="table table-striped table-hover table-bordered" id="table_ds_qd">
-                            <thead>
-                                <tr>
-                                    <th> STT</th>
-                                    <th> Loại QĐ </th>
-                                    <th> Ngày ký</th>
-                                    <th> Trạng thái</th>
-                                    <th> Hành động</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @if( $ds_quyet_dinh->count() > 0 )
-                                    @php $stt = 1; @endphp
-                                    @foreach( $ds_quyet_dinh as $k => $v )
-                                    <tr>
-                                        <td> {{ $stt }} </td>
-                                        <td> {{ ($v->loaiquyetdinh_id)?$v->loaiquyetdinhs->ten:'' }} </td>
-                                        <td> {{ $v->ngay_ky }} </td>
-                                        <td> 
-                                            @if( $v->trang_thai )
-                                            <span class="label label-sm label-success" style="font-size: 12px;"> Đã ký </span>
-                                            @else
-                                            <span class="label label-sm label-danger" style="font-size: 12px;"> Chưa ký </span>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <a data-qd-id="{{ $v->id }}" class="btn_edit_qd btn btn-xs yellow-gold" href="#" title="Sửa"> <i class="fa fa-edit"></i> Sửa </a>
-                                            <a data-qd-id="{{ $v->id }}" class="btn_read_qd btn btn-xs blue-steel" href="#" title="In"> <i class="fa fa-print"></i> In </a>
-                                            <a class="btn_delete_qd btn btn-xs red-mint" href="#" data-qd-id="{{ $v->id }}" title="Xóa"> <i class="fa fa-trash"></i> Xóa </a>
-                                        </td>
-                                    </tr>
-                                    @php $stt++; @endphp
-                                    @endforeach
-                                @endif
-                            </tbody>
-                        </table>
+                        <div class="row">
+                            @foreach($ds_quyet_dinh as $v)
+                            <div class="col-md-12">
+                                <div class="mt-element-ribbon bg-grey-steel">
+                                    
+                                    @if($v->trang_thai)
+                                    <div class="ribbon ribbon-right ribbon-vertical-right ribbon-shadow ribbon-border-dash-vert ribbon-color-info">
+                                        <div class="ribbon-sub ribbon-bookmark"></div>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <div class="ribbon ribbon-left ribbon-clip ribbon-shadow ribbon-round ribbon-border-dash-hor ribbon-color-info">
+                                        <div class="ribbon-sub ribbon-clip ribbon-left"></div>Số: {{ $v->ma_qd }} (Đã ký)</div>
+                                    @else
+                                    <div class="ribbon ribbon-right ribbon-vertical-right ribbon-shadow ribbon-border-dash-vert ribbon-color-default">
+                                        <div class="ribbon-sub ribbon-bookmark"></div>
+                                        <i class="fa fa-star"></i>
+                                    </div>
+                                    <div class="ribbon ribbon-left ribbon-clip ribbon-shadow ribbon-round ribbon-border-dash-hor ribbon-color-default">
+                                        <div class="ribbon-sub ribbon-clip ribbon-left"></div>Số: {{ $v->ma_qd }} (Chưa ký)</div>
+                                    @endif
+                                    <div class="row" style="padding: 50px 15px 5px 15px;">
+                                        <div class="col-md-6">
+                                        V/v: {{ ($v->loaiquyetdinh_id)?$v->loaiquyetdinhs->ten:'' }}
+                                        </div>
+                                        <div class="col-md-6">
+                                        Ngày ký: {{ $v->ngay_ky }}
+                                        </div>
+                                    </div>
+                                        @if($v->loaiquyetdinh_id == 1)
+                                            <div class="row" style="padding: 0px 15px 5px 15px;">
+                                                <div class="col-md-6">
+                                                    Tổng thu nhập cũ: {{ $v->tong_thu_nhap_cu }}
+                                                </div>
+                                                <div class="col-md-6">
+                                                    Tổng thu nhập mới: {{ $v->tong_thu_nhap_moi }}
+                                                </div>
+                                            </div>
+                                            <div class="row" style="padding: 0px 15px 5px 15px;">
+                                                <div class="col-md-6">
+                                                    Lương cơ bản mới: {{ $v->luong_co_ban_moi }}
+                                                </div>
+                                                <div class="col-md-6">
+                                                    Lương trợ cấp mới: {{ $v->luong_tro_cap_moi }}
+                                                </div>
+                                            </div>
+                                            <div class="row" style="padding: 0px 15px 20px 15px;">
+                                                <div class="col-md-6">
+                                                    Lương hiệu quả mới: {{ $v->luong_hieu_qua_moi }}
+                                                </div>
+                                                <div class="col-md-6">
+                                                    Lý do: {{ $v->ly_do }}
+                                                </div>
+                                            </div>
+                                        @elseif($v->loaiquyetdinh_id == 2)
+                                            <div class="row" style="padding: 0px 15px 5px 15px;">
+                                                <div class="col-md-6">
+                                                    Chức vụ cũ: {{ $v->chuc_vu_cu }}
+                                                </div>
+                                                <div class="col-md-6">
+                                                    Chức vụ mới: {{ $v->chu_vu_moi }}
+                                                </div>
+                                            </div>
+                                            <div class="row" style="padding: 0px 15px 20px 15px;">
+                                                <div class="col-md-6">
+                                                    Bộ phận cũ: Phòng {{ getTenPhongBanById($v->bo_phan_cu) }}
+                                                </div>
+                                                <div class="col-md-6">
+                                                    Bộ phận mới: Phòng {{ getTenPhongBanById($v->bo_phan_moi) }}
+                                                </div>
+                                            </div>
+                                            
+                                           
+                                        @elseif($v->loaiquyetdinh_id == 3)
+                                            <div class="row" style="padding: 0px 15px 20px 15px;">
+                                                <div class="col-md-6">
+                                                    Chức vụ hiện tại: {{ $v->chuc_vu_hien_tai }}
+                                                </div>
+                                            </div>
+                                            
+                                        @endif
+                                        
+                                    
+                                    <div class="btn-group">
+                                        <a data-qd-id="{{ $v->id }}" class="btn_read_qd btn btn-xs blue-steel" href="#" title="In"><i class="fa fa-print"></i> In</a>
+                                    </div>
+                                    <div class="btn-group">
+                                        <a data-qd-id="{{ $v->id }}" class="btn_edit_qd btn btn-xs yellow-gold" href="#" title="Sửa"><i class="fa fa-edit"></i> Sửa</a>
+                                    </div>
+                                    <div class="btn-group">
+                                        <a class="btn_delete_qd btn btn-xs red-mint" href="#" data-qd-id="{{ $v->id }}" title="Xóa"><i class="fa fa-trash"></i> Xóa</a>
+                                    </div>
+                                </div>
+                            </div>
+                            @endforeach
+                        </div>
+                        
                     </div>
                 </div>
                 <!-- END EXAMPLE TABLE PORTLET-->
@@ -366,8 +424,8 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a data-hd-id="{{ $v->id }}" class="btn_edit_hd btn btn-xs yellow-gold" href="#" title="Sửa"> <i class="fa fa-edit"></i> Sửa </a>
                                             <a data-hd-id="{{ $v->id }}" class="btn_read_hd btn btn-xs blue-steel" href="#" title="In"> <i class="fa fa-print"></i> In </a>
+                                            <a data-hd-id="{{ $v->id }}" class="btn_edit_hd btn btn-xs yellow-gold" href="#" title="Sửa"> <i class="fa fa-edit"></i> Sửa </a>
                                             <a class="btn_delete_hd btn btn-xs red-mint" href="#" data-hd-id="{{ $v->id }}" title="Xóa"> <i class="fa fa-trash"></i> Xóa </a>
                                         </td>
                                     </tr>

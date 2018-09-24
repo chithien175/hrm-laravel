@@ -27,7 +27,12 @@ class CreateQuyetDinhsTable extends Migration
             $table->string('luong_tro_cap_moi')->nullable();
             $table->string('luong_hieu_qua_moi')->nullable();
             $table->string('ly_do')->nullable();
-            $table->boolean('trang_thai')->default(0);//đã ký/chưa ký
+            $table->string('chuc_vu_cu')->nullable();
+            $table->string('chuc_vu_moi')->nullable();
+            $table->integer('bo_phan_cu')->nullable();
+            $table->integer('bo_phan_moi')->nullable();
+            $table->string('chuc_vu_hien_tai')->nullable();
+            $table->boolean('trang_thai')->default(0);// đã ký/chưa ký.
             $table->timestamps();
         });
 

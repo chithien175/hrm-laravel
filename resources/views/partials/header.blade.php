@@ -18,8 +18,13 @@
             <span></span>
         </a>
         <!-- END RESPONSIVE MENU TOGGLER -->
+        <div class='time-frame hidden-xs' style="float:left; font-size: 12px; color: #fff; padding: 16px; display: -webkit-box;">
+            <i class="fa fa-clock-o" style="margin-right: 5px;"></i>
+            <div id='datetime-part'></div>
+        </div>
         <!-- BEGIN TOP NAVIGATION MENU -->
         <div class="top-menu">
+            
             <ul class="nav navbar-nav pull-right">
                 <!-- BEGIN USER LOGIN DROPDOWN -->
                 <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
