@@ -1,21 +1,23 @@
 <!-- /.modal -->
-<div class="modal fade bs-modal-lg" id="modal_add_qd" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade bs-modal-lg" id="modal_edit_qd" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <form action="#" id="form_add_qd">
+            <form action="#" id="form_edit_qd">
+                
                 @csrf
-                <input value="{{ $nhan_su->id }}" name="nhansu_id" type="hidden">
+                <input type="hidden" name="nhansu_id">
+                <input type="hidden" name="quyetdinh_id" >
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title"><i class="fa fa-plus"></i> Thêm mới quyết định</h4>
+                    <h4 class="modal-title"><i class="fa fa-edit"></i> Chỉnh sửa quyết định</h4>
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="col-md-6">
+                        <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Mã số<span class="required">*</span></label>
-                                    <input value="/{{ \Carbon\Carbon::now()->year }}/QĐ-TP" name="ma_qd" type="text" class="form-control">
+                                    <input value="" name="ma_qd" type="text" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label>Loại quyết định</label>
@@ -114,7 +116,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
-                    <a href="#" class="btn green" id="btn_add_qd"><i class="fa fa-save"></i> Lưu</a>
+                    <a href="#" class="btn green" id="btn_edit_qd"><i class="fa fa-save"></i> Lưu</a>
                 </div>
             </form>
         </div>

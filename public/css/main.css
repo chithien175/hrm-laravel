@@ -1,3 +1,4 @@
+/* READ HĐLĐ */
 #read-hdld{
     font-family: "Times New Roman";
 }
@@ -121,3 +122,131 @@
         float: right;
     }
 }
+/* END READ HĐLĐ */
+
+
+/* READ QUYET DINH */
+#read-qd{
+    font-family: "Times New Roman";
+}
+
+#read-qd .divider{
+    width: 95%;
+    height: 3px;
+    border-bottom: 3px double #333;
+    margin: 10px auto;
+}
+
+#read-qd .company-info-left .company-logo{
+    width: 150px;
+}
+
+#read-qd .company-info-right p{
+    margin: 0;
+}
+
+#read-qd .company-info-right .company-name{
+    font-size: 18pt;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#read-qd .company-info-right .company-address{
+    font-size: 15pt;
+}
+
+#read-qd .company-info-right .company-phone{
+    font-size: 15pt;
+}
+
+#read-qd .content-qd{
+    padding: 0 7.5%;
+    font-size: 12.5pt;
+    text-align: justify;
+}
+
+#read-qd .content-qd .row{
+    line-height: 24px;
+}
+
+#read-qd .content-qd .d-contents{
+    padding-left: 0px;
+}
+
+#read-qd .content-qd .quoc-hieu{
+    margin: 10px 0 0 0;
+    font-size: 16pt;
+    font-weight: bold;
+}
+
+#read-qd .content-qd .tieu-ngu{
+    margin: 0px;
+    font-size: 16pt;
+    font-weight: bold;
+}
+
+#read-qd .content-qd .line{
+    margin: 0px;
+    font-size: 16pt;
+}
+
+#read-qd .content-qd .ma-qd{
+    font-size: 13.5pt;
+    margin: 0;
+}
+
+#read-qd .content-qd .ten-qd{
+    font-size: 19pt;
+    margin: 0 0 5px 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+}
+#read-qd .content-qd .ten-loai-qd{
+    font-size: 12pt;
+    margin: 0 0 20px 0;
+    text-align: center;
+    font-style: italic;
+}
+#read-qd .content-qd .tieu-de-qd{
+    font-size: 13pt;
+    margin: 0 0 20px 0;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+}
+#read-qd .content-qd .can-cu-qd{
+    font-size: 12pt;
+    margin: 0 0 10px 0;
+    padding-left: 30px;
+    font-style: italic;
+}
+
+#read-qd .content-qd .ten-cong-ty{
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#read-qd .content-qd .dai-dien-boi,
+#read-qd .content-qd .nguoi-lao-dong,
+#read-qd .content-qd .luong-can-ban-qd,
+#read-qd .content-qd .luong-tro-cap-qd,
+#read-qd .content-qd .luong-hieu-qua-qd{
+    font-weight: bold;
+}
+@media print {
+    #read-qd{
+        width: 868px;
+    }
+
+    #read-qd .company-info-left{
+        width: 25%;
+        float: left;
+    }
+
+    #read-qd .company-info-right{
+        width: 75%;
+        float: right;
+    }
+}
+/* END READ QUYET DINH */

@@ -36,8 +36,8 @@ class QuyetDinhsTableSeeder extends Seeder
                 'ma_qd' => '2607/02/2018/QĐ-TP',
                 'loaiquyetdinh_id' => 1,
                 'ngay_ky' => '2018-07-26',
-                'can_cu' => '',
-                'noi_nhan' => '',
+                'can_cu' => 'Căn cứ vào Nội quy và Quy chế của Công ty;Căn cứ quyền hạn của Giám đốc Công ty TNHH Thịnh Phong;Xét năng lực của Ông Trương Tấn Công',
+                'noi_nhan' => 'Điều 3;Lưu HC-NS',
                 'trang_thai' => 1
             ],
             [

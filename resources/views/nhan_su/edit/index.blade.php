@@ -460,7 +460,7 @@
                 },
                 success: function(data) {
                     if(data.status == true){
-                        console.log(data.data);
+                        // console.log(data.data);
                         $('#read-hdld .ma-hdld').html("Số: "+data.data.ma_hd);
                         $('#read-hdld .ten-hdld').html(data.data.ten);
                         $('#read-hdld .ten-loai-hdld').html(data.data.loaihopdong_ten);
@@ -551,27 +551,281 @@
         // END Ajax thêm quyết định
 
         // Xử lý khi click chọn loại quyết định
-        
-        
-
-        $('#loaiquyetdinh_id').on('change', function() {
+        // Add
+        $('#form_add_qd .loaiquyetdinh_id').on('change', function() {
             if(this.value == '1'){
-                $('#type1_qd').show();
-                $('#type2_qd').hide();
-                $('#type3_qd').hide();
+                $('#form_add_qd .type1_qd').show();
+                $('#form_add_qd .type2_qd').hide();
+                $('#form_add_qd .type3_qd').hide();
             }
             if(this.value == '2'){
-                $('#type1_qd').hide();
-                $('#type2_qd').show();
-                $('#type3_qd').hide();
+                $('#form_add_qd .type1_qd').hide();
+                $('#form_add_qd .type2_qd').show();
+                $('#form_add_qd .type3_qd').hide();
             }
             if(this.value == '3'){
-                $('#type1_qd').hide();
-                $('#type2_qd').hide();
-                $('#type3_qd').show();
+                $('#form_add_qd .type1_qd').hide();
+                $('#form_add_qd .type2_qd').hide();
+                $('#form_add_qd .type3_qd').show();
+            }
+        });
+        
+        // Edit
+        $('#form_edit_qd .loaiquyetdinh_id').on('change', function() {
+            if(this.value == '1'){
+                $('#form_edit_qd .type1_qd').show();
+                $('#form_edit_qd .type2_qd').hide();
+                $('#form_edit_qd .type3_qd').hide();
+            }
+            if(this.value == '2'){
+                $('#form_edit_qd .type1_qd').hide();
+                $('#form_edit_qd .type2_qd').show();
+                $('#form_edit_qd .type3_qd').hide();
+            }
+            if(this.value == '3'){
+                $('#form_edit_qd .type1_qd').hide();
+                $('#form_edit_qd .type2_qd').hide();
+                $('#form_edit_qd .type3_qd').show();
             }
         });
         // END Xử lý khi click chọn loại quyết định
+
+        // Khi click vào nút sửa quyết định, tìm quyết định theo id và đỗ dữ liệu vào form
+        $(".btn_edit_qd").on("click", function(e){
+            e.preventDefault();
+            var qd_id = $(this).data("qd-id");
+            // $('#modal_edit_qd').modal('show');
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url: '{{ route('postTimQuyetDinhTheoId') }}',
+                method: 'POST',
+                data: {
+                    id: qd_id
+                },
+                success: function(data) {
+                    if(data.status == true){
+                        // console.log(data.data);
+                        if(data.data.loaiquyetdinh_id == 1){
+                            $('#form_edit_qd .type1_qd').show();
+                            $('#form_edit_qd .type2_qd').hide();
+                            $('#form_edit_qd .type3_qd').hide();
+                        }
+                        if(data.data.loaiquyetdinh_id == 2){
+                            $('#form_edit_qd .type1_qd').hide();
+                            $('#form_edit_qd .type2_qd').show();
+                            $('#form_edit_qd .type3_qd').hide();
+                        }
+                        if(data.data.loaiquyetdinh_id == 3){
+                            $('#form_edit_qd .type1_qd').hide();
+                            $('#form_edit_qd .type2_qd').hide();
+                            $('#form_edit_qd .type3_qd').show();
+                        }
+                        $("#form_edit_qd input[name='quyetdinh_id']").val(data.data.id);
+                        $("#form_edit_qd input[name='nhansu_id']").val(data.data.nhansu_id);
+                        $("#form_edit_qd input[name='ma_qd']").val(data.data.ma_qd);
+                        $("#form_edit_qd select[name='loaiquyetdinh_id']").val(data.data.loaiquyetdinh_id);
+                        $("#form_edit_qd input[name='ngay_ky_qd']").val(data.data.ngay_ky);
+                        $("#form_edit_qd input[name='can_cu']").val(data.data.can_cu);
+                        $("#form_edit_qd input[name='noi_nhan']").val(data.data.noi_nhan);
+                        $("#form_edit_qd select[name='trang_thai']").val(data.data.trang_thai);
+                        $("#form_edit_qd input[name='tong_thu_nhap_cu']").val(data.data.tong_thu_nhap_cu);
+                        $("#form_edit_qd input[name='tong_thu_nhap_moi']").val(data.data.tong_thu_nhap_moi);
+                        $("#form_edit_qd input[name='luong_co_ban_moi']").val(data.data.luong_co_ban_moi);
+                        $("#form_edit_qd input[name='luong_tro_cap_moi']").val(data.data.luong_tro_cap_moi);
+                        $("#form_edit_qd input[name='luong_hieu_qua_moi']").val(data.data.luong_hieu_qua_moi);
+                        $("#form_edit_qd input[name='ly_do']").val(data.data.ly_do);
+                        $("#form_edit_qd input[name='chuc_vu_cu']").val(data.data.chuc_vu_cu);
+                        $("#form_edit_qd input[name='chuc_vu_moi']").val(data.data.chuc_vu_moi);
+                        if(data.data.bo_phan_cu){
+                            $("#form_edit_qd select[name='bo_phan_cu']").val(data.data.bo_phan_cu);
+                        }else{
+                            $("#form_edit_qd select[name='bo_phan_cu']").val('0');
+                        }
+                        if(data.data.bo_phan_moi){
+                            $("#form_edit_qd select[name='bo_phan_moi']").val(data.data.bo_phan_moi);
+                        }else{
+                            $("#form_edit_qd select[name='bo_phan_moi']").val('0');
+                        }
+                        $("#form_edit_qd input[name='chuc_vu_hien_tai']").val(data.data.chuc_vu_hien_tai);
+                        $('#modal_edit_qd').modal('show');
+                    }
+                }
+            });
+        });
+        // END Khi click vào nút sửa quyết định, tìm quyết định theo id và đỗ dữ liệu vào form
+
+        // Ajax sửa quyết định
+        $("#btn_edit_qd").on('click', function(e){
+            e.preventDefault();
+            $("#btn_edit_qd").attr("disabled", "disabled");
+            $("#btn_edit_qd").html('<i class="fa fa-spinner fa-spin"></i> Lưu');
+            $.ajax({
+                url: '{{ route('postSuaQuyetDinh') }}',
+                method: 'POST',
+                data: {
+                    quyetdinh_id: $("#form_edit_qd input[name='quyetdinh_id']").val(),
+                    nhansu_id: $("#form_edit_qd input[name='nhansu_id']").val(),
+                    ma_qd: $("#form_edit_qd input[name='ma_qd']").val(),
+                    loaiquyetdinh_id: $("#form_edit_qd select[name='loaiquyetdinh_id']").val(),
+                    ngay_ky_qd: $("#form_edit_qd input[name='ngay_ky_qd']").val(),
+                    can_cu: $("#form_edit_qd input[name='can_cu']").val(),
+                    noi_nhan: $("#form_edit_qd input[name='noi_nhan']").val(),
+                    trang_thai: $("#form_edit_qd select[name='trang_thai']").val(),
+                    tong_thu_nhap_cu: $("#form_edit_qd input[name='tong_thu_nhap_cu']").val(),
+                    tong_thu_nhap_moi: $("#form_edit_qd input[name='tong_thu_nhap_moi']").val(),
+                    luong_co_ban_moi: $("#form_edit_qd input[name='luong_co_ban_moi']").val(),
+                    luong_tro_cap_moi: $("#form_edit_qd input[name='luong_tro_cap_moi']").val(),
+                    luong_hieu_qua_moi: $("#form_edit_qd input[name='luong_hieu_qua_moi']").val(),
+                    ly_do: $("#form_edit_qd input[name='ly_do']").val(),
+                    chuc_vu_cu: $("#form_edit_qd input[name='chuc_vu_cu']").val(),
+                    chuc_vu_moi: $("#form_edit_qd input[name='chuc_vu_moi']").val(),
+                    bo_phan_cu: $("#form_edit_qd select[name='bo_phan_cu']").val(),
+                    bo_phan_moi: $("#form_edit_qd select[name='bo_phan_moi']").val(),
+                    chuc_vu_hien_tai: $("#form_edit_qd input[name='chuc_vu_hien_tai']").val(),
+                    _token: $("#form_edit_qd input[name='_token']").val()
+                },
+                success: function(data) {
+                    $("#btn_edit_qd").removeAttr("disabled"); 
+                    $("#btn_edit_qd").html('<i class="fa fa-save"></i> Lưu');
+                    if(data.status == false){
+                        var errors = "";
+                        $.each(data.data, function(key, value){
+                            $.each(value, function(key2, value2){
+                                errors += value2 +"<br>";
+                            });
+                        });
+                        toastr.options = {
+                            "closeButton": true,
+                            "debug": false,
+                            "positionClass": "toast-top-center",
+                            "onclick": null,
+                            "showDuration": "1000",
+                            "hideDuration": "1000",
+                            "timeOut": "5000",
+                            "extendedTimeOut": "1000",
+                            "showEasing": "swing",
+                            "hideEasing": "linear",
+                            "showMethod": "fadeIn",
+                            "hideMethod": "fadeOut"
+                        }
+                        toastr["error"](errors, "Lỗi")
+                    }
+                    if(data.status == true){
+                        $('#modal_edit_qd').modal('hide');
+                        swal({
+                            "title":"Đã sửa!", 
+                            "text":"Bạn đã sửa thành công quyết định!",
+                            "type":"success"
+                        }, function() {
+                                localStorage.setItem('activeTab', '#tab5');
+                                location.reload();
+                            }
+                        );
+                    }
+                }
+            });
+        });
+        // END Ajax sửa quyết định
+
+        // Xử lý khi click nút xóa quyết định
+        $(".btn_delete_qd").on("click", function(e){
+            e.preventDefault();
+            var qd_id = $(this).data("qd-id");
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            swal({
+                title: "Xóa quyết định này?",
+                text: "Bạn có chắc không, nó sẽ bị xóa vĩnh viễn!",
+                type: "warning",
+                showCancelButton: true,
+                cancelButtonText: 'Không',
+                confirmButtonClass: "btn-danger",
+                confirmButtonText: "Có, xóa ngay!",
+                closeOnConfirm: false
+                },
+                function(isConfirm){
+                    if (isConfirm) {
+                        $.ajax({
+                            url: '{{ route('postXoaQuyetDinh') }}',
+                            method: 'POST',
+                            data: {
+                                id: qd_id
+                            },
+                            success: function(data) {
+                                console.log(data);
+                                if(data.status == true){
+                                    swal({
+                                        "title":"Đã xóa!", 
+                                        "text":"Bạn đã xóa thành công quyết định!",
+                                        "type":"success"
+                                    }, function() {
+                                            localStorage.setItem('activeTab', '#tab5');
+                                            location.reload();
+                                        }
+                                    );
+                                }
+                            }
+                        });
+                    }   
+            });
+        });
+        // END Xử lý khi click nút xóa quyết định
+
+        // Khi click vào nút xem qđ, tìm qđ theo id và đỗ dữ liệu
+        $(".btn_read_qd").on("click", function(e){
+            e.preventDefault();
+            var qd_id = $(this).data("qd-id");
+            
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url: '{{ route('postTimQuyetDinhTheoId') }}',
+                method: 'POST',
+                data: {
+                    id: qd_id
+                },
+                success: function(data) {
+                    if(data.status == true){
+                        console.log(data.data);
+                        $('#read-qd .ma-qd').html("Số: "+data.data.ma_qd);
+                        $('#read-qd .ngay-qd').html(data.data.ngay);
+                        $('#read-qd .thang-qd').html(data.data.thang);
+                        $('#read-qd .nam-qd').html(data.data.nam);
+                        $('#read-qd .ten-loai-qd').html('(V/v: '+data.data.loaiquyetdinh_ten+')');
+                        var cancu_qd = data.data.can_cu.split(";");
+                        var cancu_qd_html = '';
+                        $.each(cancu_qd, function (index, value) {
+                            cancu_qd_html += '- ' + value + '<br>';
+                        });
+                        $('#read-qd .can-cu-qd').html(cancu_qd_html);
+                        $('#read-qd .tong-thu-nhap-cu').html('<span class="bold">'+data.data.tong_thu_nhap_cu+'</span> VNĐ/tháng');
+                        $('#read-qd .tong-thu-nhap-moi').html('<span class="bold">'+data.data.tong_thu_nhap_moi+'</span> VNĐ/tháng. Trong đó:');
+                        $('#read-qd .luong-co-ban-moi').html(data.data.luong_co_ban_moi+'VNĐ/tháng.');
+                        $('#read-qd .luong-tro-cap-moi').html(data.data.luong_tro_cap_moi+'VNĐ/tháng.');
+                        $('#read-qd .luong-hieu-qua-moi').html(data.data.luong_hieu_qua_moi+'VNĐ/tháng.');
+                        $('#read-qd .ly-do-dieu-chinh').html('Lý do điều chỉnh: '+data.data.ly_do);
+                        // $('#read-hdld .thoi-han-hdld').html("Từ ngày: <strong>"+data.data.ngay_co_hieu_luc.replace(/-/g,'/')+"</strong> Đến hết ngày: <strong>"+data.data.ngay_het_hieu_luc.replace(/-/g,'/')+"</strong>");
+                        // $('#read-hdld .luong-can-ban-hdld').html(data.data.luong_can_ban+" đồng/tháng");
+                        // $('#read-hdld .luong-tro-cap-hdld').html(data.data.luong_tro_cap+" đồng/tháng");
+                        // $('#read-hdld .luong-hieu-qua-hdld').html(data.data.luong_hieu_qua+" đồng/tháng");
+                        // $('#read-hdld .ngay-ky-hdld').html(data.data.ngay_ky.replace(/-/g,'/'));
+                        $('#modal_read_qd').modal('show');
+                        
+                    }
+                }
+            });
+        });
+        // END Khi click vào nút xem qđ, tìm qđ theo id và đỗ dữ liệu
     });
 </script>
 
@@ -579,6 +833,11 @@
 // Xử lý in hđlđ
 document.getElementById("btn-print-hd").onclick = function () {
     printElement(document.getElementById("print-hdld"));
+};
+
+// Xử lý in qd
+document.getElementById("btn-print-qd").onclick = function () {
+    printElement(document.getElementById("print-qd"));
 };
 
 function printElement(elem) {

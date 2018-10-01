@@ -277,36 +277,90 @@
                                 <!-- BEGIN EXAMPLE TABLE PORTLET-->
                                 <div class="portlet light portlet-fit bordered">
                                     <div class="portlet-body">
-                                        <table class="table table-striped table-hover table-bordered" id="table_ds_qd">
-                                            <thead>
-                                                <tr>
-                                                    <th> STT</th>
-                                                    <th> Loại QĐ </th>
-                                                    <th> Ngày ký</th>
-                                                    <th> Trạng thái</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @if( $ds_quyet_dinh->count() > 0 )
-                                                    @php $stt = 1; @endphp
-                                                    @foreach( $ds_quyet_dinh as $v )
-                                                    <tr>
-                                                        <td> {{ $stt }} </td>
-                                                        <td> {{ ($v->loaiquyetdinh_id)?$v->loaiquyetdinhs->ten:'' }} </td>
-                                                        <td> {{ $v->ngay_ky }} </td>
-                                                        <td> 
-                                                            @if( $v->trang_thai )
-                                                            <span class="label label-sm label-success" style="font-size: 12px;"> Đã ký </span>
-                                                            @else
-                                                            <span class="label label-sm label-danger" style="font-size: 12px;"> Chưa ký </span>
-                                                            @endif
-                                                        </td>
-                                                    </tr>
-                                                    @php $stt++; @endphp
-                                                    @endforeach
-                                                @endif
-                                            </tbody>
-                                        </table>
+                                        <div class="row">
+                                            @foreach($ds_quyet_dinh as $v)
+                                            <div class="col-md-12">
+                                                <div class="mt-element-ribbon bg-grey-steel">
+                                                    
+                                                    @if($v->trang_thai)
+                                                    <div class="ribbon ribbon-right ribbon-vertical-right ribbon-shadow ribbon-border-dash-vert ribbon-color-info">
+                                                        <div class="ribbon-sub ribbon-bookmark"></div>
+                                                        <i class="fa fa-star"></i>
+                                                    </div>
+                                                    <div class="ribbon ribbon-left ribbon-clip ribbon-shadow ribbon-round ribbon-border-dash-hor ribbon-color-info">
+                                                        <div class="ribbon-sub ribbon-clip ribbon-left"></div>Số: {{ $v->ma_qd }} (Đã ký)</div>
+                                                    @else
+                                                    <div class="ribbon ribbon-right ribbon-vertical-right ribbon-shadow ribbon-border-dash-vert ribbon-color-default">
+                                                        <div class="ribbon-sub ribbon-bookmark"></div>
+                                                        <i class="fa fa-star"></i>
+                                                    </div>
+                                                    <div class="ribbon ribbon-left ribbon-clip ribbon-shadow ribbon-round ribbon-border-dash-hor ribbon-color-default">
+                                                        <div class="ribbon-sub ribbon-clip ribbon-left"></div>Số: {{ $v->ma_qd }} (Chưa ký)</div>
+                                                    @endif
+                                                    <div class="row" style="padding: 50px 15px 5px 15px;">
+                                                        <div class="col-md-6 bold">
+                                                        V/v: {{ ($v->loaiquyetdinh_id)?$v->loaiquyetdinhs->ten:'' }}
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                        Ngày ký: {{ $v->ngay_ky }}
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    @if($v->loaiquyetdinh_id == 1)
+                                                        <div class="row" style="padding: 0px 15px 5px 15px;">
+                                                            <div class="col-md-6">
+                                                                Tổng thu nhập cũ: {{ $v->tong_thu_nhap_cu }}
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                Lương cơ bản mới: {{ $v->luong_co_ban_moi }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="row" style="padding: 0px 15px 5px 15px;">
+                                                            <div class="col-md-6">
+                                                                Tổng thu nhập mới: {{ $v->tong_thu_nhap_moi }}
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                Lương trợ cấp mới: {{ $v->luong_tro_cap_moi }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="row" style="padding: 0px 15px 20px 15px;">
+                                                            <div class="col-md-6">
+                                                                Lý do: {{ $v->ly_do }}
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                Lương hiệu quả mới: {{ $v->luong_hieu_qua_moi }}
+                                                            </div>
+                                                        </div>
+                                                    @elseif($v->loaiquyetdinh_id == 2)
+                                                        <div class="row" style="padding: 0px 15px 5px 15px;">
+                                                            <div class="col-md-6">
+                                                                Chức vụ cũ: {{ $v->chuc_vu_cu }}
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                Chức vụ mới: {{ $v->chu_vu_moi }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="row" style="padding: 0px 15px 20px 15px;">
+                                                            <div class="col-md-6">
+                                                                Bộ phận cũ: Phòng {{ getTenPhongBanById($v->bo_phan_cu) }}
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                Bộ phận mới: Phòng {{ getTenPhongBanById($v->bo_phan_moi) }}
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        
+                                                    @elseif($v->loaiquyetdinh_id == 3)
+                                                        <div class="row" style="padding: 0px 15px 20px 15px;">
+                                                            <div class="col-md-6">
+                                                                Chức vụ hiện tại: {{ $v->chuc_vu_hien_tai }}
+                                                            </div>
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                            </div>
+                                            @endforeach
+                                        </div>
                                     </div>
                                 </div>
                                 <!-- END EXAMPLE TABLE PORTLET-->

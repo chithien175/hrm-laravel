@@ -289,66 +289,66 @@
                                         <div class="ribbon-sub ribbon-clip ribbon-left"></div>Số: {{ $v->ma_qd }} (Chưa ký)</div>
                                     @endif
                                     <div class="row" style="padding: 50px 15px 5px 15px;">
-                                        <div class="col-md-6">
+                                        <div class="col-md-6 bold">
                                         V/v: {{ ($v->loaiquyetdinh_id)?$v->loaiquyetdinhs->ten:'' }}
                                         </div>
                                         <div class="col-md-6">
                                         Ngày ký: {{ $v->ngay_ky }}
                                         </div>
                                     </div>
-                                        @if($v->loaiquyetdinh_id == 1)
-                                            <div class="row" style="padding: 0px 15px 5px 15px;">
-                                                <div class="col-md-6">
-                                                    Tổng thu nhập cũ: {{ $v->tong_thu_nhap_cu }}
-                                                </div>
-                                                <div class="col-md-6">
-                                                    Tổng thu nhập mới: {{ $v->tong_thu_nhap_moi }}
-                                                </div>
+                                    
+                                    @if($v->loaiquyetdinh_id == 1)
+                                        <div class="row" style="padding: 0px 15px 5px 15px;">
+                                            <div class="col-md-6">
+                                                Tổng thu nhập cũ: {{ $v->tong_thu_nhap_cu }}
                                             </div>
-                                            <div class="row" style="padding: 0px 15px 5px 15px;">
-                                                <div class="col-md-6">
-                                                    Lương cơ bản mới: {{ $v->luong_co_ban_moi }}
-                                                </div>
-                                                <div class="col-md-6">
-                                                    Lương trợ cấp mới: {{ $v->luong_tro_cap_moi }}
-                                                </div>
+                                            <div class="col-md-6">
+                                                Lương cơ bản mới: {{ $v->luong_co_ban_moi }}
                                             </div>
-                                            <div class="row" style="padding: 0px 15px 20px 15px;">
-                                                <div class="col-md-6">
-                                                    Lương hiệu quả mới: {{ $v->luong_hieu_qua_moi }}
-                                                </div>
-                                                <div class="col-md-6">
-                                                    Lý do: {{ $v->ly_do }}
-                                                </div>
+                                        </div>
+                                        <div class="row" style="padding: 0px 15px 5px 15px;">
+                                            <div class="col-md-6">
+                                                Tổng thu nhập mới: {{ $v->tong_thu_nhap_moi }}
                                             </div>
-                                        @elseif($v->loaiquyetdinh_id == 2)
-                                            <div class="row" style="padding: 0px 15px 5px 15px;">
-                                                <div class="col-md-6">
-                                                    Chức vụ cũ: {{ $v->chuc_vu_cu }}
-                                                </div>
-                                                <div class="col-md-6">
-                                                    Chức vụ mới: {{ $v->chu_vu_moi }}
-                                                </div>
+                                            <div class="col-md-6">
+                                                Lương trợ cấp mới: {{ $v->luong_tro_cap_moi }}
                                             </div>
-                                            <div class="row" style="padding: 0px 15px 20px 15px;">
-                                                <div class="col-md-6">
-                                                    Bộ phận cũ: Phòng {{ getTenPhongBanById($v->bo_phan_cu) }}
-                                                </div>
-                                                <div class="col-md-6">
-                                                    Bộ phận mới: Phòng {{ getTenPhongBanById($v->bo_phan_moi) }}
-                                                </div>
+                                        </div>
+                                        <div class="row" style="padding: 0px 15px 20px 15px;">
+                                            <div class="col-md-6">
+                                                Lý do: {{ $v->ly_do }}
                                             </div>
-                                            
-                                           
-                                        @elseif($v->loaiquyetdinh_id == 3)
-                                            <div class="row" style="padding: 0px 15px 20px 15px;">
-                                                <div class="col-md-6">
-                                                    Chức vụ hiện tại: {{ $v->chuc_vu_hien_tai }}
-                                                </div>
+                                            <div class="col-md-6">
+                                                Lương hiệu quả mới: {{ $v->luong_hieu_qua_moi }}
                                             </div>
-                                            
-                                        @endif
+                                        </div>
+                                    @elseif($v->loaiquyetdinh_id == 2)
+                                        <div class="row" style="padding: 0px 15px 5px 15px;">
+                                            <div class="col-md-6">
+                                                Chức vụ cũ: {{ $v->chuc_vu_cu }}
+                                            </div>
+                                            <div class="col-md-6">
+                                                Chức vụ mới: {{ $v->chu_vu_moi }}
+                                            </div>
+                                        </div>
+                                        <div class="row" style="padding: 0px 15px 20px 15px;">
+                                            <div class="col-md-6">
+                                                Bộ phận cũ: Phòng {{ getTenPhongBanById($v->bo_phan_cu) }}
+                                            </div>
+                                            <div class="col-md-6">
+                                                Bộ phận mới: Phòng {{ getTenPhongBanById($v->bo_phan_moi) }}
+                                            </div>
+                                        </div>
                                         
+                                        
+                                    @elseif($v->loaiquyetdinh_id == 3)
+                                        <div class="row" style="padding: 0px 15px 20px 15px;">
+                                            <div class="col-md-6">
+                                                Chức vụ hiện tại: {{ $v->chuc_vu_hien_tai }}
+                                            </div>
+                                        </div>
+                                        
+                                    @endif
                                     
                                     <div class="btn-group">
                                         <a data-qd-id="{{ $v->id }}" class="btn_read_qd btn btn-xs blue-steel" href="#" title="In"><i class="fa fa-print"></i> In</a>
@@ -363,7 +363,6 @@
                             </div>
                             @endforeach
                         </div>
-                        
                     </div>
                 </div>
                 <!-- END EXAMPLE TABLE PORTLET-->
@@ -490,3 +489,5 @@
 @include('hop_dong.modals.edit')
 @include('hop_dong.modals.read')
 @include('quyet_dinh.modals.add')
+@include('quyet_dinh.modals.edit')
+@include('quyet_dinh.modals.read')
