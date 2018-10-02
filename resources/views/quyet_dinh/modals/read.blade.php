@@ -23,7 +23,7 @@
                         </div>
                         <!-- END hđld header -->
                         <div class="divider"></div>
-                        <!-- BEGIN hđlđ content -->
+                        <!-- BEGIN qđ content -->
                         <div class="row content-qd">
                             <div class="row text-center">
                                 <p class="quoc-hieu">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</p>
@@ -60,13 +60,13 @@
                                     QUYẾT ĐỊNH
                                 </div>
                             </div>
-                            <!-- BEGIN Điều -->
-                            <div class="row">
+                            <!-- BEGIN Điều - Loại quyết định 1 -->
+                            <div class="row loai-qd-1">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <span class="bold" style="text-decoration: underline;">Điều 1</span>: Nay quyết định điều chỉnh tổng thu nhập cho:
                                 </div>
                             </div>
-                            <div class="row" style="padding-left: 60px;">
+                            <div class="row loai-qd-1" style="padding-left: 60px;">
                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                     {{ ($nhan_su->gioi_tinh == 1)?'Ông':'Bà' }}<span class="pull-right">:</span>
                                 </div>
@@ -74,7 +74,7 @@
                                     {{ $nhan_su->ho_ten }}
                                 </div>
                             </div>
-                            <div class="row" style="padding-left: 60px;">
+                            <div class="row loai-qd-1" style="padding-left: 60px;">
                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                     Chức danh<span class="pull-right">:</span>
                                 </div>
@@ -87,66 +87,85 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="row" style="padding-left: 60px;">
+                            <div class="row loai-qd-1" style="padding-left: 60px;">
                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                     Tổng thu nhập cũ<span class="pull-right">:</span>
                                 </div>
                                 <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 tong-thu-nhap-cu">
                                 </div>
                             </div>
-                            <div class="row" style="padding-left: 60px;">
+                            <div class="row loai-qd-1" style="padding-left: 60px;">
                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                     Điều chỉnh tổng thu nhập mới<span class="pull-right">:</span>
                                 </div>
                                 <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 tong-thu-nhap-moi">
                                 </div>
                             </div>
-                            <div class="row" style="padding-left: 60px;">
+                            <div class="row loai-qd-1" style="padding-left: 60px;">
                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                     - Lương cơ bản<span class="pull-right">:</span>
                                 </div>
                                 <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 luong-co-ban-moi">
                                 </div>
                             </div>
-                            <div class="row" style="padding-left: 60px;">
+                            <div class="row loai-qd-1" style="padding-left: 60px;">
                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                     - Hỗ trợ, trợ cấp khác<span class="pull-right">:</span>
                                 </div>
                                 <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 luong-tro-cap-moi">
                                 </div>
                             </div>
-                            <div class="row" style="padding-left: 60px;">
+                            <div class="row loai-qd-1" style="padding-left: 60px;">
                                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
                                     - Thưởng hiệu quả công việc tối đa<span class="pull-right">:</span>
                                 </div>
                                 <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 luong-hieu-qua-moi">
                                 </div>
                             </div>
-                            <div class="row" style="padding-left: 60px;">
+                            <div class="row loai-qd-1" style="padding-left: 60px;">
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ly-do-dieu-chinh">
                                     
                                 </div>
                             </div>
-                            <!-- END Điều -->
-
-                            <!-- Chữ ký -->
-                            <br>
-                            <div class="row">
-                                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-                                </div>
-                                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 cot-phai text-center">
-                                    <p style="font-weight: bold; margin: 0 0 0 0;text-transform: uppercase;">{{ setting('company.name', '') }}</p>
-                                    <p style="font-weight: bold; margin: 0 0 0 0;text-transform: uppercase;">{{ setting('company.chuc_vu', '') }}</p>
-                                    <br><br><br><br>
-                                    <p style="font-weight: bold; margin: 0 0 0 0;">{{ setting('company.nguoi_dai_dien', '') }}</p>
+                            <div class="row loai-qd-1">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <span class="bold" style="text-decoration: underline;">Điều 2</span>: {{ ($nhan_su->gioi_tinh == 1)?'Ông':'Bà' }} {{ $nhan_su->ho_ten }} được hưởng mức lương thu nhập mới kể từ ngày <span class="ngay-ky-qd"></span>.
                                 </div>
                             </div>
-                            <!-- END Chữ ký -->
+                            <div class="row loai-qd-1">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <span class="bold" style="text-decoration: underline;">Điều 3</span>: Ông/Bà Ban Giám đốc, Trưởng các Bộ phận có liên quan và {{ ($nhan_su->gioi_tinh == 1)?'Ông':'Bà' }} {{ $nhan_su->ho_ten }} căn cứ quyết định thi hành.
+                                </div>
+                            </div>
+                            <div class="row loai-qd-1" style="padding-left: 60px;">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    Quyết định có hiệu lực kể từ ngày <span class="ngay-ky-qd"></span>.
+                                </div>
+                            </div>
+                            <!-- END Điều - Loại quyết định 1 -->
+
+                            
                         </div>
-                        <!-- BEGIN hđlđ content -->
+                        <!-- END qđ content -->
+                        <!-- Chữ ký -->
+                        <br>
+                        <div class="row" style="font-size: 12.5pt;">
+                            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7" style="padding-left: 65px;">
+                                <p>Nơi nhận:</p>
+                                <div class="noi-nhan-qd" style="padding-left: 20px;">
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 cot-phai text-center">
+                                <p style="font-weight: bold; margin: 0 0 0 0;text-transform: uppercase;">{{ setting('company.name', '') }}</p>
+                                <p style="font-weight: bold; margin: 0 0 0 0;text-transform: uppercase;">{{ setting('company.chuc_vu', '') }}</p>
+                                <br><br><br><br>
+                                <p style="font-weight: bold; margin: 0 0 0 0;">{{ setting('company.nguoi_dai_dien', '') }}</p>
+                            </div>
+                        </div>
+                        <!-- END Chữ ký -->
                     </div>
                 </div>
-                <!-- kết thúc nội dung in hđlđ -->
+                <!-- kết thúc nội dung in qd -->
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>

@@ -337,13 +337,14 @@
                                                                 Chức vụ cũ: {{ $v->chuc_vu_cu }}
                                                             </div>
                                                             <div class="col-md-6">
-                                                                Chức vụ mới: {{ $v->chu_vu_moi }}
+                                                                Bộ phận cũ: Phòng {{ getTenPhongBanById($v->bo_phan_cu) }}
                                                             </div>
                                                         </div>
                                                         <div class="row" style="padding: 0px 15px 20px 15px;">
                                                             <div class="col-md-6">
-                                                                Bộ phận cũ: Phòng {{ getTenPhongBanById($v->bo_phan_cu) }}
+                                                                Chức vụ mới: {{ $v->chu_vu_moi }}
                                                             </div>
+                                                            
                                                             <div class="col-md-6">
                                                                 Bộ phận mới: Phòng {{ getTenPhongBanById($v->bo_phan_moi) }}
                                                             </div>

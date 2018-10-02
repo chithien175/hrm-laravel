@@ -797,6 +797,21 @@
                 success: function(data) {
                     if(data.status == true){
                         console.log(data.data);
+                        if(data.data.loaiquyetdinh_id == 1){
+                            $('.loai-qd-1').show();
+                            $('.loai-qd-2').hide();
+                            $('.loai-qd-3').hide();
+                        }
+                        if(data.data.loaiquyetdinh_id == 2){
+                            $('.loai-qd-1').hide();
+                            $('.loai-qd-2').show();
+                            $('.loai-qd-3').hide();
+                        }
+                        if(data.data.loaiquyetdinh_id == 3){
+                            $('.loai-qd-1').hide();
+                            $('.loai-qd-2').hide();
+                            $('.loai-qd-3').show();
+                        }
                         $('#read-qd .ma-qd').html("Số: "+data.data.ma_qd);
                         $('#read-qd .ngay-qd').html(data.data.ngay);
                         $('#read-qd .thang-qd').html(data.data.thang);
@@ -814,7 +829,13 @@
                         $('#read-qd .luong-tro-cap-moi').html(data.data.luong_tro_cap_moi+'VNĐ/tháng.');
                         $('#read-qd .luong-hieu-qua-moi').html(data.data.luong_hieu_qua_moi+'VNĐ/tháng.');
                         $('#read-qd .ly-do-dieu-chinh').html('Lý do điều chỉnh: '+data.data.ly_do);
-                        // $('#read-hdld .thoi-han-hdld').html("Từ ngày: <strong>"+data.data.ngay_co_hieu_luc.replace(/-/g,'/')+"</strong> Đến hết ngày: <strong>"+data.data.ngay_het_hieu_luc.replace(/-/g,'/')+"</strong>");
+                        $('#read-qd .ngay-ky-qd').html(data.data.ngay_ky.replace(/-/g,'/'));
+                        var noinhan_qd = data.data.noi_nhan.split(";");
+                        var noinhan_qd_html = '';
+                        $.each(noinhan_qd, function (index, value) {
+                            noinhan_qd_html += '- ' + value + '<br>';
+                        });
+                        $('#read-qd .noi-nhan-qd').html(noinhan_qd_html);
                         // $('#read-hdld .luong-can-ban-hdld').html(data.data.luong_can_ban+" đồng/tháng");
                         // $('#read-hdld .luong-tro-cap-hdld').html(data.data.luong_tro_cap+" đồng/tháng");
                         // $('#read-hdld .luong-hieu-qua-hdld').html(data.data.luong_hieu_qua+" đồng/tháng");
